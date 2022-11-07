@@ -1,0 +1,13 @@
+.main {
+  background-color: #ffffff;
+  color: #ffffff;
+  font-family: "Inter", "Arial" , sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: antialiased;
+  margin: 0px;
+  position: relative;
+  max-width: 1440px;
+  max-height: 1280px;
+}
