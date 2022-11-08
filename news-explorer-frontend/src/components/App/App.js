@@ -5,6 +5,7 @@ import './App.css';
 import '../../index';
 import Main from '../Main/Main';
 
+
 function App() {
   const [currentUser, setCurrentUser] = useState({});
 
@@ -12,9 +13,7 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="main__content">
         <Main/>
-      </div>
     </CurrentUserContext.Provider>
   );
 }

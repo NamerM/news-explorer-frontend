@@ -1,4 +1,4 @@
-.main {
+/* .searchForm {
   background-color: #ffffff;
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: antialiased;
@@ -7,23 +7,23 @@
   width: 1440px;
   max-height: 1280px;
   position: relative;
-}
+} */
 
-.main__content {
+.searchForm__content {
   padding: 0px;
   margin: 0;
   display: flex;
   flex-direction: column;
 }
 
-.main__content-top {
+.searchForm__content-top {
   background-image: url('../../images/georgia-de-lotz.png');
   background-repeat: no-repeat;
   height: 576px;
   margin-top: 0px;
 }
 
-.main__title {
+.searchForm__title {
   font-family: "Roboto-Slab", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -35,7 +35,7 @@
   margin: 0;
 }
 
-.main__subtitle {
+.searchForm__subtitle {
   font-family: "Roboto", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -47,7 +47,7 @@
   padding-left: 416px;
 }
 
-.main__searchbox {
+.searchForm__searchbox {
   height: 64px;
   width: 608px;
   padding-top: 88px;
