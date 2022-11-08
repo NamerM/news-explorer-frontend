@@ -1,26 +1,21 @@
 import React, { useEffect, useState }  from 'react';
-
-import logo from '../../logo.svg';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+//import { Switch, useHistory, Route } from 'react-router-dom';
 import './App.css';
+import '../../index';
+import Main from '../Main/Main';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState({});
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="main__content">
+        <Main/>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
