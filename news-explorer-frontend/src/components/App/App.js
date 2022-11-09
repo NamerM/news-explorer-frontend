@@ -1,20 +1,25 @@
-import React, { useEffect, useState }  from 'react';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+//import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 //import { Switch, useHistory, Route } from 'react-router-dom';
 import './App.css';
 import '../../index';
 import Main from '../Main/Main';
+import Header from '../Header/Header';
+import SearchForm from '../SearchForm/SearchForm';
+
 
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  //const [currentUser, setCurrentUser] = useState({});
 
 
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-        <Main/>
-    </CurrentUserContext.Provider>
+    <div>
+      <Header />
+      <Main />
+
+    </div>
+
   );
 }
 

@@ -10,6 +10,7 @@
 } */
 
 .searchForm__content {
+  width: 1440px;
   padding: 0px;
   margin: 0;
   display: flex;
@@ -17,14 +18,13 @@
 }
 
 .searchForm__content-top {
-  background-image: url('../../images/georgia-de-lotz.png');
-  background-repeat: no-repeat;
-  height: 576px;
+
   margin-top: 0px;
+  height: 576px;
 }
 
 .searchForm__title {
-  font-family: "Roboto-Slab", "Arial", sans-serif;
+  font-family: 'Roboto-Slab', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 60px;
@@ -36,7 +36,7 @@
 }
 
 .searchForm__subtitle {
-  font-family: "Roboto", "Arial", sans-serif;
+  font-family: 'Roboto', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -47,10 +47,49 @@
   padding-left: 416px;
 }
 
-.searchForm__searchbox {
+.searchForm__form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.searchForm__form-field {
+  display: flex;
+  flex-direction: row;
   height: 64px;
   width: 608px;
-  padding-top: 88px;
-  padding-left: 416px;
+  margin-top: 88px;
+  margin-left: 416px;
+  background-color: #ffffff;
   border-radius: 100px;
+  border: 1px solid #D1D2D6;
+}
+
+.searchForm__form-input {
+  width: 376px;
+  height: 22px;
+  margin: 21px 24px;
+  padding: 0;
+  border: 0;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #B6BCBF;
+}
+
+.searchForm__form-submit {
+  border: 0;
+  margin-left: 16px;
+  width: 168px;
+  background-color: #2F71E5;
+  color: #ffffff;
+  box-shadow: rgba(14, 26, 57, 0.2);
+  border-radius: 100px;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
 }
