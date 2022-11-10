@@ -27,3 +27,5 @@ function NewsCard() {
   </li>
   )
 }
+
+export default NewsCard;

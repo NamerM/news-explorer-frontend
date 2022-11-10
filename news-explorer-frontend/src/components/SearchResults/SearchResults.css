@@ -11,6 +11,7 @@
 
 .searchResults__content {
   margin: 80px 104px 64px;
+  padding: 0;
 }
 
 .searchResults__title {
