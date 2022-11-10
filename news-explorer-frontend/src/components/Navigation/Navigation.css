@@ -3,8 +3,9 @@
   margin: 0 auto;
   padding-top: 14px;
   padding-bottom: 12px;
-  background: transparent;
-  border-bottom: 1px rgba(255, 255, 255, 0.2) solid;
+  /* background: transparent; */
+  /* border-bottom: 1px rgba(255, 255, 255, 0.2) solid; */
+  /* box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2); */
   color: white;
 }
 
@@ -13,12 +14,13 @@
   flex-direction: row;
   justify-content: space-between;
   height:80px;
+  margin: 0;
   padding: 0 104px;
 }
 
 .navigation__logo {
   padding-top: 30px;
-  padding-top: 26px;
+  padding-bottom: 26px;
 }
 
 .navigation__menu {
@@ -32,6 +34,7 @@ align-items: center;
   line-height: 24px;
   color: #ffffff;
   text-decoration: none;
+  margin-top:19px;
 }
 
 .navigation__menu-item:visited {

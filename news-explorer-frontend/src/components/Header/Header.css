@@ -1,13 +1,17 @@
 .header {
   margin: 0;
+  padding: 0;
   background-image: url('../../images/georgia-de-lotz.png');
   background-repeat: no-repeat;
   background-size: cover;
-  width: 1440px;
+  max-width: 1440px;
+  height: 576px;
 }
 
 .header__content {
  padding: 0;
+ margin: 0;
+ /* height: 576px; */
 }
 
 .header__subtitle {

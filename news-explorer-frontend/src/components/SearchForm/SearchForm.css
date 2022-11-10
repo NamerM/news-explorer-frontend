@@ -10,7 +10,7 @@
 } */
 
 .searchForm__content {
-  width: 1440px;
+  max-width: 1440px;
   padding: 0px;
   margin: 0;
   display: flex;
@@ -18,9 +18,7 @@
 }
 
 .searchForm__content-top {
-
   margin-top: 0px;
-  height: 576px;
 }
 
 .searchForm__title {
@@ -31,7 +29,7 @@
   line-height: 64px;
   color: #ffffff;
   width: 608px;
-  padding: 160px 416px 0px;
+  padding: 80px 416px 0px;
   margin: 0;
 }
 
@@ -45,6 +43,7 @@
   width: 608px;
   padding-top: 32px;
   padding-left: 416px;
+  margin: 0;
 }
 
 .searchForm__form {

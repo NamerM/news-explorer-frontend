@@ -4,8 +4,7 @@
   -webkit-font-smoothing: antialiased;
   margin: 0px;
   padding: 0px;
-  width: 1440px;
-  max-height: 1280px;
+  max-width: 1440px;
   position: relative;
 }
 

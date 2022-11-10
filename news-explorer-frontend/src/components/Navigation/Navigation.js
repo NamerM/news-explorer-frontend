@@ -11,7 +11,7 @@ function Navigation() {
       </div>
       <div className="navigation__menu">
         <NavLink className="navigation__menu-item" activeClassName="navigation__link_active" exact to="/">Home</NavLink>
-        <NavLink className="navigation-button navigation__menu-item" >Sign in</NavLink>
+        <NavLink className="navigation__menu-item navigation-button " >Sign in</NavLink>
       </div>
     </nav>
 

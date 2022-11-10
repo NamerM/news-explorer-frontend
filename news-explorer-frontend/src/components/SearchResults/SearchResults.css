@@ -1,0 +1,30 @@
+.searchResults {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f6f7;
+  height: 974px;
+  padding: 0;
+  margin: 0;
+  max-width: 1440px;
+}
+
+
+.searchResults__content {
+  margin: 80px 104px 64px;
+}
+
+.searchResults__title {
+  width: 712px;
+  margin-bottom: 64px;
+  font-family: 'Roboto-Slab', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1a1b22;
+}
+
+.searchResults__newsCards {
+  padding: 0;
+  margin: 0;
+}
