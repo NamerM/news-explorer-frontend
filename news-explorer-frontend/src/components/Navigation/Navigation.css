@@ -34,6 +34,10 @@ align-items: center;
   text-decoration: none;
 }
 
+.navigation__menu-item:visited {
+  color: #ffffff;
+}
+
 .navigation-button {
   display: flex;
   flex-direction: row;
@@ -48,10 +52,11 @@ align-items: center;
   margin-left: 42px;
 }
 
-.navigation-button-text {
+/* .navigation-button-text {
   font-family: "Roboto-Slab", "Arial", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   color: #ffffff;
-}
+} */
+

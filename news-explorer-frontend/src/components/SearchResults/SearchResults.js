@@ -3,7 +3,9 @@ import React from "react";
 function SearchResults() {
 
   return (
-    40
+    <>
+    Search Results Block will come here
+    </>
   )
 }
 

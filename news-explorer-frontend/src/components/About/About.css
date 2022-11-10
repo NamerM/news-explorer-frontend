@@ -1,0 +1,43 @@
+.about {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin-bottom: 80px;
+}
+
+.about__image {
+  background-image: url(../../images/author-image.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 464px;
+  height: 464px;
+  border-radius: 1000px;
+  margin-top: 80px;
+  margin-left: 104px;
+}
+
+.about__content {
+ display: flex;
+ flex-direction: column;
+ width: 600px;
+ height: 190px;
+ margin-top: 131px;
+ margin-left: 56px;
+}
+
+.about__title {
+  font-family: "Roboto-Slab", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1A1B22;
+  margin-bottom: 24px;
+}
+
+.about__description {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+}

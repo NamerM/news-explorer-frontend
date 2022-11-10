@@ -5,6 +5,8 @@
 @import url(../src/components/Main/Main.css);
 @import url(../src/components/Navigation/Navigation.css);
 @import url(../src/components/SearchForm/SearchForm.css);
+@import url(../src/components/About/About.css);
+@import url(../src/components/Footer/Footer.css);
 
 
 /* body {
