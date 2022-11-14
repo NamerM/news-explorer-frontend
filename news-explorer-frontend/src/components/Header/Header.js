@@ -1,6 +1,6 @@
-import React from "react";
-import Navigation from "../Navigation/Navigation";
-import SearchForm from "../SearchForm/SearchForm";
+import React from 'react';
+import Navigation from '../Navigation/Navigation';
+import SearchForm from '../SearchForm/SearchForm';
 
 function Header() {
 

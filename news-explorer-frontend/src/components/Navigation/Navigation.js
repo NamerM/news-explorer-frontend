@@ -10,8 +10,8 @@ function Navigation() {
         <img src={logoWhite}/>
       </div>
       <div className="navigation__menu">
-        <NavLink className="navigation__menu-item" activeClassName="navigation__link_active" exact to="/">Home</NavLink>
-        <NavLink className="navigation__menu-item navigation-button " >Sign in</NavLink>
+        <NavLink className="navigation__menu-item" to="/">Home</NavLink>
+        <NavLink className="navigation__menu-item navigation-button" to='/signin'>Sign in</NavLink>
       </div>
     </nav>
 

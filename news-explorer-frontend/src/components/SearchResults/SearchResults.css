@@ -15,8 +15,8 @@
 }
 
 .searchResults__title {
-  width: 712px;
-  margin-bottom: 64px;
+  max-width: 712px;
+  margin: 0 0 64px 0;
   font-family: 'Roboto-Slab', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -28,4 +28,28 @@
 .searchResults__newsCards {
   padding: 0;
   margin: 0;
+}
+
+.searchResults__showbtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 64px calc((100% - 288px)/2) 80px;
+  width: 288px;
+  height: 64px;
+  border-radius: 80px;
+  border: none;
+  background-color: #ffffff;
+  color: #1a1b22;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.searchResults__showbtn:hover {
+  cursor: pointer;
+  background-color: #e8e8e8;
 }

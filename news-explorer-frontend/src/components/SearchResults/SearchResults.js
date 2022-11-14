@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import NewsCardList from '../NewsCardList/NewsCardList';
 
 function SearchResults() {
@@ -10,6 +10,7 @@ function SearchResults() {
       <div className="searchResults_newsCards">
         <NewsCardList />
       </div>
+        <button type="button" className="searchResults__showbtn">Show More</button>
       </div>
     </div>
   )

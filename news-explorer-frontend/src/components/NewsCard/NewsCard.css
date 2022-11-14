@@ -1,0 +1,120 @@
+.newscard {
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  margin-right: 16px;
+}
+
+.newscard:last-of-type {
+  margin-right: 0;
+}
+
+.newscard-item {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  height: 576px;
+  position: relative;
+  border-radius: 20px;
+}
+
+.newscard-item__image {
+  max-width: 400px;
+  height: 272px;
+  border-radius: 20px 20px 0 0;
+  background-color: transparent ;
+}
+
+.newscard-item__bookmarkbox {
+  border-radius: 8px;
+  border: 0;
+  background-color: #ffffff;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.newscard-item__bookmark {
+  background-image: url(../../images/bookmark-blank.svg);
+  background-repeat: no-repeat;
+  /* background-size: 14px 19px; */
+  background-position: center;
+  margin: 0;
+  padding: 0;
+}
+
+.newscard-item__bookmark:hover {
+  background-image: url(../../images/bookmark-hover.svg);
+}
+
+.newscard-item__bookmark:active {
+  background-image: url(../../images/bookmark-filled.svg);
+}
+
+.newscard-item__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 24px;
+  padding: 0;
+  height: 304px;
+}
+
+.newscard-item__date {
+  margin: 20px 0 0 0;
+  padding: 0;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
+}
+
+.newscard-item__title {
+  margin: 12px 0 0 0;
+  padding: 0;
+  font-family: 'Roboto-Slab', 'Arial', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 30px;
+  color: #1a1b22;
+  width: 352px;
+}
+
+.newscard-item__text {
+  margin: 16px 0 18px 0;
+  padding:0;
+  height: 110px;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
+  overflow: hidden;
+  position: relative;
+  text-align: justify;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  /* white-space: nowrap ;only single line so no need */
+}
+
+.newscard-item__source {
+  margin: 0 0 24px 0;
+  padding: 0;
+  font-family: 'Roboto-Slab', 'Arial', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: #b6bcbf;
+}
