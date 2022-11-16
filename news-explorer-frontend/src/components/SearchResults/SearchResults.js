@@ -15,10 +15,10 @@ function SearchResults() {
       <div className="searchResults_newsCards">
         <NewsCardList />
       </div>
-        {/* { !isLoggedIn  ? ( */}
-       <button type="button" className="searchResults__showbtn">Show More</button>
-         {/* ) : (<></>)
-         } */}
+        { !isLoggedIn  ? (
+          <button type="button" className="searchResults__showbtn">Show More</button>
+          ) : (<></>)
+        }
       </div>
     </div>
   )
