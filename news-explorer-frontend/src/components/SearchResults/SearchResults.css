@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: #f5f6f7;
-  height: 974px;
+  /* height: 974px; */
   padding: 0;
   margin: 0;
   max-width: 1440px;
@@ -10,7 +10,7 @@
 
 
 .searchResults__content {
-  margin: 80px 104px 64px;
+  margin: 80px auto 64px;
   padding: 0;
 }
 

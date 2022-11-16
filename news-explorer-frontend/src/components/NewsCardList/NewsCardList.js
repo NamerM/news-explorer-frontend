@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NewsCard from '../NewsCard/NewsCard';
 import {data} from '../../utils/data';
-// import getArticles from '../../contexts/ArticlesContext';
 
 function NewsCardList() {
-  // const { data } = getArticles();
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle
+  const [isClicked, setIsClicked] = useState(false); //toggle
+
+  const onShowMoreClick = () => {
+    setIsClicked(true);
+  }
 
   return (
-    <section className="newscards">
-      <ul className="newscards__content">
+
+
+    <div className="newscards__content">
+      <ul className={`${ isLoggedIn || isClicked
+        ? "newscards"
+        : "newscards newscards__notlogged"
+      }`}>
         {data.map((card) =>  {
           return (
             <NewsCard
@@ -19,11 +28,12 @@ function NewsCardList() {
               title={card.title}
               text={card.text}
               source={card.source}
+              keyword={card.keyword}
             />
           )}
         )}
       </ul>
-    </section>
+    </div>
 
     // <></>
   )

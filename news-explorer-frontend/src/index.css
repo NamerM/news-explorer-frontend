@@ -3,6 +3,7 @@
 
 @import url(../src/components/App/App.css);
 @import url(../src/components/Header/Header.css);
+@import url(../src/components/SavedArticles/SavedArticles.css);
 @import url(../src/components/Main/Main.css);
 @import url(../src/components/Navigation/Navigation.css);
 @import url(../src/components/SearchForm/SearchForm.css);

@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
 
-function NewsCard({ keyword, title, text, source, date, image}) {
+function NewsCard({ title, text, source, date, image}) {
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true for delete icon
+  const [toolTipVisible, setToolTipVisible] = useState(false) //
+
+  const cursorOnBox = () => {
+    (isLoggedIn || !isLoggedIn) && setToolTipVisible(true);
+  }
+  const cursorOffBox = () => {
+    (isLoggedIn || !isLoggedIn) && setToolTipVisible(false);
+  }
+
 
   return(
     <li className="newscard">
       <div className="newscard-item">
-        <button className="newscard-item__bookmarkbox newscard-item__bookmark" type="button" aria-label="Save to bookmarks"></button>
+      { toolTipVisible && (
+        <button className="newscard-item__tooltip">
+          { isLoggedIn ? "Remove from saved" : "Sign in to save articles"}
+        </button>
+       )}
+
+        <button className={`newscard-item__box ${
+          isLoggedIn
+            ? "newscard-item__delete"
+            : "newscard-bookmark" }`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
+            onMouseEnter={cursorOnBox}
+            onMouseLeave={cursorOffBox}
+            ></button>
         <img className="newscard-item__image" src={image} alt="Newscard Image" />
         <div className="newscard-item__info">
           <p className="newscard-item__date">{date}</p>
@@ -20,14 +42,3 @@ function NewsCard({ keyword, title, text, source, date, image}) {
 }
 
 export default NewsCard;
-{/* <div className="elements__handle">
-<h2 className="elements__card-text">{name}</h2>
-<div className="elements__handle_likecolumn">
-  <button
-    className={cardLikeButtonClassName}
-   type="button"
-   onClick={handleLikeClick}
-   ></button>
-  <p className="elements__card_likes">{card.likes.length}</p>
-</div>
-</div> */}

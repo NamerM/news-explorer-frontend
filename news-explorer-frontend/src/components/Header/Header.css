@@ -1,25 +1,26 @@
 .header {
   margin: 0;
   padding: 0;
-  background-image: url('../../images/georgia-de-lotz.png');
-  background-repeat: no-repeat;
-  /* background-size: contain; */
-  max-width: 1440px;
 }
 
-.header__content {
+/* .header__content {
  padding: 0;
  margin: 0;
  max-width: 1440px;
  height: 576px;
- /* height: 576px; */
+ } */
+
+.header__nologin {
+  background-image: url('../../images/georgia-de-lotz.png');
+  background-repeat: no-repeat;
+  /* background-size: contain; */
+  max-width: 1440px;
+  height: 576px;
+  padding: 0;
+  margin: 0;
 }
 
-.header__subtitle {
-  font-family: "Roboto-Slab", "Arial", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  color: black
-
+.header__logged_in {
+  background-color: #ffffff;
+  height: 80px;
 }

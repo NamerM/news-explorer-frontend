@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navigation from '../Navigation/Navigation';
+import SavedArticles from '../SavedArticles/SavedArticles';
 import SearchForm from '../SearchForm/SearchForm';
 
-function Header() {
+function Header({  }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false to see
 
   return (
   <header className="header">
-    <div className="header__content">
+    { isLoggedIn ?
+    ( <div className="header__logged_in">
+        <Navigation />
+        <SavedArticles />
+      </div>) :
+    (
+      <div className="header__nologin">
         <Navigation />
         <SearchForm />
-    </div>
+      </div>)
+    }
   </header>
+
   )
 }
 

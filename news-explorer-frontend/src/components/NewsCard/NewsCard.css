@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   max-width: 1440px;
-  margin-right: 16px;
+  /* margin-right: 16px; */
 }
 
 .newscard:last-of-type {
@@ -28,7 +28,7 @@
   background-color: transparent ;
 }
 
-.newscard-item__bookmarkbox {
+.newscard-item__box {
   border-radius: 8px;
   border: 0;
   background-color: #ffffff;
@@ -39,10 +39,30 @@
   right: 24px;
 }
 
+.newscard-item__box:hover {
+  cursor: pointer;
+}
+
+.newscard-item__tooltip {
+  /* display: none; */
+  border-radius: 10px;
+  border: 0;
+  background-color: #ffffff;
+  width: 182px;
+  height: 40px;
+  position: absolute;
+  top: 24px;
+  right: 69px;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.06px;
+  color: #000000;
+}
+
 .newscard-item__bookmark {
   background-image: url(../../images/bookmark-blank.svg);
   background-repeat: no-repeat;
-  /* background-size: 14px 19px; */
   background-position: center;
   margin: 0;
   padding: 0;
@@ -54,6 +74,18 @@
 
 .newscard-item__bookmark:active {
   background-image: url(../../images/bookmark-filled.svg);
+}
+
+.newscard-item__delete {
+  background-image: url(../../images/trash.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+}
+
+.newscard-item__delete:hover {
+  background-image: url('../../images/trash-active.svg');
 }
 
 .newscard-item__info {

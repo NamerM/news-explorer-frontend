@@ -6,14 +6,16 @@
   padding: 0px;
   max-width: 1440px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.main__content {
+/* .main__content {
   padding: 0px;
   margin: 0;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .main__content-top {
   background-image: url('../../images/georgia-de-lotz.png');

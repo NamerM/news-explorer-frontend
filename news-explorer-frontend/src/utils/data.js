@@ -3,7 +3,7 @@ export const data = [
             "_id": "636e3d03982c20f3477cd0eb",
             "keyword": "day",
             "title": "Good Day",
-            "text": "A Good day should have, take rest you must. Always pass on what you have learned. Patience you must have my young Practicum Padawan. Train yourself to let go of everything you fear to lose. Do or do not. There is no try. The dark side clouds everything. Impossible to see thelight, the future is. Control, control, you must learn control! On many long journeys have I gone. And waited, too, for others to return from journeys of their own. Some return; some are broken; some come back so different only their names remain",
+            "text": "A Good day should have, take rest you must. Always pass on what you have learned. Patience you must have my young Practicum Padawan. Train yourself to let go of everything you fear to lose. Do or do not. There is no try. The dark side clouds everything. Impossible to see the light, the future is. Control, control, you must learn control! On many long journeys have I gone. And waited, too, for others to return from journeys of their own. Some return; some are broken; some come back so different only their names remain",
             "source": "internet guru",
             "date": "November 11, 2022",
             "link": "https://www.starwars.com/news/15-star-wars-quotes-to-use-in-everyday-life",
