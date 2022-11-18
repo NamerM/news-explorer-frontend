@@ -11,10 +11,8 @@ function NewsCardList() {
   }
 
   return (
-
-
     <div className="newscards__content">
-      <ul className={`${ isLoggedIn || isClicked
+      <ul className={`${ isLoggedIn || setIsClicked
         ? "newscards"
         : "newscards newscards__notlogged"
       }`}>
@@ -34,7 +32,6 @@ function NewsCardList() {
         )}
       </ul>
     </div>
-
     // <></>
   )
 }

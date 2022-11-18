@@ -83,22 +83,22 @@ padding: 0;;
   color: #1a1b22;
   text-decoration: none;
   margin-top: 30px;
-  margin-right: 44px;
-  padding: 0;
+  /* margin-right: 44px; */
+  padding: 0 38px;
   cursor: pointer;
 }
 
-.home {
+/* .navigation__menu-item_home {
   width: 70px;
   margin-right: 34px;
   text-align: center;
-}
+} */
 
-.navigation__menu-item_dark:nth-child(2) {
-  margin-right: 64px;
+/* .navigation__menu-item_dark:nth-child(2) {
+  padding: 0 26px;
   width: 178px;
   text-align: center;
-}
+} */
 
 .navigation__menu-item_dark:visited {
   color: #1a1b22;
@@ -120,7 +120,7 @@ padding: 0;;
   border: 1px solid #1a1b22;
   border-radius: 100px;
   text-decoration: none;
-  margin: 19px 0 13px 0;
+  margin: 19px 0 13px 26px;
 }
 
 .navigation-button:visited {

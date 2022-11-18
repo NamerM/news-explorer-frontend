@@ -14,7 +14,7 @@ function Navigation() {
           <img src={logoDark}/>
         </div>
         <div className="navigation__menu">
-          <NavLink className="navigation__menu-item_dark home" to="/">Home</NavLink>
+          <NavLink className="navigation__menu-item_dark navigation__menu-item_home" to="/">Home</NavLink>
           <NavLink className="navigation__menu-item_dark" to="/saved-artivles">Saved articles</NavLink>
           <div>
             <NavLink className="navigation__menu-item_dark navigation-button_dark icon" to='/signout'>Melih</NavLink>
