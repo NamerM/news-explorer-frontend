@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import NewsCardList from '../NewsCardList/NewsCardList';
 
 function SearchResults() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle for displaying whole
 
 
   return (

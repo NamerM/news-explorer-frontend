@@ -17,7 +17,7 @@ function Navigation() {
           <NavLink className="navigation__menu-item_dark navigation__menu-item_home" to="/">Home</NavLink>
           <NavLink className="navigation__menu-item_dark" to="/saved-artivles">Saved articles</NavLink>
           <div>
-            <NavLink className="navigation__menu-item_dark navigation-button_dark icon" to='/signout'>Melih</NavLink>
+            <NavLink className="navigation__menu-item_dark navigation-menu-item-button_dark" to='/signout'>Melih</NavLink>
           </div>
 
         </div>
@@ -28,7 +28,7 @@ function Navigation() {
         </div>
         <div className="navigation__menu">
           <NavLink className="navigation__menu-item home" to="/">Home</NavLink>
-          <NavLink className="navigation__menu-item navigation-button" to='/signin'>Sign in</NavLink>
+          <NavLink className="navigation__menu-item navigation-menu-item-button" to='/signin'>Sign in</NavLink>
         </div>
       </nav>)}
     </>

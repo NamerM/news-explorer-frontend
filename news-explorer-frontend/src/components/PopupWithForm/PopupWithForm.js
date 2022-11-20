@@ -1,34 +1,36 @@
-import React from "react";
+import react, { useState } from "react";
+import Popup from "../Popup/Popup";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+// import SignInPopup from "../Signin/Signin";
 
 function PopupWithForm({
-  title,
-  name,
-  isOpen,
-  buttonText = "Save",
-  onClose,
   children,
+  onSignInClick,
+  isOpen,
+  name,
   onSubmit,
-  isLoading
+  title,
+  isLoading,
+  buttonText,
+  onClose,
 }) {
-  //arguments in popupwithform function
+  const currentUser = react.useContext(CurrentUserContext)
 
   return (
-    <section className={`popup popup_type_${name} ${isOpen ? "popup_open" : ""}`} >
-      <div className="popup__square">
-        <form className="popup__form" name={name} onSubmit={onSubmit}>
-          <h1 className="popup__title">{title}</h1>
-          {children}
-          <button type="submit" className="popup__save" >
-            {
-              isLoading ? 'Loading...' : (buttonText)
-            }
+    <Popup isOpen={isOpen} onClick={onSignInClick} >
 
-          </button>
-          <button type="button" className="popup__close" onClick={onClose}></button>
-        </form>
-      </div>
-    </section>
+    <form className="popup__form" name={name} onSubmit={onSubmit}>
+    <h1 className="popup__title">{title}</h1>
+    {children}
+    <button type="submit" className="popup__save"> Sign In    </button>
+
+  </form>
+
+
+  </Popup>
   );
 }
 
 export default PopupWithForm;
+
+//Popup onSignInClick={handleSignInClick}

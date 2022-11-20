@@ -6,19 +6,20 @@ import NotFound from "../NotFound/NotFound";
 import SavedArticles from "../SavedArticles/SavedArticles";
 //import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
-function Main() {
+function Main( onSignInClick) {
  //const currentUser = React.useContext(CurrentUserContext)
  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false to see
+
   return(
     <>
       <main className="main">
         {isLoggedIn ?
-         ( <SavedArticles /> ) :
+         ( <SavedArticles onClick={onSignInClick}  /> ) :
          ( <div></div> )
         }
         <SearchResults />
-        <Preloader />
-        <NotFound />
+        {/* <Preloader />
+        <NotFound />  uncomment to see the components*/ }
         <About />
       </main>
     </>

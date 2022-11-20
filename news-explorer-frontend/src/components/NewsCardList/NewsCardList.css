@@ -27,7 +27,7 @@
     grid-template-columns: repeat(2, 400px);
     /* grid-template-columns: repeat(2, auto); */
     grid-template-rows: repeat(3, auto);
-    max-height: 1500px;
+    /* max-height: 1500px; */
   }
 }
 /* .elements__cards {

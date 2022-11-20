@@ -6,13 +6,22 @@ function NewsCardList() {
   const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle
   const [isClicked, setIsClicked] = useState(false); //toggle
 
-  const onShowMoreClick = () => {
-    setIsClicked(true);
-  }
+  // const onShowMoreClick = () => {
+  //   setIsClicked(true);
+  // }
+
+  // const [renderedCards, setRenderedCards] = useState([]);
+  // const [cards, setCards] = useState([]);
+  // const displayedCards = 3;
+
+  // const clickHandle = () => {
+  //   const addThreeMore = cards.slice(0, renderedCards.length + displayedCards + 1 )
+  //   setRenderedCards([...addThreeMore ])
+  // }
 
   return (
     <div className="newscards__content">
-      <ul className={`${ isLoggedIn || setIsClicked
+      <ul className={`${ isLoggedIn
         ? "newscards"
         : "newscards newscards__notlogged"
       }`}>
