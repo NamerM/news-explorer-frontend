@@ -6,7 +6,7 @@ import handleSignInClick from '../App/App';
 import SignInPopup from '../Signin/Signin';
 
 
-function Header({ onClose,  isOpen, onSignInPopupClick  }) {
+function Header({ onClose,  isOpen, onSignInPopupClick, onClick  }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
 
   return (
@@ -18,7 +18,7 @@ function Header({ onClose,  isOpen, onSignInPopupClick  }) {
       </div>) :
     (
       <div className="header__nologin">
-        <Navigation  onSignInPopupClick={handleSignInClick} />
+        <Navigation onClick={onSignInPopupClick}/>
         <SearchForm />
       </div>)
     }
