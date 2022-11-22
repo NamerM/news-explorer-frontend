@@ -40,7 +40,7 @@ function Navigation({
             <Link className="navigation__menu-item navigation__menu-item_home" to="/">Home</Link>
           </li>
           <li>
-            <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignInPopupClick}>
+            <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignInPopupClick} >
               Sign in</button>
           </li>
         </ul>

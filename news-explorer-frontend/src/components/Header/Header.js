@@ -10,14 +10,14 @@ function Header({ onClose,  isOpen, onSignInPopupClick, onClick  }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
 
   return (
-  <header className="header">
+  <header className="header" >
     { isLoggedIn ?
     ( <div className="header__logged_in">
         <Navigation/>
         <SavedArticles />
       </div>) :
     (
-      <div className="header__nologin">
+      <div className="header__nologin" onClick={onSignInPopupClick} >
         <Navigation onClick={onSignInPopupClick}/>
         <SearchForm />
       </div>)

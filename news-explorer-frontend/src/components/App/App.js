@@ -10,7 +10,7 @@ import Navigation from '../Navigation/Navigation';
 import SignInPopup from '../Signin/Signin';
 
 
-function App() {
+function App( onSignInPopupClick) {
   const [currentUser, setCurrentUser] = useState({});
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
 
@@ -51,9 +51,8 @@ function App() {
           isOpen={isSignInPopupOpen}
           onClose={closeAllPopups}
         />
-        <Header>
-          <Navigation onSignInPopupClick={handleSignInClick} />
-        </Header>
+        <Header
+          onSignInPopupClick={handleSignInClick} />
         <Main   />
         <Footer />
 
