@@ -17,8 +17,8 @@ function Header({ onClose,  isOpen, onSignInPopupClick, onClick  }) {
         <SavedArticles />
       </div>) :
     (
-      <div className="header__nologin" onClick={onSignInPopupClick} >
-        <Navigation onClick={onSignInPopupClick}/>
+      <div className="header__nologin"  >
+        <Navigation onClick={onSignInPopupClick} />
         <SearchForm />
       </div>)
     }
