@@ -5,7 +5,7 @@ import SearchForm from '../SearchForm/SearchForm';
 
 
 
-function Header({onSignInPopupClick  }) {
+function Header({onSignInPopupClick, onSignOutPopupClick  }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
 
   return (
@@ -17,7 +17,9 @@ function Header({onSignInPopupClick  }) {
       </div>) :
     (
       <div className="header__nologin">
-        <Navigation onClick={onSignInPopupClick}  />
+        <Navigation
+          onClick={onSignInPopupClick}
+          onSignoutClick={onSignOutPopupClick} />
         <SearchForm />
       </div>)
     }

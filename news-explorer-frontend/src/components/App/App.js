@@ -40,6 +40,10 @@ function App( onSignInPopupClick) {
     setIsSignInPopupOpen(true);
   }
 
+  function handleSignOutClick() {
+    setIsSignInPopupOpen(false);
+  }
+
   function closeAllPopups() {
     setIsSignInPopupOpen(false);
   }
@@ -52,7 +56,9 @@ function App( onSignInPopupClick) {
           onClose={closeAllPopups}
         />
         <Header
-          onSignInPopupClick={handleSignInClick} />
+          onSignInPopupClick={handleSignInClick}
+          onSignOutPopupClick={handleSignOutClick}
+          />
         <Main   />
         <Footer />
 

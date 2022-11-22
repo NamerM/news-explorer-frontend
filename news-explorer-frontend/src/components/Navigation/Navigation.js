@@ -5,8 +5,8 @@ import logoDark from '../../images/NewsExplorer-black.svg';
 // import exitIcon from '../../images/exitIcon.jpg';
 
 function Navigation({
-  onSignInPopupClick,
-  onSignOutPopupClick,
+  onClick: onSignInPopupClick,
+  onSignoutClick: onSignOutPopupClick,
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
 
@@ -26,7 +26,7 @@ function Navigation({
             <NavLink className="navigation__menu-item_dark" to="/saved-artivles">Saved articles</NavLink>
           </li>
           <li className="navigation__menu-list">
-            <NavLink className="navigation__menu-item_dark navigation-menu-item-button_dark" to='/signout' onClick={onSignOutPopupClick}>Melih</NavLink>
+            <NavLink className="navigation__menu-item_dark navigation-menu-item-button_dark" to='/signout' onSignoutClick={onSignOutPopupClick}>Melih</NavLink>
           </li>
         </ul>
       </nav>) :
