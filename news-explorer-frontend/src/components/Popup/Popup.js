@@ -43,13 +43,13 @@ function closeAllPopups() {
 
   return (
     <section  className={`popup popup_type_${name} ${isOpen ? "popup_open" : ""}`} >
-      <form className="popup__square" name={name} onSubmit={onSubmit}>
+      <div className="popup__square" name={name} onSubmit={onSubmit}>
           <h1 className="popup__title">{title}</h1>
           {children}
 
           <button type="button" className="popup__close" onClick={onClose}></button>
 
-      </form>
+      </div>
     </section>
 
   );

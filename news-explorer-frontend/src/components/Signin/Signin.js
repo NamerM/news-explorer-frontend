@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-
-
-function SignInPopup({ onSignInClick, isOpen, onClose, onSignIn, isLoading}){
+function SignInPopup({ isOpen, onClose, isLoading}){
   const currentUser = React.useContext(CurrentUserContext)
 
   const [email, setEmail] = useState('');
@@ -29,7 +27,6 @@ function SignInPopup({ onSignInClick, isOpen, onClose, onSignIn, isLoading}){
     setPassword(e.target.value);
   }
 
-
 return(
   <PopupWithForm
     title="Sign In"
@@ -38,7 +35,7 @@ return(
     onClose={onClose}
     onSubmit={handleSubmit}
     isLoading={isLoading}
-
+    buttonText= "Sign In"
   >
     <label className="popup__formfield">
       <input className="popup__input popup__input_type_name" value={email || ''} onChange={handleEmailChange} type="text" placeholder="Email" minLength="2" maxLength="40" required/>

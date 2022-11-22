@@ -4,17 +4,19 @@ import Preloader from '../Preloader/Preloader';
 import About from '../About/About';
 import NotFound from "../NotFound/NotFound";
 import SavedArticles from "../SavedArticles/SavedArticles";
-//import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
-function Main( onSignInClick) {
- //const currentUser = React.useContext(CurrentUserContext)
+function Main({
+
+}) {
+ const currentUser = React.useContext(CurrentUserContext)
  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false to see
 
   return(
     <>
       <main className="main">
         {isLoggedIn ?
-         ( <SavedArticles onClick={onSignInClick}  /> ) :
+         ( <SavedArticles  /> ) :
          ( <div></div> )
         }
         <SearchResults />

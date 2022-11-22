@@ -1,24 +1,62 @@
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 //import { Switch, useHistory, Route } from 'react-router-dom';
-import react, {useState} from 'react';
+import react, { useState, useEffect} from 'react';
 import './App.css';
 import '../../index';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import Popups from '../Popups/Popups';
+import Navigation from '../Navigation/Navigation';
+import SignInPopup from '../Signin/Signin';
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
 
+  useEffect(() => {
+
+    const closeByEscape = (e) => {
+      if (e.key === 'Escape') {
+        closeAllPopups();
+      }
+    };
+    const closeByModal = (e) => {
+      if (e.target.classList.contains("popup_open")) {
+        closeAllPopups();
+      }
+    };
+
+    document.addEventListener('keydown', closeByEscape);
+    document.addEventListener('click', closeByModal);
+
+    return () => {
+      document.removeEventListener('keydown', closeByEscape);
+      document.removeEventListener('click', closeByModal);
+    }
+  }, []);
+
+  function handleSignInClick() {
+    setIsSignInPopupOpen(true);
+  }
+
+  function closeAllPopups() {
+    setIsSignInPopupOpen(false);
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
-        <Popups />
-        <Header />
-        <Main />
+        <SignInPopup
+          isOpen={isSignInPopupOpen}
+          onClose={closeAllPopups}
+        />
+        <Header>
+          <Navigation
+            onSignInPopupClick={handleSignInClick}
+          />
+        </Header>
+        <Main   />
         <Footer />
 
     </div>

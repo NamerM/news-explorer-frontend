@@ -1,3 +1,127 @@
+.popup {
+  display:flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.6s, opacity 0.6s linear;
+  background-color: rgba(0, 0, 0, 50%);
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items:center;
+}
+
+.popup_open {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.6s, opacity 0.6s linear;
+  margin: 0;
+}
+
+.popup__square {
+  width: 430px;
+  background-color: white;
+  color: #000000;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-items: center;
+}
+
+@media screen and (max-width: 524px) {
+  .popup__square {
+    width: 282px;
+  }
+}
+
+.popup__form {
+  width: 100%;
+  margin: 0px;
+  padding: 34px 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 321px) {
+  .popup__form {
+    width: 100%;
+    padding: 25px 22px;
+  }
+}
+
+.popup__close {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  /*left: calc(50% + 215px);*/
+  background-color: transparent;
+  background-image: url(../../images/Close-Icon.svg);
+  background-repeat: no-repeat;
+  border: 0;
+  /*transform: rotate(-45deg);*/
+  transition: opacity 0.8s linear 0.15s;
+
+}
+
+.popup__close:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transform: rotate(-45deg);
+}
+
+.popup__title {
+  width: 330px;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 54px;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.20;
+  color: black;
+}
+
+.popup__title_confirmDelete {
+  text-align: center;
+}
+
+@media screen and (max-width: 324px) {
+  .popup__title {
+    width: 238px;
+    margin: 0px 0px 76px;
+    font-size: 18px;
+    line-height: 19px;
+  }
+}
+
+.popup__save {
+  max-width: 358px;
+  width: 100%;
+  /*height: 50px;*/
+  border-radius: 2px;
+  border: 0px;
+  background-color: black;
+  color: white;
+  font-family: 'Inter', "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.21;
+  padding: 12.25px 0px 15.62px;
+  margin: 8px 0px 0px;
+}
+
+.popup__save:hover:not(:disabled) {
+  cursor: pointer;
+  opacity: 0.8;
+}
+/*popup css usteki*/
 .popup__formfield {
   display: flex;
   flex-direction: column;
