@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import Navigation from '../Navigation/Navigation';
 import SavedArticles from '../SavedArticles/SavedArticles';
 import SearchForm from '../SearchForm/SearchForm';
-import handleSignInClick from '../App/App';
-import SignInPopup from '../Signin/Signin';
 
 
-function Header({ onClose,  isOpen, onSignInPopupClick, onClick  }) {
+
+function Header({onSignInPopupClick  }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
 
   return (
@@ -17,8 +16,8 @@ function Header({ onClose,  isOpen, onSignInPopupClick, onClick  }) {
         <SavedArticles />
       </div>) :
     (
-      <div className="header__nologin"  >
-        <Navigation onClick={onSignInPopupClick} />
+      <div className="header__nologin">
+        <Navigation onClick={onSignInPopupClick}  />
         <SearchForm />
       </div>)
     }

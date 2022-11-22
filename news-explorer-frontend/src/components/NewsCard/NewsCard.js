@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 
 function NewsCard({ card }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true for delete icon
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false for page changes
   const [toolTipVisible, setToolTipVisible] = useState(false); //
   const [isBookmarked, setIsBookmarked] = useState(true); // toggle  true of false for bookmark icon/tooltip changes
   const [isClicked, setIsClicked] = useState(false); //toggle
@@ -32,7 +32,7 @@ function NewsCard({ card }) {
 
         <button className={`newscard-item__box ${
           isLoggedIn
-            ? buttonClass  // "newscard-item__bookmark" or "newcard-item__delete"
+            ? buttonClass
             : "newscard-item__bookmark" }`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
             onMouseEnter={cursorOnBox}
             onMouseLeave={cursorOffBox}
@@ -52,35 +52,3 @@ function NewsCard({ card }) {
 }
 
 export default NewsCard;
-
-
-// return(
-//   <li className="newscard">
-//     <div className="newscard-item">
-//     { toolTipVisible && (
-//       <button className="newscard-item__tooltip">
-//         { isLoggedIn && isBookmarked ? "Remove from saved" : "Sign in to save articles"
-//          || !isLoggedIn && !isBookmarked ? "Save to Bookmarks": "Sign in to save articles"}
-
-//       </button>
-//      )}
-
-//       <button className={`newscard-item__box ${
-//         isLoggedIn
-//           ? (isBookmarked ? "newscard-item__delete": "newscard-item__bookmark")  // "newscard-item__bookmark" or "newcard-item__delete"
-//           : "newscard-item__bookmark" }`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
-//           onMouseEnter={cursorOnBox}
-//           onMouseLeave={cursorOffBox}
-//           onClick={bookmarkStatus}
-//           ></button>
-//       <img className="newscard-item__image" src={card.image} alt="Newscard Image" />
-//       <div className="newscard-item__info">
-//         <p className="newscard-item__date">{card.date}</p>
-//         <h2 className="newscard-item__title">{card.title}</h2>
-//         <p className="newscard-item__text">{card.text}</p>
-//         <p className="newscard-item__source">{card.source}</p>
-//         { isLoggedIn && <p className="newscard-item__keyword">{card.keyword}</p>  }
-//       </div>
-//     </div>
-//   </li>
-// )

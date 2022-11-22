@@ -3,7 +3,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import {data} from '../../utils/data';
 
 function NewsCardList() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle
   const [isClicked, setIsClicked] = useState(false); //toggle
 
   // const onShowMoreClick = () => {

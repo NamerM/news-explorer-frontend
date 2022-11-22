@@ -19,7 +19,7 @@
 }
 
 .newscards__notlogged {
-  height: 974px;
+  /* height: 974px; */ /*uncomment it when button is active */
 }
 
 @media screen and (max-width: 1439px) {
