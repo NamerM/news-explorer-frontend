@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink } from 'react-router-dom';
 import logoWhite from '../../images/NewsExplorer.svg';
 import logoDark from '../../images/NewsExplorer-black.svg';
-import SignInPopup from "../Signin/Signin";
 // import exitIcon from '../../images/exitIcon.jpg';
 
 function Navigation({
@@ -37,7 +36,7 @@ function Navigation({
         </div>
         <ul className="navigation__menu">
           <li className="navigation__menu-list">
-            <NavLink className="navigation__menu-item home" to="/">Home</NavLink>
+            <NavLink className="navigation__menu-item navigation__menu-item_home" to="/">Home</NavLink>
           </li>
           <li>
             <NavLink className="navigation__menu-item navigation-menu-item-button" to='/signin' onClick={onSignInPopupClick} >

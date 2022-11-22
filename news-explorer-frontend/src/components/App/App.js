@@ -51,7 +51,9 @@ function App() {
           isOpen={isSignInPopupOpen}
           onClose={closeAllPopups}
         />
-        <Header />
+        <Header>
+          <Navigation onSignInPopupClick={handleSignInClick} />
+        </Header>
         <Main   />
         <Footer />
 
