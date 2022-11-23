@@ -6,14 +6,12 @@ import logoDark from '../../images/NewsExplorer-black.svg';
 // import exitIcon from '../../images/exitIcon.jpg';
 
 function Navigation({
+  isRegistered,
   onClick: onSignInPopupClick,
   onClick: onSignUpPopupClick,
   onClick: onSignOut
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
-  const [isRegistered, setIsRegistered] =useState(false); // for signup popup
-
-  // const registerStatus = isRegistered ? onSignInPopupClick : onSignUpPopupClick;
 
   return (
 
@@ -51,7 +49,7 @@ function Navigation({
           </li>)
           : (<li>
             <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignUpPopupClick} >
-              Sign Up</button>
+              Sign in</button>
           </li>)
           }
         </ul>

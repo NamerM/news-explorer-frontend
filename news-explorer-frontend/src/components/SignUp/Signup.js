@@ -46,14 +46,17 @@ return(
     buttonText= "Sign Up"
   >
     <label className="popup__formfield">
+      <p className="popup__formfield__labeltype">Email</p>
       <input className="popup__input popup__input_type_name" value={email || ''} onChange={handleEmailChange} type="email" placeholder="Email" minLength="2" maxLength="40" required/>
       <span id="name-error" className="popup__input-error"></span>
     </label>
     <label className="popup__formfield">
+    <p className="popup__formfield__labeltype">Password</p>
       <input className="popup__input popup__input_type_profession" value={password || ''} onChange={handlePasswordChange} type="password" placeholder="Password" minLength="2" maxLength="200" required/>
       <span id="profession-error" className="popup__input-error"> </span>
     </label>
     <label className="popup__formfield">
+    <p className="popup__formfield__labeltype">Username</p>
       <input className="popup__input popup__input_type_profession" value={username || ''} onChange={handleUsernameChange} type="text" placeholder="Username" minLength="2" maxLength="200" required/>
       <span id="profession-error" className="popup__input-error"> </span>
     </label>

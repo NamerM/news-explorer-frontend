@@ -51,6 +51,10 @@ function App( onSignInPopupClick) {
     setIsSignUpPopupOpen(false);
   }
 
+  function handlesignOut() {
+
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
@@ -67,6 +71,7 @@ function App( onSignInPopupClick) {
         <Header
           onSignInPopupClick={handleSignInClick}
           onSignUpPopupClick={handleSignUpClick}
+          onSignOut={handlesignOut}
           />
         <Main   />
         <Footer />

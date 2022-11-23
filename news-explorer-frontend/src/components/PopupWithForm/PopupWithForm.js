@@ -1,7 +1,7 @@
 import react, { useState } from 'react';
+import '../Popup/Popup.css';
 import {Link, useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
-// import SignInPopup from "../Signin/Signin";
 
 
 function PopupWithForm({
@@ -28,8 +28,8 @@ function PopupWithForm({
             {buttonText}
           </button>
           <button type="button" className="popup__close" onClick={onClose}></button>
-          <p>or
-            <Link to={location.pathname === '/signin' ? `${name="signup"}` : `${name="signin"}` } className="popup__altlink">{/*need to change popup classnames*/}
+          <p className="popup__alt">or
+            <Link to={location.pathname === '/signin' ? `${name="signup"}` : `${name="signin"}` } className="popup__alt ">{/*need to change popup classnames*/}
               {location.pathname === '/signin' ? ' Sign Up' : ' Sign In'}
             </Link>
           </p>
