@@ -3,7 +3,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import {data} from '../../utils/data';
 
 function NewsCardList() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle
   const [isClicked, setIsClicked] = useState(false); //toggle
 
   // const onShowMoreClick = () => {
@@ -15,7 +15,7 @@ function NewsCardList() {
   // const displayedCards = 3;
 
   // const clickHandle = () => {
-  //   const addThreeMore = cards.slice(0, renderedCards.length + displayedCards + 1 )
+  //   const addThreeMore = data.slice(0, renderedCards.length + displayedCards + 1 )   //cards.slice
   //   setRenderedCards([...addThreeMore ])
   // }
 
@@ -40,6 +40,13 @@ function NewsCardList() {
           )}
         )}
       </ul>
+      {/* <div>
+        { !isLoggedIn  ? (
+          <button type="button" className="searchResults__showbtn" onClick={clickHandle}>Show More</button>
+          ) : (<></>)
+        }
+      </div> */}
+
     </div>
     // <></>
   )

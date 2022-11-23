@@ -96,6 +96,7 @@ list-style: none;
   /* margin-right: 44px; */
   padding: 0 38px;
   cursor: pointer;
+  background: none;
 }
 
 /* .navigation__menu-item_home {

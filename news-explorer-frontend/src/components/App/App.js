@@ -8,11 +8,13 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import SignInPopup from '../Signin/Signin';
+import SignUpPopup from '../SignUp/Signup';
 
 
 function App( onSignInPopupClick) {
   const [currentUser, setCurrentUser] = useState({});
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
+  const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
 
   useEffect(() => {
 
@@ -28,7 +30,7 @@ function App( onSignInPopupClick) {
     };
 
     document.addEventListener('keydown', closeByEscape);
-    document.addEventListener('click', closeByModal);
+    document.addEventListener('mousedown', closeByModal);
 
     return () => {
       document.removeEventListener('keydown', closeByEscape);
@@ -40,12 +42,13 @@ function App( onSignInPopupClick) {
     setIsSignInPopupOpen(true);
   }
 
-  function handleSignOutClick() {
-    setIsSignInPopupOpen(false);
+  function handleSignUpClick() {
+    setIsSignUpPopupOpen(true);
   }
 
   function closeAllPopups() {
     setIsSignInPopupOpen(false);
+    setIsSignUpPopupOpen(false);
   }
 
   return (
@@ -54,10 +57,16 @@ function App( onSignInPopupClick) {
         <SignInPopup
           isOpen={isSignInPopupOpen}
           onClose={closeAllPopups}
+          onLoginUser={closeAllPopups}
+        />
+        <SignUpPopup
+          isOpen={isSignUpPopupOpen}
+          onClose={closeAllPopups}
+          onSignupUser={closeAllPopups}
         />
         <Header
           onSignInPopupClick={handleSignInClick}
-          onSignOutPopupClick={handleSignOutClick}
+          onSignUpPopupClick={handleSignUpClick}
           />
         <Main   />
         <Footer />

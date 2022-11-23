@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { NavLink, Link } from 'react-router-dom';
 import logoWhite from '../../images/NewsExplorer.svg';
 import logoDark from '../../images/NewsExplorer-black.svg';
+
 // import exitIcon from '../../images/exitIcon.jpg';
 
 function Navigation({
   onClick: onSignInPopupClick,
-  onSignoutClick: onSignOutPopupClick,
+  onClick: onSignUpPopupClick,
+  onClick: onSignOut
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
+  const [isRegistered, setIsRegistered] =useState(false); // for signup popup
+
+  // const registerStatus = isRegistered ? onSignInPopupClick : onSignUpPopupClick;
 
   return (
 
@@ -25,9 +30,10 @@ function Navigation({
           <li className="navigation__menu-list">
             <NavLink className="navigation__menu-item_dark" to="/saved-artivles">Saved articles</NavLink>
           </li>
-          <li className="navigation__menu-list">
-            <NavLink className="navigation__menu-item_dark navigation-menu-item-button_dark" to='/signout' onSignoutClick={onSignOutPopupClick}>Melih</NavLink>
+          <li>
+            <button className="navigation__menu-item_dark navigation-menu-item-button_dark" onClick={onSignOut}>Melih</button>
           </li>
+
         </ul>
       </nav>) :
       (<nav className="navigation">
@@ -38,10 +44,16 @@ function Navigation({
           <li className="navigation__menu-list">
             <Link className="navigation__menu-item navigation__menu-item_home" to="/">Home</Link>
           </li>
-          <li>
+          { isRegistered
+           ? (<li>
             <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignInPopupClick} >
               Sign in</button>
-          </li>
+          </li>)
+          : (<li>
+            <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignUpPopupClick} >
+              Sign Up</button>
+          </li>)
+          }
         </ul>
       </nav>)}
     </>
