@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
+import '../PopupWithForm/PopupWithForm.css';
 import {Link, useLocation} from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 function SignUpPopup({ isOpen, onClose, isLoading, onSignupUser}){
   const currentUser = React.useContext(CurrentUserContext)
-  const location = useLocation();
 
   const [email, setEmail] = useState('');
   const [password , setPassword] = useState('');
   const [username, setUsername] = useState('');
 
+  const location = useLocation();
+  const isSignedUp = location.pathname === '/success'
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,6 +37,8 @@ function SignUpPopup({ isOpen, onClose, isLoading, onSignupUser}){
     setUsername(e.target.value);
   }
 
+
+
 return(
   <PopupWithForm
     title="Sign Up"
@@ -48,7 +52,7 @@ return(
     <label className="popup__formfield">
       <p className="popup__formfield__labeltype">Email</p>
       <input className="popup__input popup__input_type_name" value={email || ''} onChange={handleEmailChange} type="email" placeholder="Email" minLength="2" maxLength="40" required/>
-      <span id="name-error" className="popup__input-error"></span>
+      <span id="name-error" className="popup__input-error"></span> {/* popup__input-error_open for error msg attributes*/}
     </label>
     <label className="popup__formfield">
     <p className="popup__formfield__labeltype">Password</p>
@@ -57,8 +61,8 @@ return(
     </label>
     <label className="popup__formfield">
     <p className="popup__formfield__labeltype">Username</p>
-      <input className="popup__input popup__input_type_profession" value={username || ''} onChange={handleUsernameChange} type="text" placeholder="Username" minLength="2" maxLength="200" required/>
-      <span id="profession-error" className="popup__input-error"> </span>
+      <input className="popup__input popup__input_type_username" value={username || ''} onChange={handleUsernameChange} type="text" placeholder="Username" minLength="2" maxLength="200" required/>
+      <span id="username-error" className="popup__input-error"> </span>
     </label>
   </PopupWithForm>
 

@@ -1,5 +1,5 @@
 import react, { useState } from 'react';
-import '../Popup/Popup.css';
+import '../PopupWithForm/PopupWithForm.css';
 import {Link, useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
@@ -12,11 +12,12 @@ function PopupWithForm({
   // isLoading,
   buttonText,
   onClose,
-  onSubmit,
+  onSubmit
 }) {
   const currentUser = react.useContext(CurrentUserContext);
   // const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
   const location = useLocation();
+  const isSignIn = location.pathname === '/signin'
 
   return (
     <section className={`popup popup_type_${name} ${isOpen ? "popup_open" : ""}`} >
@@ -29,8 +30,8 @@ function PopupWithForm({
           </button>
           <button type="button" className="popup__close" onClick={onClose}></button>
           <p className="popup__alt">or
-            <Link to={location.pathname === '/signin' ? `${name="signup"}` : `${name="signin"}` } className="popup__alt ">{/*need to change popup classnames*/}
-              {location.pathname === '/signin' ? ' Sign Up' : ' Sign In'}
+            <Link to={name=isSignIn ? "signup" : "signin"} className="popup__alt ">
+              {isSignIn ? ' Sign Up' : ' Sign In'}
             </Link>
           </p>
         </form>      </div>

@@ -11,7 +11,7 @@ function Navigation({
   onClick: onSignUpPopupClick,
   onClick: onSignOut
 }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see header changes
 
   return (
 

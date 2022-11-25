@@ -51,7 +51,7 @@ return(
     <label className="popup__formfield">
       <p className="popup__formfield__labeltype">Email</p>
       <input className="popup__input popup__input_type_name" value={formData.email || ''} onChange={handleChange} type="email" name="email" placeholder="Email" minLength="2" maxLength="40" required/>
-      <span id="name-error" className="popup__input-error">err</span> {/* popup__input-error_open for error msg attributes*/}
+      <span id="name-error" className="popup__input-error"></span> {/* popup__input-error_open for error msg attributes*/}
     </label>
     <label className="popup__formfield">
       <p className="popup__formfield__labeltype">Password</p>

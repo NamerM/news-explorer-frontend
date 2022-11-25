@@ -2,7 +2,7 @@
   display:flex;
   opacity: 0;
   visibility: hidden;
-  transition: visibility 0.6s, opacity 0.6s linear;
+  /* transition: visibility 0.6s, opacity 0.6s linear; */
   background-color: rgba(0, 0, 0, 50%);
   z-index: 1;
   position: fixed;
@@ -15,7 +15,7 @@
 .popup_open {
   visibility: visible;
   opacity: 1;
-  transition: visibility 0.6s, opacity 0.6s linear;
+  /* transition: visibility 0.1s, opacity 0.6s linear; */
   margin: 0;
 }
 
@@ -35,6 +35,7 @@
     width: 282px;
   }
 }
+
 
 .popup__form {
   width: 100%;
@@ -62,9 +63,7 @@
   background-image: url(../../images/Close-Icon.svg);
   background-repeat: no-repeat;
   border: 0;
-  /*transform: rotate(-45deg);*/
   transition: opacity 0.8s linear 0.15s;
-
 }
 
 .popup__close:hover {
@@ -100,6 +99,41 @@
   }
 }
 
+.popup__square_success {
+  display: flex;
+  flex-direction: column;
+  padding: 43px 79px 51px 36px;
+}
+
+.popup__success-title {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28.13px;
+  color: #000000;
+  width: 315px;
+  margin-bottom: 14px;
+}
+
+.popup__success-link {
+  text-decoration: none;
+  color: #2f71e5;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+}
+
+.popup__success-link:visited {
+  text-decoration: none;
+  color: #2f71e5;
+}
+
+.popup__success-link:active {
+  text-decoration: none;
+  color: #2f71e5;
+}
+
 .popup__alt {
   color: #000000;
   font-family: 'Inter', "Arial", sans-serif;
@@ -122,18 +156,19 @@
 }
 
 .popup__save {
-  max-width: 358px;
-  width: 100%;
-  border-radius: 2px;
+  max-width: 360px;
+  height: 64px;
+  border-radius: 40px;
   border: 0px;
-  background-color: black;
+  background-color: #2f71e5;
   color: white;
-  font-family: 'Inter', "Arial", sans-serif;
+  font-family: 'Roboto', "Arial", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 18px;
-  line-height: 1.21;
-  padding: 12.25px 0px 15.62px;
+  line-height: 24px;
+  text-align: center;
+  padding: 20px 115px;
   margin: 8px 0px 0px;
 }
 
@@ -141,7 +176,18 @@
   cursor: pointer;
   opacity: 0.8;
 }
-/*popup css usteki*/
+
+.popup__save_disabled {
+  /* max-width: 358px;
+  width: 100%;
+  border-radius: 2px;
+  border: 0px; */
+  background-color: #E6e8eb;
+  color: #b6bcbf;
+  border-color: #000000;
+  /* opacity: 0.2; */
+}
+
 .popup__formfield {
   display: flex;
   flex-direction: column;

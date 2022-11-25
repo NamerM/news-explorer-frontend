@@ -1,5 +1,5 @@
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-//import { Switch, useHistory, Route } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import react, { useState, useEffect} from 'react';
 import './App.css';
 import '../../index';
@@ -9,12 +9,15 @@ import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import SignInPopup from '../Signin/Signin';
 import SignUpPopup from '../SignUp/Signup';
+import RegisterationSuccess from '../Success/Success';
 
 
 function App( onSignInPopupClick) {
   const [currentUser, setCurrentUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
+  const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
 
   useEffect(() => {
 
@@ -39,6 +42,7 @@ function App( onSignInPopupClick) {
   }, []);
 
   function handleSignInClick() {
+    closeAllPopups();
     setIsSignInPopupOpen(true);
   }
 
@@ -46,14 +50,33 @@ function App( onSignInPopupClick) {
     setIsSignUpPopupOpen(true);
   }
 
+  function handleRegisterSuccess() {
+    closeAllPopups();
+    setIsRegisterPopupOpen(true);
+  }
+
   function closeAllPopups() {
     setIsSignInPopupOpen(false);
     setIsSignUpPopupOpen(false);
+    setIsRegisterPopupOpen(false);
   }
 
   function handlesignOut() {
-
+    setIsLoggedIn(false);
   }
+
+  let location = useLocation();
+
+  useEffect(() => {
+    if(location.pathname=== '/signin') {
+      setIsSignInPopupOpen(true);
+      setIsSignUpPopupOpen(false);
+    }
+    if(location.pathname=== '/signup') {
+      setIsSignInPopupOpen(false);
+      setIsSignUpPopupOpen(true);
+    }
+  }, [location]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -66,12 +89,17 @@ function App( onSignInPopupClick) {
         <SignUpPopup
           isOpen={isSignUpPopupOpen}
           onClose={closeAllPopups}
-          onSignupUser={closeAllPopups}
+          onSignupUser={handleRegisterSuccess}
+        />
+        <RegisterationSuccess
+          isOpen={isRegisterPopupOpen}
+          onClose={closeAllPopups}
         />
         <Header
           onSignInPopupClick={handleSignInClick}
           onSignUpPopupClick={handleSignUpClick}
           onSignOut={handlesignOut}
+
           />
         <Main   />
         <Footer />
