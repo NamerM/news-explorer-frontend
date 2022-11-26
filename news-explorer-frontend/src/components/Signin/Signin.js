@@ -61,6 +61,7 @@ return(
       <p className="popup__formfield__labeltype">Password</p>
       <input className="popup__input popup__input_type_profession" value={formData.password || ''} onChange={handleChange} type="password" name="password" placeholder="Password" minLength="2" maxLength="200" required/>
       <span id="profession-error" className={`${formErrors.password ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.password}</span>
+     <p className='popup__input-mail-registered'>This email is not available</p>  {/* popup__input-mail-registered_open  for displayin mail error - for reviewer this note written*/}
     </label>
   </PopupWithForm>
 

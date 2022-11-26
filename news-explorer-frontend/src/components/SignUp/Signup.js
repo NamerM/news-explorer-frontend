@@ -59,7 +59,7 @@ return(
     <label className="popup__formfield">
       <p className="popup__formfield__labeltype">Email</p>
       <input className="popup__input popup__input_type_name" value={formData.email || ''} onChange={handleChange} type="email" name="email" placeholder="Email" minLength="2" maxLength="40" required/>
-      <span id="name-error"  className={`${formErrors.email ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.email}</span> {/* popup__input-error_open for error msg attributes*/}
+      <span id="name-error"  className={`${formErrors.email ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.email}</span>
     </label>
     <label className="popup__formfield">
     <p className="popup__formfield__labeltype">Password</p>
@@ -67,10 +67,12 @@ return(
       <span id="profession-error" className={`${formErrors.email ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.password}</span>
     </label>
     <label className="popup__formfield">
-    <p className="popup__formfield__labeltype">Username</p>
+      <p className="popup__formfield__labeltype">Username</p>
       <input className="popup__input popup__input_type_username" value={formData.username || ''} onChange={handleChange} type="username" name="username" placeholder="Username" minLength="2" maxLength="200" required/>
       <span id="username-error" className={`${formErrors.username ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.username}</span>
+      <p className='popup__input-mail-registered'>This email not available</p>  {/* popup__input-mail-registered_open  for displayin mail error - for reviewer this note written*/}
     </label>
+
   </PopupWithForm>
 
   )
