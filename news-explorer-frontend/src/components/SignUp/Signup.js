@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../PopupWithForm/PopupWithForm.css';
 import {Link, useLocation} from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -25,18 +25,24 @@ function SignUpPopup({ isOpen, onClose, isLoading, onSignupUser}){
     onSignupUser(userData);  // app.js function name
   }
 
-  function handleEmailChange(e) {
-    setEmail(e.target.value);
+  const [formData, setFormData ] = React.useState({});
+  const [formErrors, setFormErrors] = React.useState({ email: false, password: false, username: false });
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+
+  function handleChange(e) {
+    const input = e.target;
+    const { name, value } = e.target;
+    const isValid = input.validity.valid;
+
+    setFormData({ ...formData, [name]: value });
+    setFormErrors({...formErrors, [name]: isValid ? false : input.validationMessage });
   }
 
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
+  useEffect(() => {
+    const isButtonEnabled = Object.keys(formErrors).every(key => formErrors[key] === false && formData[key] !== undefined );
 
-  function handleUsernameChange(e) {
-    setUsername(e.target.value);
-  }
-
+    setIsButtonEnabled(isButtonEnabled)
+  }, [formErrors]);
 
 
 return(
@@ -48,21 +54,22 @@ return(
     onSubmit={handleSubmit}
     isLoading={isLoading}
     buttonText= "Sign Up"
+    isButtonEnabled = {isButtonEnabled}
   >
     <label className="popup__formfield">
       <p className="popup__formfield__labeltype">Email</p>
-      <input className="popup__input popup__input_type_name" value={email || ''} onChange={handleEmailChange} type="email" placeholder="Email" minLength="2" maxLength="40" required/>
-      <span id="name-error" className="popup__input-error"></span> {/* popup__input-error_open for error msg attributes*/}
+      <input className="popup__input popup__input_type_name" value={formData.email || ''} onChange={handleChange} type="email" name="email" placeholder="Email" minLength="2" maxLength="40" required/>
+      <span id="name-error"  className={`${formErrors.email ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.email}</span> {/* popup__input-error_open for error msg attributes*/}
     </label>
     <label className="popup__formfield">
     <p className="popup__formfield__labeltype">Password</p>
-      <input className="popup__input popup__input_type_profession" value={password || ''} onChange={handlePasswordChange} type="password" placeholder="Password" minLength="2" maxLength="200" required/>
-      <span id="profession-error" className="popup__input-error"> </span>
+      <input className="popup__input popup__input_type_profession" value={formData.password || ''} onChange={handleChange} type="password" name="password" placeholder="Password" minLength="2" maxLength="200" required/>
+      <span id="profession-error" className={`${formErrors.email ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.password}</span>
     </label>
     <label className="popup__formfield">
     <p className="popup__formfield__labeltype">Username</p>
-      <input className="popup__input popup__input_type_username" value={username || ''} onChange={handleUsernameChange} type="text" placeholder="Username" minLength="2" maxLength="200" required/>
-      <span id="username-error" className="popup__input-error"> </span>
+      <input className="popup__input popup__input_type_username" value={formData.username || ''} onChange={handleChange} type="username" name="username" placeholder="Username" minLength="2" maxLength="200" required/>
+      <span id="username-error" className={`${formErrors.username ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.username}</span>
     </label>
   </PopupWithForm>
 

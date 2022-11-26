@@ -7,7 +7,7 @@ import SearchForm from '../SearchForm/SearchForm';
 
 function Header({onSignInPopupClick, onSignUpPopupClick, onSignOut  }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
-  // const [isRegistered, setIsRegistered] =useState(false); // false for signup popup , true for signin
+  const [isRegistered, setIsRegistered] =useState(false); // false for signup popup , true for signin
 
   // const registerStatus = isRegistered ? onSignInPopupClick : onSignUpPopupClick;
 

@@ -12,7 +12,8 @@ function PopupWithForm({
   // isLoading,
   buttonText,
   onClose,
-  onSubmit
+  onSubmit,
+  isButtonEnabled
 }) {
   const currentUser = react.useContext(CurrentUserContext);
   // const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
@@ -25,7 +26,7 @@ function PopupWithForm({
         <form className="popup__form" name={name} onSubmit={onSubmit}>
           <h1 className="popup__title">{title}</h1>
             {children}
-          <button type="submit" className="popup__save" >
+          <button type="submit" disabled={!isButtonEnabled} className={`${isButtonEnabled ? '' : 'popup__save_disabled'} popup__save`} >
             {buttonText}
           </button>
           <button type="button" className="popup__close" onClick={onClose}></button>
@@ -34,7 +35,8 @@ function PopupWithForm({
               {isSignIn ? ' Sign Up' : ' Sign In'}
             </Link>
           </p>
-        </form>      </div>
+        </form>
+      </div>
     </section>
   );
 }

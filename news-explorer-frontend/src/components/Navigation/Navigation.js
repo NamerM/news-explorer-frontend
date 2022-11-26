@@ -3,10 +3,8 @@ import { NavLink, Link } from 'react-router-dom';
 import logoWhite from '../../images/NewsExplorer.svg';
 import logoDark from '../../images/NewsExplorer-black.svg';
 
-// import exitIcon from '../../images/exitIcon.jpg';
-
 function Navigation({
-  isRegistered,
+  // isRegistered,
   onClick: onSignInPopupClick,
   onClick: onSignUpPopupClick,
   onClick: onSignOut
@@ -42,7 +40,14 @@ function Navigation({
           <li className="navigation__menu-list">
             <Link className="navigation__menu-item navigation__menu-item_home" to="/">Home</Link>
           </li>
-          { isRegistered
+          <li className="navigation__menu-list">
+            <Link className="navigation-menu-item-link"  to="/signin" >
+              <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignInPopupClick} >
+                Sign in
+              </button>
+            </Link>
+          </li>
+          {/* { isRegistered
            ? (<li>
             <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignInPopupClick} >
               Sign in</button>
@@ -51,7 +56,7 @@ function Navigation({
             <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignUpPopupClick} >
               Sign in</button>
           </li>)
-          }
+          } */}
         </ul>
       </nav>)}
     </>

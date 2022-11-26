@@ -48,12 +48,6 @@ list-style: none;
   padding: 0 8px;
 }
 
-/* .home {
-  width: 70px;
-  margin-right: 24px;
-  text-align: center;
-} */
-
 .navigation__menu-item:visited {
   width: 68px;
   color: #ffffff;
@@ -81,10 +75,19 @@ list-style: none;
 
 .navigation-menu-item-button:visited {
   border: 1px solid #ffffff;
+  text-decoration: inherit;
+}
+
+.navigation-menu-item-button:active {
+  border: 1px solid #ffffff;
+  text-decoration: inherit;
+}
+
+.navigation-menu-item-link {
+  text-decoration: none;
 }
 
 /*logged in */
-
 .navigation__menu-item_dark {
   font-family: "Roboto-Slab", "Arial", sans-serif;
   font-weight: 500;

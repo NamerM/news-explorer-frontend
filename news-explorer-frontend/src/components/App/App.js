@@ -67,12 +67,12 @@ function App( onSignInPopupClick) {
 
   let location = useLocation();
 
-  useEffect(() => {
-    if(location.pathname=== '/signin') {
+  react.useEffect(() => {
+    if(location.pathname === '/signin') {
       setIsSignInPopupOpen(true);
       setIsSignUpPopupOpen(false);
     }
-    if(location.pathname=== '/signup') {
+    if(location.pathname === '/signup') {
       setIsSignInPopupOpen(false);
       setIsSignUpPopupOpen(true);
     }

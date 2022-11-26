@@ -210,7 +210,12 @@
   padding: 0px 0px 10px;
 }
 
-.popup__input-error_open{
+.popup__input-error {
+  display: none;
+}
+
+.popup__input-error_open {
+  display: block;
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
