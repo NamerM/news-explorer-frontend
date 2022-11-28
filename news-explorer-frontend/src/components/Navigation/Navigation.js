@@ -11,6 +11,7 @@ function Navigation({
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see header changes
 
+
   return (
 
     <>
@@ -21,7 +22,7 @@ function Navigation({
         </div>
         <ul className="navigation__menu">
           <li className="navigation__menu-list">
-            <NavLink className="navigation__menu-item_dark navigation__menu-item_home" to="/">Home</NavLink>
+            <NavLink className="navigation__menu-item_dark" to="/">Home</NavLink>
           </li>
           <li className="navigation__menu-list">
             <NavLink className="navigation__menu-item_dark" to="/saved-artivles">Saved articles</NavLink>
@@ -34,11 +35,11 @@ function Navigation({
       </nav>) :
       (<nav className="navigation">
         <div className="navigation__logo">
-          <img src={logoWhite}/>
+          <img className="navigation__logo-image" src={logoWhite}/>
         </div>
         <ul className="navigation__menu">
           <li className="navigation__menu-list">
-            <Link className="navigation__menu-item navigation__menu-item_home" to="/">Home</Link>
+            <Link className="navigation__menu-item" to="/">Home</Link>
           </li>
           <li className="navigation__menu-list">
             <Link className="navigation-menu-item-link"  to="/signin" >
@@ -46,6 +47,7 @@ function Navigation({
                 Sign in
               </button>
             </Link>
+              <button className="navigation-menu-item-button_mobile" onClick={onSignInPopupClick} />
           </li>
           {/* { isRegistered
            ? (<li>

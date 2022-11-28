@@ -17,8 +17,18 @@
   list-style: none;
 }
 
-.newscards__notlogged {
-  /* height: 974px; */ /*uncomment it when button is active */
+@media screen and (max-width: 1260px ) {
+  .newscards {
+    grid-template-columns: repeat(3, 320px);
+    grid-gap: 12px;
+  }
+}
+
+@media screen and (max-width: 1009px ) {
+  .newscards {
+    grid-template-columns: repeat(2, 360px);
+    grid-gap: 10px;
+  }
 }
 
 @media screen and (max-width: 768px) {

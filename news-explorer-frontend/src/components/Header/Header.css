@@ -41,4 +41,17 @@
   }
 }
 
+@media screen and (max-width: 320px) {
+  .header {
+    max-width: 320px;
+  }
+  .header__nologin {
+    background-image: url('../../images/georgia-de-lotz--320p.png');
+    background-size: cover;
+    height: 536px;
+  }
 
+  .header__logged_in {
+    height: 342px;
+  }
+}
