@@ -43,3 +43,26 @@
   line-height: 24px;
   color: #1A1B22;
 }
+
+@media screen and (max-width: 768px) {
+  .about {
+    height: 354px;
+  }
+  .about__image {
+    max-width: 232px;
+    height: 232px;
+    border-radius: 50px;
+    margin: 61px auto 61px 40px;
+    border-radius: 120px;
+  }
+  .about__content {
+    width: 424px;
+    margin-top: 40px;
+    margin-left: 32px;
+  }
+  .about__title {
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0;
+  }
+}

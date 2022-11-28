@@ -1,7 +1,7 @@
 .newscard {
   display: flex;
   justify-content: center;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   /* margin-right: 16px; */
 }
 
@@ -134,7 +134,7 @@
   font-size: 26px;
   line-height: 30px;
   color: #1a1b22;
-  width: 352px;
+  /* width: 352px; */
 }
 
 .newscard-item__text {
@@ -166,4 +166,45 @@
   font-size: 16px;
   line-height: 20px;
   color: #b6bcbf;
+}
+
+/*tablet size */
+@media screen and (max-width: 768px) {
+  .newscard-item {
+    max-width: 224px;
+    height: 420px;
+  }
+  .newscard-item__image {
+    max-width: 224px;
+    height: 150px;
+  }
+  .newscard-item__keyword {
+    padding: 8px 20px;
+    top: 8px;
+    left: 8px;
+  }
+  .newscard-item__box {
+    top: 8px;
+    right: 8px;
+  }
+  .newscard-item__info {
+    margin: 0;
+    padding: 16px;
+  }
+  .newscard-item__date {
+    margin: 0;
+  }
+
+  .newscard-item__title {
+    font-size: 22px;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .newscard-item__text {
+    margin: 10px auto 12px auto;
+  }
+  .newscard-item__source {
+    margin: 0;
+  }
 }

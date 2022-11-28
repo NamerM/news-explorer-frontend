@@ -4,7 +4,6 @@
   justify-content: center;
   padding: 0;
   margin: 0;
-
 }
 
 .newscards {
@@ -22,42 +21,10 @@
   /* height: 974px; */ /*uncomment it when button is active */
 }
 
-@media screen and (max-width: 1439px) {
-  .newscards{
-    grid-template-columns: repeat(2, 400px);
-    /* grid-template-columns: repeat(2, auto); */
-    grid-template-rows: repeat(3, auto);
-    /* max-height: 1500px; */
+@media screen and (max-width: 768px) {
+  .newscards {
+    max-width: 768px ;
+    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fit, 224px);
   }
 }
-/* .elements__cards {
-  margin: 0px auto 68px;
-  max-width: 880px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 282px);
-  gap: 20px 17px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding:  0px;
-  list-style: none;
-  } */
-/*
-
-  @media screen and (max-width: 900px) {
-    .elements__cards{
-      margin: 0px auto;
-      grid-template-columns: repeat(2, auto);
-      grid-template-rows: repeat(3, auto);
-      max-width: 600px;
-    }
-  }
-
-
-  @media screen and (max-width: 362px) {
-    .elements__cards{
-      margin: 0px 19px;
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(6, 1fr);
-    }
-  } */

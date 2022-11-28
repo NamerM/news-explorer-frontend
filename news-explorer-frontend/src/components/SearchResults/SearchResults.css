@@ -52,3 +52,22 @@
   cursor: pointer;
   background-color: #e8e8e8;
 }
+
+/*tablet size*/
+@media screen and (max-width: 768px) {
+  .searchResults__content {
+    margin: 40px auto 0px;
+    /* height: 654px; */
+  }
+
+  .searchResults__title {
+    font-size: 30px;
+    line-height: 34px;
+    margin-bottom: 32px;
+  }
+
+  .searchResults__showbtn {
+    width: 240px;
+    margin: 32px auto 40px 232px;
+  }
+}

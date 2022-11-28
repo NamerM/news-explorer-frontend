@@ -6,3 +6,9 @@
 }
 
 
+/* tablet*/
+@media screen and (max-width: 768px ) {
+  .app {
+    max-width: 768px;
+  }
+}
