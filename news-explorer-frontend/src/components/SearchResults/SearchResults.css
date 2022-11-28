@@ -56,7 +56,7 @@
 /*tablet size*/
 @media screen and (max-width: 768px) {
   .searchResults__content {
-    margin: 40px auto 0px;
+    margin: 40px auto 32px;
     /* height: 654px; */
   }
 
@@ -68,6 +68,6 @@
 
   .searchResults__showbtn {
     width: 240px;
-    margin: 32px auto 40px 232px;
+    margin: 32px auto 8px 232px;
   }
 }

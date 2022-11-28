@@ -54,12 +54,12 @@ return(
   >
     <label className="popup__formfield">
       <p className="popup__formfield__labeltype">Email</p>
-      <input className="popup__input popup__input_type_name" value={formData.email || ''} onChange={handleChange} type="email" name="email" placeholder="Email" minLength="2" maxLength="40" required/>
+      <input className="popup__input popup__input_type_email" value={formData.email || ''} onChange={handleChange} type="email" name="email" placeholder="Enter email" minLength="2" maxLength="40" required/>
       <span id="name-error" className={`${formErrors.email ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.email}</span> {/* popup__input-error_open for error msg attributes*/}
     </label>
     <label className="popup__formfield">
       <p className="popup__formfield__labeltype">Password</p>
-      <input className="popup__input popup__input_type_profession" value={formData.password || ''} onChange={handleChange} type="password" name="password" placeholder="Password" minLength="2" maxLength="200" required/>
+      <input className="popup__input popup__input_type_password" value={formData.password || ''} onChange={handleChange} type="password" name="password" placeholder="Enter password" minLength="2" maxLength="200" required/>
       <span id="profession-error" className={`${formErrors.password ? "popup__input-error_open" : '' } popup__input-error`}>{formErrors.password}</span>
 
     </label>

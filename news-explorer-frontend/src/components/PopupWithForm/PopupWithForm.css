@@ -30,26 +30,12 @@
   justify-items: center;
 }
 
-@media screen and (max-width: 524px) {
-  .popup__square {
-    width: 282px;
-  }
-}
-
-
 .popup__form {
   width: 100%;
   margin: 0px;
   padding: 34px 36px 28px;
   display: flex;
   flex-direction: column;
-}
-
-@media screen and (max-width: 321px) {
-  .popup__form {
-    width: 100%;
-    padding: 25px 22px;
-  }
 }
 
 .popup__close {
@@ -88,15 +74,6 @@
 
 .popup__title_confirmDelete {
   text-align: center;
-}
-
-@media screen and (max-width: 324px) {
-  .popup__title {
-    width: 238px;
-    margin: 0px 0px 76px;
-    font-size: 18px;
-    line-height: 19px;
-  }
 }
 
 .popup__square_success {
@@ -210,9 +187,9 @@
   padding: 0px 0px 10px;
 }
 
-.popup__input:last-of-type {
-  margin-bottom: 17px;
-}
+/* .popup__input:last-child {
+  margin-bottom: 39px;
+} */
 
 .popup__input-mail-registered {
   display: block;
@@ -271,4 +248,9 @@
 }
 
 
+@media screen and (max-width: 768px) {
+  .popup__input {
+    margin-bottom: 31px;
+  }
 
+}

@@ -116,6 +116,13 @@
 @media screen and (max-width: 768px) {
   .search-form__content {
     max-width: 768px;
+    height: 344px;
+  }
+
+  .search-form__content-top {
+    height: 330px;
+    margin: 0;
+    padding: 0;
   }
 
   .search-form__title {
