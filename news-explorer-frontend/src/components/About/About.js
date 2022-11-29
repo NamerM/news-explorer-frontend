@@ -4,8 +4,8 @@ function About() {
 
   return (
     <div className="about">
-      <div className="about__image">
-        <img />
+      <div >
+        <img className="about__image"/>
       </div>
       <div className="about__content">
         <h2 className="about__title">About the author</h2>

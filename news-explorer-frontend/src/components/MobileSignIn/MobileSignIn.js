@@ -1,11 +1,14 @@
 import react, { useState } from 'react';
+import {Link, useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import PopupMobile from '../PopupMobile/PopupMobile';
+import '../../components/Navigation/Navigation.css';
 
 function MobileSignIn ({
 isOpen,
 onClose,
-onMobilePopUpClick
+onMobilePopUpClick,
+onSignInPopupClick
 }){
   const currentUser = react.useContext(CurrentUserContext)
 
@@ -34,9 +37,18 @@ onMobilePopUpClick
       >
 
       </PopupMobile>
-      <div>
+        <ul className="navigation__menu">
+          <li className="navigation__menu-list">
+            <Link className="navigation__menu-item" to="/">Home</Link>
+          </li>
+          <li className="navigation__menu-list">
+            <Link className="navigation-menu-item-link"  to="/signin" >
+              <button className="navigation__menu-item navigation-menu-item-button"  >
 
-      </div>
+              </button>
+            </Link>
+          </li>
+        </ul>
     </>
   )
 }

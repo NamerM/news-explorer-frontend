@@ -184,9 +184,22 @@ list-style: none;
 
 @media screen and (max-width: 435px) and (min-width: 325px) {
   .navigation {
-    width: 90%;
+    border-bottom-width: 100%;
+  }
+  .navigation__logo-image {
+    width: 60px;
+    height: 20px;
+  }
+  .navigation__menu-item {
+    font-size: 10px;
+  }
+    .navigation-menu-item-button {
+    width: 60px;
+    height: 30px;
+    margin: 14px auto 12px 8px;
   }
 }
+
 
 @media screen and (max-width: 320px) {
   .navigation {

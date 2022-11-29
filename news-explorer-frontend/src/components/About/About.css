@@ -46,7 +46,7 @@
 
 @media screen and (max-width: 768px) {
   .about {
-    height: 354px;
+    /* height: 354px; */
   }
   .about__image {
     max-width: 232px;
@@ -63,6 +63,29 @@
   .about__title {
     font-size: 30px;
     line-height: 40px;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about {
+    display: flex;
+    flex-direction: column;
+    height: 752px;
+  }
+  .about__image {
+    width: 272px;
+    max-height: 272px;
+    margin: 32px 24px 24px;
+  }
+  .about__content {
+    max-width: 288px;
+    margin: 0;
+    padding: 0 16px;
+  }
+  .about__title {
+    max-width: 288px;
+    padding: 0;
     margin: 0;
   }
 }

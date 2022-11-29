@@ -168,13 +168,17 @@
   .search-form__title {
     margin: 30px auto 0;
     width: 80%;
+    font-size: 24px;
   }
   .search-form__form-field {
     width: 70%;
+    margin-top: 15px;
   }
   .search-form__subtitle {
     margin-left: auto;
+    margin-bottom: 0;
     width: 70%;
+    font-size:18px;
   }
   .search-form__form-submit{
     margin:auto;

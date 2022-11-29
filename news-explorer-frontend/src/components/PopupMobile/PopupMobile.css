@@ -20,26 +20,26 @@
 }
 
 .popup-mobile__close {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
 
   position: absolute;
   top: 5px;
   right: 5px;
   /*left: calc(50% + 215px);*/
   background-color: transparent;
-  background-image: url(../../images/Close-Icon.svg);
+  background-image: url(../../images/mobile-close.svg);
   background-repeat: no-repeat;
   border: 0;
   transition: opacity 0.8s linear 0.15s;
 }
 
-.popup-mobile__save {
-  max-width: 360px;
-  height: 64px;
+.popup-mobile__btn {
+  /* width: 288px; */
+  height: 56px;
   border-radius: 40px;
-  border: 0px;
-  background-color: #2f71e5;
+  border: 1px solid white;
+  background-color: #1a1b22;
   color: white;
   font-family: 'Roboto', "Arial", sans-serif;
   font-style: normal;
@@ -47,6 +47,13 @@
   font-size: 18px;
   line-height: 24px;
   text-align: center;
-  padding: 20px 115px;
-  margin: 8px 0px 0px;
+  padding: 16px 116px;
+  margin: 48px auto 24px 16px;
+}
+.popup-mobile__btn:hover {
+  cursor: pointer;
+}
+
+.popup-mobile-logo {
+  margin: 16px auto 16px 16px;
 }

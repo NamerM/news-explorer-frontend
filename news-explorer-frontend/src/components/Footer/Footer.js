@@ -11,8 +11,10 @@ function Footer() {
       <nav className="footer__menu">
         <Link to='/' className="footer__menu-item">Home</Link>
         <a href='https://www.practicum.com' className="footer__menu-item">Practicum</a>
-        <a href='https://github.com/NamerM/' className="footer__menu-icon"><img src={gitIcon} /></a>
-        <a href='https://facebook.com' className="footer__menu-icon"><img src={fbIcon}/></a>
+        <div className="footer__menu-icon-container">
+          <a href='https://github.com/NamerM/' className="footer__menu-icon"><img src={gitIcon} /></a>
+          <a href='https://facebook.com' className="footer__menu-icon"><img src={fbIcon}/></a>
+        </div>
       </nav>
     </div>
   )

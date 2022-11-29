@@ -11,6 +11,7 @@ function PopupMobile({
   buttonText,
   onClose,
   onSubmit,
+  onClick,
 })
 {
 const currentUser = useContext(CurrentUserContext);
@@ -20,15 +21,16 @@ const isSignIn = location.pathnam === '/signin'
 return (
   <>
   <section className={`popup-mobile popup-type_${name} ${isOpen ? "popup-mobile_open" : ""} `}>
-    <div className="popup-mobile__container">
-      {children}
+    <div className="popup-mobile__container"  onClick={onSubmit}>
       <nav>
-      <img src={logoWhite}/>
+      <img className="popup-mobile-logo" src={logoWhite}/>
       <button type="button" className="popup-mobile__close" onClick={onClose} />
       </nav>
-      <button type="submit" className="popup-mobile-save" onClick={onSubmit}>
+        {children}
+      <button type="submit" className="popup-mobile__btn"  onClick={onClick}>
         {buttonText}
       </button>
+      {/* <Link to='/signin'></Link> */}
     </div>
   </section>
   </>

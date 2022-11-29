@@ -56,3 +56,32 @@
     margin-bottom: 19px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .footer {
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: 320px;
+    height: 176px;
+  }
+  .footer__menu {
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    /* margin: 0;
+    padding: 0; */
+
+  }
+  .footer__menu-item {
+    grid-column: 1 / 2;
+    row-gap: 10px;
+    padding-left:16px;
+  }
+  .footer__menu-icon-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    grid-row: 1;
+    grid-column: 2;
+    padding-right: 19px;
+  }
+}

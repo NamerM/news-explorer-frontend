@@ -83,5 +83,11 @@
 @media screen and (max-width: 320px) {
   .searchResults__content {
     margin: 32px 16px 58px;
+    padding: 0;
+  }
+  .searchResults__showbtn {
+    width: 288px;
+    height: 56px;
+    margin: 21px auto 24px;
   }
 }

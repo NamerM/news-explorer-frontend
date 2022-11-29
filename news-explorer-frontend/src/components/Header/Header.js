@@ -23,7 +23,8 @@ function Header({onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onS
     (
       <div className="header__nologin">
         <Navigation
-         //onClick={registerStatus}   onClick={onMobilePopupClick}
+         //onClick={registerStatus}
+          onClick={onMobilePopupClick}
            />
         <SearchForm />
       </div>)
