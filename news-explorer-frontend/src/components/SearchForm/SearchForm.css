@@ -145,7 +145,7 @@
   .search-form__form-field{
     height: 56px;
     width: 448px;
-    margin: 48px 160px;
+    margin: 48px auto;
   }
 
   .search-form__form-input {
@@ -163,6 +163,8 @@
     padding: 16px 52px;
   }
 }
+
+
 
 @media screen and (max-width: 320px) {
   .search-form__content {

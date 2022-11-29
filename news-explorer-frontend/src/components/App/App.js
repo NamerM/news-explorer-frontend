@@ -104,13 +104,14 @@ function App( onSignInPopupClick) {
         />
         <MobileSignIn
           isOpen={isMobileClicked}
-          onMobilePopupClick={handleMobileClick}
+
           onClose={closeAllPopups}
         />
         <Header
           onSignInPopupClick={handleSignInClick}
           onSignUpPopupClick={handleSignUpClick}
           onSignOut={handlesignOut}
+          onMobilePopupClick={handleMobileClick}
           />
         <Main   />
         <Footer />

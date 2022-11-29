@@ -13,13 +13,11 @@ function Navigation({
   isOpen,
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see header changes
-  const [isMobileClicked, setIsMobileClicked] = useState(false);
+  // const [isMobileClicked, setIsMobileClicked] = useState(false);
 
-  function menuClick () {
-    setIsMobileClicked(true);
-  }
-
-
+  // function menuClick () {
+  //   setIsMobileClicked(true);
+  // }
 
   return (
 
