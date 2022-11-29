@@ -26,7 +26,7 @@ return (
       <img src={logoWhite}/>
       <button type="button" className="popup-mobile__close" onClick={onClose} />
       </nav>
-      <button type="submit" className="popup-mobile-save" onSubmit={onSubmit}>
+      <button type="submit" className="popup-mobile-save" onClick={onSubmit}>
         {buttonText}
       </button>
     </div>

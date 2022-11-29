@@ -228,3 +228,14 @@
     margin: 0;
   }
 }
+
+@media screen and (max-width: 320px ) {
+  .newscard-item {
+    max-width: 288px;
+    height: 440px;
+  }
+  .newscard-item__image {
+    max-width: 288px;
+    height: 196px;
+  }
+}

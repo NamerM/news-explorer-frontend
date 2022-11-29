@@ -72,6 +72,14 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .searchResults__showbtn {
+    width: 40%;
+    margin: 30px auto 12px;
+  }
+}
+
+
 @media screen and (max-width: 320px) {
   .searchResults__content {
     margin: 32px 16px 58px;

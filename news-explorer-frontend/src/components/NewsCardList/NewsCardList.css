@@ -38,3 +38,26 @@
     grid-template-columns: repeat(auto-fit, 224px);
   }
 }
+@media screen and (max-width: 736px ) {
+  .newscards {
+    max-width: 736px ;
+    grid-gap: auto;
+    grid-template-columns: repeat(2 , 220px);
+  }
+}
+
+@media screen and (max-width: 476px ) {
+  .newscards {
+    max-width: 476px ;
+    grid-gap: auto;
+    grid-template-columns: repeat(1 , 280px);
+  }
+}
+
+@media screen and (max-width: 320px ) {
+  .newscards {
+    max-width: 320px ;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, 288px);
+  }
+}

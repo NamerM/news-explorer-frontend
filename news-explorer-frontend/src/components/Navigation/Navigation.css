@@ -182,6 +182,12 @@ list-style: none;
   }
 }
 
+@media screen and (max-width: 435px) and (min-width: 325px) {
+  .navigation {
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .navigation {
     height: 56px;
