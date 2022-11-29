@@ -2,19 +2,29 @@ import React, { useState } from "react";
 import { NavLink, Link } from 'react-router-dom';
 import logoWhite from '../../images/NewsExplorer.svg';
 import logoDark from '../../images/NewsExplorer-black.svg';
+import PopupMobile from "../PopupMobile/PopupMobile";
 
 function Navigation({
   // isRegistered,
   onClick: onSignInPopupClick,
   onClick: onSignUpPopupClick,
-  onClick: onSignOut
+  onClick: onMobilePopupClick,
+  onClick: onSignOut,
+  isOpen,
 }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see header changes
+  const [isMobileClicked, setIsMobileClicked] = useState(false);
+
+  function menuClick () {
+    setIsMobileClicked(true);
+  }
+
 
 
   return (
 
     <>
+
     { isLoggedIn ?
       (<nav className="navigation">
          <div className="navigation__logo">
@@ -47,18 +57,10 @@ function Navigation({
                 Sign in
               </button>
             </Link>
-              <button className="navigation-menu-item-button_mobile" onClick={onSignInPopupClick} />
+              <button className="navigation-menu-item-button_mobile" onClick={onMobilePopupClick} />
+
           </li>
-          {/* { isRegistered
-           ? (<li>
-            <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignInPopupClick} >
-              Sign in</button>
-          </li>)
-          : (<li>
-            <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignUpPopupClick} >
-              Sign in</button>
-          </li>)
-          } */}
+
         </ul>
       </nav>)}
     </>

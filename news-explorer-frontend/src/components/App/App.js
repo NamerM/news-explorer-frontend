@@ -10,7 +10,7 @@ import Navigation from '../Navigation/Navigation';
 import SignInPopup from '../Signin/Signin';
 import SignUpPopup from '../SignUp/Signup';
 import RegisterationSuccess from '../Success/Success';
-
+import PopupMobile from "../PopupMobile/PopupMobile";
 
 function App( onSignInPopupClick) {
   const [currentUser, setCurrentUser] = useState({});
@@ -18,6 +18,8 @@ function App( onSignInPopupClick) {
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
+  const [isMobileClicked, setIsMobileClicked] = useState(false);
+
 
   useEffect(() => {
 
@@ -65,9 +67,13 @@ function App( onSignInPopupClick) {
     setIsLoggedIn(false);
   }
 
+  function handleMobileClick () {
+    setIsMobileClicked(true);
+  }
+
   let location = useLocation();
 
-  react.useEffect(() => {
+  useEffect(() => {
     if(location.pathname === '/signin') {
       setIsSignInPopupOpen(true);
       setIsSignUpPopupOpen(false);
@@ -95,11 +101,13 @@ function App( onSignInPopupClick) {
           isOpen={isRegisterPopupOpen}
           onClose={closeAllPopups}
         />
+        <PopupMobile
+          onMobilePopupClick={handleMobileClick}
+        />
         <Header
           onSignInPopupClick={handleSignInClick}
           onSignUpPopupClick={handleSignUpClick}
           onSignOut={handlesignOut}
-
           />
         <Main   />
         <Footer />
