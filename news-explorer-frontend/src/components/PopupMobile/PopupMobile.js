@@ -21,11 +21,12 @@ return (
   <>
   <section className={`popup-mobile popup-type_${name} ${isOpen ? "popup-mobile_open" : ""} `}>
     <div className="popup-mobile__container">
+      {children}
       <nav>
       <img src={logoWhite}/>
       <button type="button" className="popup-mobile__close" onClick={onClose} />
       </nav>
-      <button type="submit" className="popup-mobile-save">
+      <button type="submit" className="popup-mobile-save" onSubmit={onSubmit}>
         {buttonText}
       </button>
     </div>

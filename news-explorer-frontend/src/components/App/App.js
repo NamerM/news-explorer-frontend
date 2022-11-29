@@ -103,6 +103,7 @@ function App( onSignInPopupClick) {
           onClose={closeAllPopups}
         />
         <MobileSignIn
+          isOpen={isMobileClicked}
           onMobilePopupClick={handleMobileClick}
           onClose={closeAllPopups}
         />
