@@ -22,9 +22,9 @@
 .popup-mobile__close {
   width: 24px;
   height: 24px;
-
+  margin: 16px 11px 16px auto;
   position: absolute;
-  top: 5px;
+  /* top: 5px; */
   right: 5px;
   /*left: calc(50% + 215px);*/
   background-color: transparent;

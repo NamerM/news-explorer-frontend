@@ -71,7 +71,7 @@
   .about {
     display: flex;
     flex-direction: column;
-    height: 752px;
+    height: 852px;
   }
   .about__image {
     width: 272px;
@@ -81,11 +81,23 @@
   .about__content {
     max-width: 288px;
     margin: 0;
-    padding: 0 16px;
+    /* padding: 0 16px;
+    text-align: left; */
   }
   .about__title {
     max-width: 288px;
     padding: 0;
-    margin: 0;
+    margin: 0 16px;
+  }
+  .about__description{
+    display: flex;
+    flex-direction: column;
+    margin: auto 16px;
+    font-family: 'Roboto', 'Arial', 'sans-serif';
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    text-align: left;
+    margin-top: 24px;
   }
 }

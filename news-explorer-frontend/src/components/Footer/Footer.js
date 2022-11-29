@@ -7,7 +7,7 @@ function Footer() {
 
   return(
     <div className="footer">
-      <p className="footer__copyright">© { new Date().getFullYear() } NewsSite, Powered by Namernews API</p>
+      <p className="footer__copyright">© { new Date().getFullYear() } NewsSite, Powered by News API</p>
       <nav className="footer__menu">
         <Link to='/' className="footer__menu-item">Home</Link>
         <a href='https://www.practicum.com' className="footer__menu-item">Practicum</a>

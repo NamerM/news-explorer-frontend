@@ -218,7 +218,7 @@
   .search-form__form-field {
     flex-direction: column;
     width: 288px;
-    margin: 0px 16px;
+    margin: 0px auto;
   }
   .search-form__form-input {
     margin: 0;

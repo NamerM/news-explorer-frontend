@@ -63,12 +63,14 @@
     flex-direction: column-reverse;
     max-width: 320px;
     height: 176px;
+    margin-top: 128px;
   }
   .footer__menu {
     display: grid;
-    grid-template-columns: repeat(2, 150px);
+    grid-template-columns: repeat(2, 144px);
     /* margin: 0;
     padding: 0; */
+    max-width: 288px;
 
   }
   .footer__menu-item {
@@ -82,6 +84,12 @@
     justify-content: flex-end;
     grid-row: 1;
     grid-column: 2;
-    padding-right: 19px;
+    padding-right: 13px;
+  }
+  .footer__copyright {
+    font-size: 16px;
+    line-height: 22px;
+    max-width: 288px;
+    margin: 15px auto 22px;
   }
 }
