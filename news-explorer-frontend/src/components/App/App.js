@@ -61,6 +61,7 @@ function App( onSignInPopupClick) {
     setIsSignInPopupOpen(false);
     setIsSignUpPopupOpen(false);
     setIsRegisterPopupOpen(false);
+    setIsMobileClicked(false);
   }
 
   function handlesignOut() {
@@ -103,6 +104,7 @@ function App( onSignInPopupClick) {
         />
         <PopupMobile
           onMobilePopupClick={handleMobileClick}
+          onClose={closeAllPopups}
         />
         <Header
           onSignInPopupClick={handleSignInClick}
