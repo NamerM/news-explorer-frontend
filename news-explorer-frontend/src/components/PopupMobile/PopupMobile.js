@@ -5,9 +5,10 @@ import { CurrentUserContext  } from '../../contexts/CurrentUserContext';
 import logoWhite from '../../images/NewsExplorer.svg';
 
 function PopupMobile({
+  children,
   isOpen,
-  name="mobile",
-  buttonText="Sign In",
+  name,
+  buttonText,
   onClose,
   onSubmit,
 })
@@ -24,7 +25,7 @@ return (
       <img src={logoWhite}/>
       <button type="button" className="popup-mobile__close" onClick={onClose} />
       </nav>
-      <button type="submit" className={onSubmit}>
+      <button type="submit" className="popup-mobile-save">
         {buttonText}
       </button>
     </div>

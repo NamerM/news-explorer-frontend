@@ -10,7 +10,7 @@ import Navigation from '../Navigation/Navigation';
 import SignInPopup from '../Signin/Signin';
 import SignUpPopup from '../SignUp/Signup';
 import RegisterationSuccess from '../Success/Success';
-import PopupMobile from "../PopupMobile/PopupMobile";
+import MobileSignIn from '../MobileSignIn/MobileSignIn';
 
 function App( onSignInPopupClick) {
   const [currentUser, setCurrentUser] = useState({});
@@ -102,7 +102,7 @@ function App( onSignInPopupClick) {
           isOpen={isRegisterPopupOpen}
           onClose={closeAllPopups}
         />
-        <PopupMobile
+        <MobileSignIn
           onMobilePopupClick={handleMobileClick}
           onClose={closeAllPopups}
         />
