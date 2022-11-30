@@ -35,7 +35,7 @@
 }
 
 .popup-mobile__btn {
-  /* width: 288px; */
+  width: 288px;
   height: 56px;
   border-radius: 40px;
   border: 1px solid white;
@@ -47,8 +47,8 @@
   font-size: 18px;
   line-height: 24px;
   text-align: center;
-  padding: 16px 116px;
-  margin: 48px auto 24px 16px;
+  padding: 16px auto;
+  margin: 6px auto 24px 16px;
 }
 .popup-mobile__btn:hover {
   cursor: pointer;
@@ -56,4 +56,25 @@
 
 .popup-mobile-logo {
   margin: 16px auto 16px 16px;
+  width: 117px;
+  height: 20px;
+}
+
+.popup-mobile-text {
+  font-family: 'Roboto', 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 56px;
+  color: #ffffff;
+  margin: 16px;
+  width: 288px;
+}
+
+.popup-mobile-text:visited {
+  text-decoration: none;
+  color: #ffffff;
+}
+.popup-mobile-text:active {
+  text-decoration: none;
+  color: #ffffff;
 }

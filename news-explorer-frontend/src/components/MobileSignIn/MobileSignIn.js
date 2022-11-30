@@ -7,6 +7,7 @@ import '../../components/Navigation/Navigation.css';
 function MobileSignIn ({
 isOpen,
 onClose,
+onClick,
 onMobilePopUpClick,
 onSignInPopupClick
 }){
@@ -14,17 +15,18 @@ onSignInPopupClick
 
   const [email, setEmail] = useState('');
   const [password , setPassword] = useState('');
-  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(email, password)
+    console.log("button works");
     // console.log(email, password);
     const userData = {
       email,
       password,
     }
     // onLoginUser(userData);  // app.js function name
+
   }
   return(
     <>
@@ -37,18 +39,18 @@ onSignInPopupClick
       >
 
       </PopupMobile>
-        <ul className="navigation__menu">
+        {/* <ul className="navigation__menu">
           <li className="navigation__menu-list">
-            <Link className="navigation__menu-item" to="/">Home</Link>
+            <Link className="" to="/">Home</Link>
           </li>
           <li className="navigation__menu-list">
             <Link className="navigation-menu-item-link"  to="/signin" >
-              <button className="navigation__menu-item navigation-menu-item-button"  >
-
+              <button className=" navigation-menu-item-button"  >
+                    Sign In
               </button>
             </Link>
           </li>
-        </ul>
+        </ul> */}
     </>
   )
 }
