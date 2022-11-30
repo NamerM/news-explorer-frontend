@@ -77,9 +77,9 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 405px) and (min-width: 320px) {
   .savedarticles {
-    margin: 16px 0 32px 16px;
+    margin: 16px auto 32px;
     padding: 0;
   }
 
