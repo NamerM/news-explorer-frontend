@@ -12,7 +12,7 @@ function Navigation({
   onClick: onSignOut,
   isOpen,
 }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see header changes
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false to see header changes - note to reviewer
   // const [isMobileClicked, setIsMobileClicked] = useState(false);
 
   // function menuClick () {
@@ -25,8 +25,8 @@ function Navigation({
 
     { isLoggedIn ?
       (<nav className="navigation">
-         <div className="navigation__logo">
-          <img src={logoDark}/>
+         <div >
+          <img className="navigation__logo" src={logoDark}/>
         </div>
         <ul className="navigation__menu">
           <li className="navigation__menu-list">
@@ -36,7 +36,10 @@ function Navigation({
             <NavLink className="navigation__menu-item_dark" to="/saved-artivles">Saved articles</NavLink>
           </li>
           <li>
-            <button className="navigation__menu-item_dark navigation-menu-item-button_dark" onClick={onSignOut}>Melih</button>
+            <button className="navigation__menu-item_dark navigation__menu-item-button_dark" onClick={onSignOut}>Melih</button>
+          </li>
+          <li>
+            <button className="navigation__menu-item-button_dark-mobile" onClick={onSignOut} />
           </li>
 
         </ul>
@@ -50,12 +53,12 @@ function Navigation({
             <Link className="navigation__menu-item" to="/">Home</Link>
           </li>
           <li className="navigation__menu-list">
-            <Link className="navigation-menu-item-link"  to="/signin" >
-              <button className="navigation__menu-item navigation-menu-item-button" onClick={onSignInPopupClick} >
+            <Link className="navigation__menu-item-link"  to="/signin" >
+              <button className="navigation__menu-item navigatio__menu-item-button" onClick={onSignInPopupClick} >
                 Sign in
               </button>
             </Link>
-              <button className="navigation-menu-item-button_mobile" onClick={onMobilePopupClick} />
+              <button className="navigation__menu-item-button_mobile" onClick={onMobilePopupClick} />
 
           </li>
 
@@ -71,11 +74,11 @@ export default Navigation;
           <NavLink className="navigation__menu-item_dark navigation__menu-item_home" to="/">Home</NavLink>
           <NavLink className="navigation__menu-item_dark" to="/saved-artivles">Saved articles</NavLink>
           <div>
-            <NavLink className="navigation__menu-item_dark navigation-menu-item-button_dark" to='/signout' onClick={onSignOutPopupClick}>Melih</NavLink>
+            <NavLink className="navigation__menu-item_dark navigatio__menu-item-button_dark" to='/signout' onClick={onSignOutPopupClick}>Melih</NavLink>
           </div>
         </div> */}
 
         {/* <div className="navigation__menu">
           <NavLink className="navigation__menu-item home" to="/">Home</NavLink>
-          <NavLink className="navigation__menu-item navigation-menu-item-button" to='/signin' onClick={onSignInPopupClick} >Sign in</NavLink>
+          <NavLink className="navigation__menu-item navigatio__menu-item-button" to='/signin' onClick={onSignInPopupClick} >Sign in</NavLink>
         </div> */}

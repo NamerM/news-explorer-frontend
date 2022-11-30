@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import NewsCardList from '../NewsCardList/NewsCardList';
 
 function SearchResults() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle for displaying whole
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle for displaying  both versions note to reviewer
 
 
   return (

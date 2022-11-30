@@ -58,7 +58,7 @@ list-style: none;
   border-bottom: 3px solid #ffffff ;
 }
 
-.navigation-menu-item-button {
+.navigation__menu-item-button {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -73,17 +73,17 @@ list-style: none;
   margin: 19px auto 13px 34px;
 }
 
-.navigation-menu-item-button:visited {
+.navigation__menu-item-button:visited {
   border: 1px solid #ffffff;
   text-decoration: inherit;
 }
 
-.navigation-menu-item-button:active {
+.navigation__menu-item-button:active {
   border: 1px solid #ffffff;
   text-decoration: inherit;
 }
 
-.navigation-menu-item-link {
+.navigation__menu-item-link {
   text-decoration: none;
 }
 
@@ -111,7 +111,7 @@ list-style: none;
   border-bottom: 3px solid #1a1b22;
 }
 
-.navigation-menu-item-button_dark {
+.navigation__menu-item-button_dark {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -129,14 +129,18 @@ list-style: none;
   background-position-y: center;
 }
 
-.navigation-menu-item-button_dark:visited {
+.navigation__menu-item-button_dark:visited {
   border: 1px solid #1a1b22;
 }
-.navigation-menu-item-button:active {
+.navigation__menu-item-button:active {
   border: 1px solid #1a1b22;
 }
 
-.navigation-menu-item-button_mobile {
+.navigation__menu-item-button_mobile {
+  display: none;
+}
+
+.navigation__menu-item-button_dark-mobile {
   display: none;
 }
 
@@ -160,7 +164,7 @@ list-style: none;
     margin-bottom: 20px;
   }
 
-  .navigation-menu-item-button {
+  .navigation__menu-item-button {
     width: 152px;
     height: 40px;
     margin: 14px auto 12px 8px;
@@ -173,7 +177,7 @@ list-style: none;
     line-height: 24px;
 
   }
-  .navigation-menu-item-button_dark {
+  .navigation__menu-item-button_dark {
     margin: 14px 0 auto 8px;
     /* padding-left: 16px; */
     padding: 0px 50px 0px 15px;
@@ -193,7 +197,7 @@ list-style: none;
   .navigation__menu-item {
     font-size: 10px;
   }
-    .navigation-menu-item-button {
+    .navigation__menu-item-button {
     width: 60px;
     height: 30px;
     margin: 14px auto 12px 8px;
@@ -218,7 +222,12 @@ list-style: none;
   .navigation__menu-item {
     display: none;
   }
-  .navigation-menu-item-button_mobile {
+
+  .navigation__menu-item_dark {
+    display: none;
+  }
+
+  .navigation__menu-item-button_mobile {
     display: block;
     background-image: url('../../images/menu.svg');
     margin: 16px 0;
@@ -227,4 +236,22 @@ list-style: none;
     background-color: transparent;
     border: 0;
   }
+
+  .navigation__menu-item-button_mobile:hover {
+    cursor: pointer;
+  }
+
+  .navigation__menu-item-button_dark-mobile {
+    display: block;
+    background-image: url('../../images/menu-dark.svg');
+    margin: 16px 0;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: 0;
+  }
+  .navigation__menu-item-button_dark-mobile:hover {
+    cursor: pointer;
+  }
 }
+

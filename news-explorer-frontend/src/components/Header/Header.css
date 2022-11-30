@@ -53,5 +53,7 @@
 
   .header__logged_in {
     height: 342px;
+    /* max-width: 320px; */
   }
+
 }

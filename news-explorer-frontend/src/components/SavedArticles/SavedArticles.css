@@ -76,3 +76,26 @@
     line-height: 24px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .savedarticles {
+    margin: 16px 0 32px 16px;
+    padding: 0;
+  }
+
+  .savedarticles__container {
+    height: auto;
+  }
+  .savedarticles__tagtext {
+    font-size: 12px;
+  }
+  .savedarticles__title {
+    font-size: 30px;
+    width: 288px;
+  }
+  .savedarticles__keywords {
+    width: 288px;
+    margin-top: 50px;
+  }
+
+}
