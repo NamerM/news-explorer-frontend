@@ -145,7 +145,7 @@
   font-size: 18px;
   line-height: 24px;
   text-align: center;
-  padding: 20px 115px;
+  padding: 20px auto;
   margin: 8px 0px 0px;
 }
 
@@ -159,6 +159,7 @@
   width: 100%;
   border-radius: 2px;
   border: 0px; */
+  padding: 20px auto;
   background-color: #E6e8eb;
   color: #b6bcbf;
   border-color: #000000;
@@ -258,10 +259,11 @@
 @media screen and (max-width: 320px) {
   .popup__square {
     width: 320px;
-    margin: 16px 16px;
+    margin: 0;
   }
   .popup__form {
     width: 288px;
     padding: 16px;
+    border-radius: 25px;
   }
 }

@@ -57,7 +57,7 @@
   }
 }
 
-@media screen and (max-width: 400px) and (min-width: 320px) {
+@media screen and (max-width: 400px) and (min-width: 318px) {
   .footer {
     display: flex;
     flex-direction: column-reverse;

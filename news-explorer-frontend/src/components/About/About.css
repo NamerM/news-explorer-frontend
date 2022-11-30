@@ -67,7 +67,7 @@
   }
 }
 
-@media screen and (max-width: 460px) and (min-width: 320px) {
+@media screen and (max-width: 460px) and (min-width: 318px) {
   .about {
     display: flex;
     flex-direction: column;
