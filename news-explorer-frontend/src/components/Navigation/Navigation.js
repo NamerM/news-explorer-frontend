@@ -6,13 +6,12 @@ import PopupMobile from "../PopupMobile/PopupMobile";
 
 function Navigation({
   // isRegistered,
-  onClick: onSignInPopupClick,
-  onClick: onSignUpPopupClick,
-  onClick: onMobilePopupClick,
-  onClick: onSignOut,
+  onDesktopClick,
+  onMobileClick,
+  onSignOut,
   isOpen,
 }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false to see header changes - note to reviewer
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see header changes - note to reviewer
   // const [isMobileClicked, setIsMobileClicked] = useState(false);
 
   // function menuClick () {
@@ -54,11 +53,11 @@ function Navigation({
           </li>
           <li className="navigation__menu-list">
             <Link className="navigation__menu-item-link"  to="/signin" >
-              <button className="navigation__menu-item navigatio__menu-item-button" onClick={onSignInPopupClick} >
+              <button className="navigation__menu-item navigation__menu-item-button" onClick={onDesktopClick} >
                 Sign in
               </button>
             </Link>
-              <button className="navigation__menu-item-button_mobile" onClick={onMobilePopupClick} />
+              <button className="navigation__menu-item-button_mobile" onClick={onMobileClick} />
 
           </li>
 
