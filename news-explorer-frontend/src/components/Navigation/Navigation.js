@@ -63,16 +63,3 @@ function Navigation({
 }
 
 export default Navigation;
-
-       {/* <div className="navigation__menu">
-          <NavLink className="navigation__menu-item_dark navigation__menu-item_home" to="/">Home</NavLink>
-          <NavLink className="navigation__menu-item_dark" to="/saved-artivles">Saved articles</NavLink>
-          <div>
-            <NavLink className="navigation__menu-item_dark navigatio__menu-item-button_dark" to='/signout' onClick={onSignOutPopupClick}>Melih</NavLink>
-          </div>
-        </div> */}
-
-        {/* <div className="navigation__menu">
-          <NavLink className="navigation__menu-item home" to="/">Home</NavLink>
-          <NavLink className="navigation__menu-item navigatio__menu-item-button" to='/signin' onClick={onSignInPopupClick} >Sign in</NavLink>
-        </div> */}
