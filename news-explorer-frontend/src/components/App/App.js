@@ -14,7 +14,7 @@ import MobileSignIn from '../MobileSignIn/MobileSignIn';
 
 function App( onSignInPopupClick) {
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
@@ -104,10 +104,10 @@ function App( onSignInPopupClick) {
         />
         <MobileSignIn
           isOpen={isMobileClicked}
-
           onClose={closeAllPopups}
         />
         <Header
+          isLoggedIn={isLoggedIn}
           onSignInPopupClick={handleSignInClick}
           onSignUpPopupClick={handleSignUpClick}
           onSignOut={handlesignOut}

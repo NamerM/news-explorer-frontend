@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import '../NewsCard/NewsCard.css';
 
 
-function NewsCard({ card }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false for page changes
+function NewsCard({ card, isLoggedIn }) {
+  // const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false for page changes
   const [toolTipVisible, setToolTipVisible] = useState(false); //
   const [isBookmarked, setIsBookmarked] = useState(true); // toggle  true of false for bookmark icon/tooltip changes
   const [isClicked, setIsClicked] = useState(false); //toggle

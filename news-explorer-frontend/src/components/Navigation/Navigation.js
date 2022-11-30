@@ -5,18 +5,13 @@ import logoDark from '../../images/NewsExplorer-black.svg';
 import PopupMobile from "../PopupMobile/PopupMobile";
 
 function Navigation({
-  // isRegistered,
   onDesktopClick,
   onMobileClick,
   onSignOut,
   isOpen,
+  isLoggedIn
 }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see header changes - note to reviewer
-  // const [isMobileClicked, setIsMobileClicked] = useState(false);
-
-  // function menuClick () {
-  //   setIsMobileClicked(true);
-  // }
+  console.log("onsignout=>", onSignOut);
 
   return (
 

@@ -5,27 +5,28 @@ import SearchForm from '../SearchForm/SearchForm';
 
 
 
-function Header({onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onSignOut  }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
-  // const [isRegistered, setIsRegistered] =useState(false); // false for signup popup , true for signin
+function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onSignOut  }) {
 
-  // const registerStatus = isRegistered ? onSignInPopupClick : onSignUpPopupClick;
-
-
+  console.log("onSignout-headerjs", onSignOut);
 
   return (
   <header className="header" >
     { isLoggedIn  ?
     ( <div className="header__logged_in">
-        <Navigation onClick={onSignOut}/>
+        <Navigation
+          isLoggedIn={isLoggedIn}
+          onDesktopClick={onSignInPopupClick}
+          onMobileClick={onMobilePopupClick}
+          onSignOut={onSignOut}/>
         <SavedArticles />
       </div>) :
     (
       <div className="header__nologin">
         <Navigation
-         //onClick={registerStatus}
+          isLoggedIn={isLoggedIn}
           onDesktopClick={onSignInPopupClick}
           onMobileClick={onMobilePopupClick}
+          onSignOut={onSignOut}
            />
         <SearchForm />
       </div>)

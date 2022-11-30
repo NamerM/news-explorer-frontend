@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import NewsCard from '../NewsCard/NewsCard';
 import {data} from '../../utils/data';
 
-function NewsCardList() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle
+function NewsCardList(isLoggedIn) {
+  // const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle
   const [isClicked, setIsClicked] = useState(false); //toggle
 
   // const onShowMoreClick = () => {
