@@ -1,22 +1,23 @@
 import react, { useState } from 'react';
-import {Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { NavHashLink as Link } from 'react-router-hash-link';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import PopupMobile from '../PopupMobile/PopupMobile';
 import '../../components/Navigation/Navigation.css';
 import logoWhite from '../../images/NewsExplorer.svg';
 import SavedArticles from '../SavedArticles/SavedArticles';
 
-function MobileSignIn ({
+function MobileMenu ({
 isOpen,
 onClose,
-onSubmit,
-buttonText="Sign In"
+onSignOut,
+buttonText="Sign Out"
 }){
+
   const currentUser = react.useContext(CurrentUserContext)
 
   const [email, setEmail] = useState('');
   const [password , setPassword] = useState('');
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -27,27 +28,32 @@ buttonText="Sign In"
       password,
     }
     // onLoginUser(userData);  // app.js function name
-
+    console.log("close", onClose);
+    console.log("signOut", onSignOut);
   }
   return(
+    <>
       <PopupMobile
-        name="popup-mobile"
+        name="popup-mobile-menu"
         isOpen={isOpen}
         onClose={onClose}
         onSubmit={handleSubmit}
+        onSignOut={onSignOut}
         buttonText
       >
-
-      <Link path='/'>
+      <Link to='/'>
         <p className="popup-mobile-text" onClick={onClose}>Home</p>
       </Link>
-      <Link to='/signin'>
-      <button type="submit" className="popup-mobile__btn"  onClick={onClose} >
+      <Link to='/home/#savedarticles' >
+        <p className="popup-mobile-text" onClick={onClose}>Saved Articles</p>
+      </Link>
+      <button  className="popup-mobile__btn"  onClick={onSignOut}  >
         {buttonText}
       </button>
-      </Link>
       </PopupMobile>
+
+    </>
   )
 }
 
-export default MobileSignIn;
+export default MobileMenu;

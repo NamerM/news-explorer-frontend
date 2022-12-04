@@ -5,9 +5,9 @@ import SearchForm from '../SearchForm/SearchForm';
 
 
 
-function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onSignOut  }) {
+function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onMobilePopupMenu, onSignOut  }) {
 
-  console.log("onSignout-headerjs", onSignOut);
+  // console.log("onSignout-headerjs", onSignOut);
 
   return (
   <header className="header" >
@@ -17,8 +17,9 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
           isLoggedIn={isLoggedIn}
           onDesktopClick={onSignInPopupClick}
           onMobileClick={onMobilePopupClick}
+          onMobileMenu={onMobilePopupMenu}
           onSignOut={onSignOut}/>
-        <SavedArticles />
+        {/* <SavedArticles /> */}
       </div>) :
     (
       <div className="header__nologin">
@@ -26,6 +27,7 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
           isLoggedIn={isLoggedIn}
           onDesktopClick={onSignInPopupClick}
           onMobileClick={onMobilePopupClick}
+          onMobileMenu={onMobilePopupMenu}
           onSignOut={onSignOut}
            />
         <SearchForm />

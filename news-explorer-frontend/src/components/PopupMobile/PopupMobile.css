@@ -15,7 +15,7 @@
 
 .popup-mobile__container {
   width: 320px;
-  height: 230px;
+  height: auto;
   background-color: #1a1b22;
 }
 

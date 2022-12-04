@@ -212,15 +212,16 @@
 
   .search-form__form {
     width: 288px;
-    margin-top: 122px;
+    margin: 122px 16px 0;
     padding: 0;
   }
   .search-form__form-field {
     flex-direction: column;
     width: 288px;
-    margin: 0px auto;
+    margin: 0px;
   }
   .search-form__form-input {
+    width: 253px;
     margin: 0;
     padding: 17px 16px;
     border-radius: 100px;

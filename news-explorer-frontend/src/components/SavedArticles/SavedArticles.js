@@ -7,7 +7,7 @@ function SavedArticles({ name }) {
   const separateKeywords = [...new Set(keyword)];
 
   return(
-    <section className="savedarticles__container">
+    <section className="savedarticles__container" id="savedarticles">
       <div className="savedarticles">
         <p className="savedarticles__tagtext">Saved articles</p>
         <h2 className="savedarticles__title">{name} Melih, you have {data.length} saved articles</h2>

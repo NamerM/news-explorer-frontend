@@ -89,7 +89,7 @@ list-style: none;
 
 /*logged in */
 .navigation__menu-item_dark {
-  font-family: "Roboto-Slab", "Arial", sans-serif;
+  font-family: "Roboto", "Arial", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -107,7 +107,7 @@ list-style: none;
   border-bottom: 3px solid #1a1b22;
 }
 
-.navigation__menu-item_dark:active {
+.active {
   border-bottom: 3px solid #1a1b22;
 }
 

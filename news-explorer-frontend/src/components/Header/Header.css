@@ -37,7 +37,7 @@
   }
 
   .header__logged_in {
-    height: 272px;
+    height: 66px;
   }
 }
 
@@ -52,8 +52,7 @@
   }
 
   .header__logged_in {
-    height: 342px;
-    /* max-width: 320px; */
+    height: 56px;
   }
 
 }

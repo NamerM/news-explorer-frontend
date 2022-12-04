@@ -11,6 +11,8 @@ import SignInPopup from '../Signin/Signin';
 import SignUpPopup from '../SignUp/Signup';
 import RegisterationSuccess from '../Success/Success';
 import MobileSignIn from '../MobileSignIn/MobileSignIn';
+import MobileMenu from '../MobileMenu/MobileMenu';
+
 
 function App( onSignInPopupClick) {
   const [currentUser, setCurrentUser] = useState({});
@@ -19,6 +21,7 @@ function App( onSignInPopupClick) {
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isMobileClicked, setIsMobileClicked] = useState(false);
+  const [isMobileMenuClicked, setIsMobileMenuClicked] = useState(false);
 
 
   useEffect(() => {
@@ -62,14 +65,20 @@ function App( onSignInPopupClick) {
     setIsSignUpPopupOpen(false);
     setIsRegisterPopupOpen(false);
     setIsMobileClicked(false);
+    setIsMobileMenuClicked(false);
   }
 
   function handlesignOut() {
     setIsLoggedIn(false);
+    closeAllPopups();
   }
 
   function handleMobileClick () {
-    setIsMobileClicked(true);
+   !isLoggedIn && setIsMobileClicked(true);
+  }
+
+  function handleMobileMenuClick() {
+    isLoggedIn && setIsMobileMenuClicked(true);
   }
 
   let location = useLocation();
@@ -106,12 +115,18 @@ function App( onSignInPopupClick) {
           isOpen={isMobileClicked}
           onClose={closeAllPopups}
         />
+        <MobileMenu
+          isOpen={isMobileMenuClicked}
+          onClose={closeAllPopups}
+          onSignOut={handlesignOut}
+        />
         <Header
           isLoggedIn={isLoggedIn}
           onSignInPopupClick={handleSignInClick}
           onSignUpPopupClick={handleSignUpClick}
           onSignOut={handlesignOut}
           onMobilePopupClick={handleMobileClick}
+          onMobilePopupMenu={handleMobileMenuClick}
           />
         <Main   />
         <Footer />

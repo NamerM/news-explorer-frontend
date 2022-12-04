@@ -77,15 +77,15 @@
   }
 }
 
-@media screen and (max-width: 405px) and (min-width: 318px) {
+@media screen and (max-width: 405px) and (min-width: 319px) {
+  .savedarticles__container {
+    height: 240px;
+  }
   .savedarticles {
     margin: 16px auto 32px;
     padding: 0;
   }
 
-  .savedarticles__container {
-    height: auto;
-  }
   .savedarticles__tagtext {
     font-size: 12px;
   }

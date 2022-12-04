@@ -7,11 +7,13 @@ import PopupMobile from "../PopupMobile/PopupMobile";
 function Navigation({
   onDesktopClick,
   onMobileClick,
+  onMobileMenu,
   onSignOut,
   isOpen,
   isLoggedIn
 }) {
-  console.log("onsignout=>", onSignOut);
+  // console.log("onsignout=>", onSignOut);
+  // console.log("onMobileMenu", onMobileMenu);
 
   return (
 
@@ -27,13 +29,13 @@ function Navigation({
             <NavLink className="navigation__menu-item_dark" to="/">Home</NavLink>
           </li>
           <li className="navigation__menu-list">
-            <NavLink className="navigation__menu-item_dark" to="/saved-artivles">Saved articles</NavLink>
+            <NavLink className="navigation__menu-item_dark" to="/saved-articles">Saved articles</NavLink>
           </li>
           <li>
             <button className="navigation__menu-item_dark navigation__menu-item-button_dark" onClick={onSignOut}>Melih</button>
           </li>
           <li>
-            <button className="navigation__menu-item-button_dark-mobile" onClick={onSignOut} />
+            <button className="navigation__menu-item-button_dark-mobile" onClick={onMobileMenu} />
           </li>
 
         </ul>

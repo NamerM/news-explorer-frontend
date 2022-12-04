@@ -10,7 +10,7 @@ function Main({
 
 }) {
  const currentUser = React.useContext(CurrentUserContext)
- const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
+ const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false to see
 
   return(
     <>
