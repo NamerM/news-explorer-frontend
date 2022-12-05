@@ -1,11 +1,12 @@
 import React from "react";
+import aboutphoto from '../../images/author-image.jpeg';
 
 function About() {
 
   return (
-    <div className="about">
+    <section className="about">
       <div >
-        <img className="about__image"/>
+        <img className="about__image" src={aboutphoto} alt="Photo of the Author" />
       </div>
       <div className="about__content">
         <h2 className="about__title">About the author</h2>
@@ -13,7 +14,7 @@ function About() {
         <p className="about__description"> Frontend and backend implenentations used in this app. We are asked to use all of the knowledge we gathered throughout our learning journey. Hope you will enjoy the app, countless hours are put in work for the production ^-^ .</p>
         <p className="about__description"> Also offering the best prices, I can modestly say that I'm your sole address for small business, family business solutions. Accept cup cakes for partial payments!</p>
       </div>
-    </div>
+    </section>
   )
 }
 

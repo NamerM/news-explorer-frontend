@@ -12,8 +12,8 @@ function Footer() {
         <Link to='/' className="footer__menu-item">Home</Link>
         <a href='https://www.practicum.com' className="footer__menu-item" target="_blank">Practicum</a>
         <div className="footer__menu-icon-container">
-          <a href='https://github.com/NamerM/' className="footer__menu-icon" target="_blank"><img src={gitIcon} /></a>
-          <a href='https://facebook.com' className="footer__menu-icon" target="_blank"><img src={fbIcon}/></a>
+          <a href='https://github.com/NamerM/' className="footer__menu-icon" target="_blank"><img src={gitIcon} alt="Github Icon" /></a>
+          <a href='https://facebook.com' className="footer__menu-icon" target="_blank"><img src={fbIcon} alt="facebook Icon" /></a>
         </div>
       </nav>
     </footer>

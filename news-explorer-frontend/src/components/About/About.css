@@ -7,7 +7,7 @@
 }
 
 .about__image {
-  background-image: url(../../images/author-image.jpeg);
+  /* background-image: url(../../images/author-image.jpeg); */
   background-repeat: no-repeat;
   background-size: cover;
   width: 464px;
