@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import '../NewsCard/NewsCard.css';
 
 
-function NewsCard({ card, isLoggedIn }) {
-  // const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false for page changes
+function NewsCard ({ card, isLoggedIn }) {
+
   const [toolTipVisible, setToolTipVisible] = useState(false); //
-  const [isBookmarked, setIsBookmarked] = useState(true); // toggle  true of false for bookmark icon/tooltip changes
+  const [isBookmarked, setIsBookmarked] = useState(false); // toggle  true of false for bookmark icon/tooltip changes
   const [isClicked, setIsClicked] = useState(false); //toggle
 
   const cursorOnBox = () => {
@@ -16,40 +16,56 @@ function NewsCard({ card, isLoggedIn }) {
   }
 
   const toolTipText = isBookmarked ? "Remove from saved" : "Add to saved"
-  const buttonClass = isBookmarked ? "newscard-item__delete" : "newscard-item__bookmark"
+  const buttonClass = isBookmarked ? "searchResults__newscard-item-delete" : "searchResults__newscard-item-bookmark"
 
-  const bookmarkStatus = () => {
-    (isClicked ? "newscard-item__bookmark" : "newscard-item") && setIsClicked(true)
+  // const bookmarkStatus = () => {
+  //   (isClicked ? "searchResults__newscard-item-bookmark" : "searchResults__newscard-item") && setIsClicked(true)
+  // }
+
+
+  const clickToggle = () =>{
+    setIsClicked(true)
   }
 
+
+  const bookmarkStatus = () => {
+    clickToggle ? setIsBookmarked(true) : setIsBookmarked(false)
+  }
+
+
+  console.log("bookmark", isBookmarked);
+  // console.log("setIsBookmarke=>", setIsBookmarked)
+  console.log("isClicked=>", isClicked);
+
+
   return(
-    <li className="newscard">
-      <div className="newscard-item">
+    <li className="searchResults__newscard ">
+      <div className="searchResults__newscard-item">
       { toolTipVisible && (
-        <button className="newscard-item__tooltip">
+        <button className="searchResults__newscard-item-tooltip">
           { isLoggedIn ? toolTipText : "Sign in to save articles" }
         </button>
        )}
 
-        <button className={`newscard-item__box ${
+        <button className={`searchResults__newscard-item-box ${
           isLoggedIn
             ? buttonClass
-            : "newscard-item__bookmark" }`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
+            : "searchResults__newscard-item-bookmark" }`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
             onMouseEnter={cursorOnBox}
             onMouseLeave={cursorOffBox}
-            onClick={bookmarkStatus}
+            onClick={clickToggle && bookmarkStatus }
             ></button>
-        <img className="newscard-item__image" src={card.image} alt="Newscard Image" />
-        <div className="newscard-item__info">
-          <p className="newscard-item__date">{card.date}</p>
-          <h2 className="newscard-item__title">{card.title}</h2>
-          <p className="newscard-item__text">{card.text}</p>
-          <p className="newscard-item__source">{card.source}</p>
-          { isLoggedIn && <p className="newscard-item__keyword">{card.keyword}</p>  }
+        <img className="searchResults__newscard-item-image" src={card.image} alt="News Card Image" />
+        <div className="searchResults__newscard-item-info">
+          <p className="searchResults__newscard-item-date">{card.date}</p>
+          <h2 className="searchResults__newscard-item-title">{card.title}</h2>
+          <p className="searchResults__newscard-item-text">{card.text}</p>
+          <p className="searchResults__newscard-item-source">{card.source}</p>
+          { isLoggedIn && <p className="searchResults__newscard-item-keyword">{card.keyword}</p>  }
         </div>
       </div>
     </li>
   )
 }
 
-export default NewsCard;
+export default NewsCard ;

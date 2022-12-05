@@ -31,7 +31,7 @@ buttonText="Sign In"
   }
   return(
       <PopupMobile
-        name="popup-mobile"
+        name="signin"
         isOpen={isOpen}
         onClose={onClose}
         onSubmit={handleSubmit}

@@ -7,19 +7,22 @@ import SavedArticles from "../SavedArticles/SavedArticles";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 function Main({
-
+  isLoggedIn
 }) {
  const currentUser = React.useContext(CurrentUserContext)
- const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle true or false to see
 
   return(
     <>
       <main className="main">
-        {isLoggedIn ?
-         ( <SavedArticles  /> ) :
-         ( <div></div> )
+        {isLoggedIn
+          ? <SavedArticles
+              isLoggedIn={isLoggedIn}
+            />
+          : ''
         }
-        <SearchResults />
+        <SearchResults
+          isLoggedIn={isLoggedIn}
+         />
         {/* <Preloader />
         <NotFound />  uncomment to see the components*/ }
         <About />

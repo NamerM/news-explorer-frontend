@@ -128,7 +128,9 @@ function App( onSignInPopupClick) {
           onMobilePopupClick={handleMobileClick}
           onMobilePopupMenu={handleMobileMenuClick}
           />
-        <Main   />
+        <Main
+          isLoggedIn={isLoggedIn}
+        />
         <Footer />
 
     </div>

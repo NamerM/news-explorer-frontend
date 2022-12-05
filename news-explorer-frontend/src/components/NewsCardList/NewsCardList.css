@@ -1,12 +1,12 @@
 
-.newscards__content {
+.searchResults__searchResults__newscards-content {
   display: flex;
   justify-content: center;
   padding: 0;
   margin: 0;
 }
 
-.newscards {
+.searchResults__newscards {
   max-width: 1232px;
   margin: 0;
   padding: 0;
@@ -18,28 +18,28 @@
 }
 
 @media screen and (max-width: 1260px ) {
-  .newscards {
+  .searchResults__newscards {
     grid-template-columns: repeat(3, 320px);
     grid-gap: 12px;
   }
 }
 
 @media screen and (max-width: 1009px ) {
-  .newscards {
+  .searchResults__newscards {
     grid-template-columns: repeat(2, 360px);
     grid-gap: 10px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .newscards {
+  .searchResults__newscards {
     max-width: 768px ;
     grid-gap: 8px;
     grid-template-columns: repeat(auto-fit, 224px);
   }
 }
 @media screen and (max-width: 736px ) {
-  .newscards {
+  .searchResults__newscards {
     max-width: 736px ;
     grid-gap: auto;
     grid-template-columns: repeat(2 , 220px);
@@ -47,7 +47,7 @@
 }
 
 @media screen and (max-width: 476px ) {
-  .newscards {
+  .searchResults__newscards {
     max-width: 476px ;
     grid-gap: auto;
     grid-template-columns: repeat(1 , 280px);
@@ -55,7 +55,7 @@
 }
 
 @media screen and (max-width: 320px ) {
-  .newscards {
+  .searchResults__newscards {
     max-width: 320px ;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, 288px);

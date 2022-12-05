@@ -1,6 +1,6 @@
 import react, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { NavHashLink as Link } from 'react-router-hash-link';
+import { useLocation, Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import PopupMobile from '../PopupMobile/PopupMobile';
 import '../../components/Navigation/Navigation.css';
@@ -34,19 +34,18 @@ buttonText="Sign Out"
   return(
     <>
       <PopupMobile
-        name="popup-mobile-menu"
+        name="menu"
         isOpen={isOpen}
         onClose={onClose}
-        onSubmit={handleSubmit}
         onSignOut={onSignOut}
-        buttonText
+        // buttonText
       >
       <Link to='/'>
         <p className="popup-mobile-text" onClick={onClose}>Home</p>
       </Link>
-      <Link to='/home/#savedarticles' >
+      <HashLink to='/#savedarticles' >
         <p className="popup-mobile-text" onClick={onClose}>Saved Articles</p>
-      </Link>
+      </HashLink>
       <button  className="popup-mobile__btn"  onClick={onSignOut}  >
         {buttonText}
       </button>

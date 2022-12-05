@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import NewsCard from '../NewsCard/NewsCard';
 import {data} from '../../utils/data';
 
-function NewsCardList(isLoggedIn) {
-  // const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle
+function NewsCardList({ isLoggedIn }) {
   const [isClicked, setIsClicked] = useState(false); //toggle
 
   // const onShowMoreClick = () => {
@@ -20,14 +19,15 @@ function NewsCardList(isLoggedIn) {
   // }
 
   return (
-    <div className="newscards__content">
+    <section className="searchResults__newscards-content">
       <ul className={`${ isLoggedIn
-        ? "newscards"
-        : "newscards newscards__notlogged"
+        ? "searchResults__newscards"
+        : "searchResults__newscards searchResults__newscards__notlogged"
       }`}>
         {data.map((card) =>  {
           return (
             <NewsCard
+              isLoggedIn={isLoggedIn}
               card={card}
               key={card._id}
               image={card.image}
@@ -47,7 +47,7 @@ function NewsCardList(isLoggedIn) {
         }
       </div> */}
 
-    </div>
+    </section>
     // <></>
   )
 }

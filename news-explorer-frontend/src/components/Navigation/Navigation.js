@@ -9,7 +9,6 @@ function Navigation({
   onMobileClick,
   onMobileMenu,
   onSignOut,
-  isOpen,
   isLoggedIn
 }) {
   // console.log("onsignout=>", onSignOut);
@@ -21,7 +20,7 @@ function Navigation({
 
     { isLoggedIn ?
       (<nav className="navigation">
-         <div >
+        <div >
           <img className="navigation__logo" src={logoDark}/>
         </div>
         <ul className="navigation__menu">
@@ -39,7 +38,8 @@ function Navigation({
           </li>
 
         </ul>
-      </nav>) :
+      </nav>
+      ) :
       (<nav className="navigation">
         <div className="navigation__logo">
           <img className="navigation__logo-image" src={logoWhite}/>

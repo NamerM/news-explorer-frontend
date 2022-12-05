@@ -24,7 +24,7 @@ function PopupWithForm({
     <section className={`popup popup_type_${name} ${isOpen ? "popup_open" : ""}`} >
       <div className="popup__square">
         <form className="popup__form" name={name} onSubmit={onSubmit}>
-          <h1 className="popup__title">{title}</h1>
+          <h3 className="popup__title">{title}</h3>
             {children}
           <button type="submit" disabled={!isButtonEnabled} className={`${isButtonEnabled ? '' : 'popup__save_disabled'} popup__save`} >
             {buttonText}

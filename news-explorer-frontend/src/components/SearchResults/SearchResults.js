@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import NewsCardList from '../NewsCardList/NewsCardList';
 
-function SearchResults() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle for displaying  both versions note to reviewer
+function SearchResults({ isLoggedIn }) {
+  // const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle for displaying  both versions note to reviewer
 
 
   return (
@@ -12,8 +12,10 @@ function SearchResults() {
         ? (<h2 className="searchResults__title">Search Results</h2>)
         : (<div></div>)
         }
-      <div className="searchResults_newsCards">
-        <NewsCardList />
+      <div className="searchResults_newscards">
+        <NewsCardList
+          isLoggedIn={isLoggedIn}
+        />
       </div>
         { !isLoggedIn  ? (
           <button type="button" className="searchResults__showbtn">Show More</button>

@@ -12,17 +12,18 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
   return (
   <header className="header" >
     { isLoggedIn  ?
-    ( <div className="header__logged_in">
+    ( <section className="header__logged_in">
         <Navigation
           isLoggedIn={isLoggedIn}
           onDesktopClick={onSignInPopupClick}
           onMobileClick={onMobilePopupClick}
           onMobileMenu={onMobilePopupMenu}
-          onSignOut={onSignOut}/>
-        {/* <SavedArticles /> */}
-      </div>) :
+          onSignOut={onSignOut}
+        />
+        <SavedArticles />
+      </section>) :
     (
-      <div className="header__nologin">
+      <section className="header__nologin">
         <Navigation
           isLoggedIn={isLoggedIn}
           onDesktopClick={onSignInPopupClick}
@@ -31,7 +32,7 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
           onSignOut={onSignOut}
            />
         <SearchForm />
-      </div>)
+      </section>)
     }
   </header>
 
