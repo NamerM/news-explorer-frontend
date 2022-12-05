@@ -23,7 +23,7 @@ return (
   <section className={`popup-mobile popup-mobile-type-${name} ${isOpen ? "popup-mobile_open" : ""} `}>
     <div className="popup-mobile__container"  onClick={onSubmit}>
       <nav>
-        <img className="popup-mobile-logo" src={logoWhite}/>
+        <img className="popup-mobile-logo" src={logoWhite} alt="NewsExplorer Logo, white color"/>
         <button type="button" className="popup-mobile__close" onClick={onClose} />
       </nav>
       {children}

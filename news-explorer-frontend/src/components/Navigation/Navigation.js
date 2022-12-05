@@ -21,7 +21,7 @@ function Navigation({
     { isLoggedIn ?
       (<nav className="navigation">
         <div >
-          <img className="navigation__logo" src={logoDark}/>
+          <img className="navigation__logo" src={logoDark} alt="News Explorer logo on black color" />
         </div>
         <ul className="navigation__menu">
           <li className="navigation__menu-list">
@@ -42,7 +42,7 @@ function Navigation({
       ) :
       (<nav className="navigation">
         <div className="navigation__logo">
-          <img className="navigation__logo-image" src={logoWhite}/>
+          <img className="navigation__logo-image" src={logoWhite} alt="NewsExplorer logo, white color"/>
         </div>
         <ul className="navigation__menu">
           <li className="navigation__menu-list">
