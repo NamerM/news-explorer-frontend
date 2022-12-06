@@ -18,19 +18,18 @@ function NewsCard ({ card, isLoggedIn }) {
   const toolTipText = isBookmarked ? "Remove from saved" : "Add to saved"
   const buttonClass = isBookmarked ? "searchResults__newscard-item-delete" : "searchResults__newscard-item-bookmark"
 
-  // const bookmarkStatus = () => {
-  //   (isClicked ? "searchResults__newscard-item-bookmark" : "searchResults__newscard-item") && setIsClicked(true)
-  // }
 
-
-  const clickToggle = () =>{
+  const clickStatus = () => {
     setIsClicked(true)
   }
 
-
   const bookmarkStatus = () => {
-    clickToggle ? setIsBookmarked(true) : setIsBookmarked(false)
+    (isClicked ? "searchResults__newscard-item-bookmark" : "searchResults__newscard-item") && setIsClicked(true) || setIsBookmarked(!isBookmarked)
   }
+
+  // bookmarked cards - saved and not saved - display cards pff
+
+
 
 
   console.log("bookmark", isBookmarked);
@@ -53,9 +52,9 @@ function NewsCard ({ card, isLoggedIn }) {
             : "searchResults__newscard-item-bookmark" }`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
             onMouseEnter={cursorOnBox}
             onMouseLeave={cursorOffBox}
-            onClick={clickToggle && bookmarkStatus }
+            onClick={bookmarkStatus}
             ></button>
-        <img className="searchResults__newscard-item-image" src={card.image} alt="News Card Image" />
+        <img className="searchResults__newscard-item-image" src={card.image} alt={card.title} />
         <div className="searchResults__newscard-item-info">
           <p className="searchResults__newscard-item-date">{card.date}</p>
           <h2 className="searchResults__newscard-item-title">{card.title}</h2>

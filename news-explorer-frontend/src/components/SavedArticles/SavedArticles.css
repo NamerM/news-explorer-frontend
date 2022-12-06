@@ -1,15 +1,12 @@
 .savedarticles__container {
   border-top: 1px solid #d1d2d6;
   max-width: 1440px;
+  height: 294px;
 }
 
 .savedarticles {
-  background-color: #ffffff;   /* #e5e5e5;*/
-  height: 294px;
   padding: 0;
   margin: 40px auto 56px 104px;
-  /* margin-top: 40px;
-  margin-left: 104px; */
   max-width: 712px;
 }
 
@@ -57,8 +54,7 @@
     height: 204px;
   }
   .savedarticles {
-    height: auto;
-    margin: 24px 0 32px 40px;
+    margin: 24px 0 8px 40px;
     padding: 0;
   }
   .savedarticles__tagtext {
@@ -82,7 +78,7 @@
     height: 240px;
   }
   .savedarticles {
-    margin: 16px auto 32px;
+    margin: 8px 16px 32px;
     padding: 0;
   }
 
@@ -96,6 +92,8 @@
   .savedarticles__keywords {
     width: 288px;
     margin-top: 50px;
+    margin-bottom: 0;
+
   }
 
 }

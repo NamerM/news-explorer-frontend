@@ -16,7 +16,7 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 
 function App( onSignInPopupClick) {
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);

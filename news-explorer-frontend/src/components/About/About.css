@@ -45,9 +45,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .about {
-    /* height: 354px; */
-  }
+
   .about__image {
     max-width: 232px;
     height: 232px;

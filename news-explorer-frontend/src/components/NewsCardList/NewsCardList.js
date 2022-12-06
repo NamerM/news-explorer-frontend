@@ -22,7 +22,7 @@ function NewsCardList({ isLoggedIn }) {
     <section className="searchResults__newscards-content">
       <ul className={`${ isLoggedIn
         ? "searchResults__newscards"
-        : "searchResults__newscards searchResults__newscards__notlogged"
+        : "searchResults__newscards searchResults__newscards_notlogged"
       }`}>
         {data.map((card) =>  {
           return (

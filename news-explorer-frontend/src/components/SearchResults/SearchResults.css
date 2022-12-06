@@ -81,6 +81,9 @@
 
 
 @media screen and (max-width: 320px) {
+  .searchResults {
+    width: 100%;
+  }
   .searchResults__content {
     margin: 24px 16px 58px;
     padding: 0;
