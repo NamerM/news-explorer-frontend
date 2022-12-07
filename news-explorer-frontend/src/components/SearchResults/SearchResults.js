@@ -11,27 +11,30 @@ function SearchResults({ isLoggedIn, isBookmarked }) {
   return (
     <section className="searchResults">
       <div className="searchResults__content">
-        { !isLoggedIn
-        ? (<h2 className="searchResults__title">Search Results</h2>)
-        : (<div></div>)
-        }
-      <div className="searchResults_newscards">
-        { isSavedArticles
-          ? (<SavedCardList
-              isBookmarked={isBookmarked}
-              isLoggedIn={isLoggedIn}
-            />)
-          : (<NewsCardList
-              isBookmarked={isBookmarked}
-              isLoggedIn={isLoggedIn}
-            />)
-        }
+        <div className="searchResults_newscards">
+          { isSavedArticles
+            ? (
+                <SavedCardList
+                isBookmarked={isBookmarked}
+                isLoggedIn={isLoggedIn}
+                />
+              )
+            : (<>
+                <h2 className="searchResults__title">Search Results</h2>
+                <NewsCardList
+                isBookmarked={isBookmarked}
+                isLoggedIn={isLoggedIn}
+                />
+                 <button type="button" className="searchResults__showbtn">Show More</button>
+              </>
+              )
+          }
 
-      </div>
-        { !isLoggedIn  ? (
-          <button type="button" className="searchResults__showbtn">Show More</button>
-          ) : (<></>)
-        }
+        </div>
+          {/* { !isLoggedIn  ? (
+            <button type="button" className="searchResults__showbtn">Show More</button>
+            ) : (<></>)
+          } */}
       </div>
     </section>
   )

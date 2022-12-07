@@ -72,9 +72,9 @@
   background-image: url("../../images/bookmark-hover.svg");
 }
 
-.searchResults__newscard-item-bookmark:active {
+/* .searchResults__newscard-item-bookmark:active {
   background-image: url("../../images/bookmark-filled.svg");
-}
+} */
 
 .searchResults__newscard-item-bookmark-clicked {
   background-image: url("../../images/bookmark-filled.svg");
