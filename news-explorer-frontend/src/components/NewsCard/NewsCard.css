@@ -233,6 +233,22 @@
   .searchResults__newscard-item-source {
     margin: 0;
   }
+  .searchResults__newscard-item-tooltip {
+    /* display: none; */
+    border-radius: 10px;
+    border: 0;
+    background-color: #ffffff;
+    width: 144px;
+    height: 40px;
+    position: absolute;
+    top: 8px;
+    right: 69px;
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14.06px;
+    color: #000000;
+  }
 }
 
 @media screen and (min-width: 318px )  and (max-width: 767px) {
