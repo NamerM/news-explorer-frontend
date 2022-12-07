@@ -78,6 +78,8 @@
 
 .searchResults__newscard-item-bookmark-clicked {
   background-image: url("../../images/bookmark-filled.svg");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .searchResults__newscard-item-delete {
   background-image: url("../../images/trash.svg");

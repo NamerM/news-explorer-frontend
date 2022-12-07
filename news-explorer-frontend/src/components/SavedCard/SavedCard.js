@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import '../NewsCard/NewsCard.css';
 
 
-function NewsCard ({ card, isLoggedIn }) {
+function SavedCard ({ card, isLoggedIn }) {
 
   const [toolTipVisible, setToolTipVisible] = useState(false); //
   const [isBookmarked, setIsBookmarked] = useState(false); // toggle  true of false for bookmark icon/tooltip changes
@@ -15,16 +15,22 @@ function NewsCard ({ card, isLoggedIn }) {
     (isLoggedIn || !isLoggedIn) && setToolTipVisible(false);
   }
 
-  const toolTipText = isBookmarked ? "Remove bookmark" : "Add bookmark"
-  const buttonClass = isBookmarked ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"
+  const toolTipText = isBookmarked ? "Remove from saved" : "Add to saved"
+  const buttonClass = isBookmarked ? "searchResults__newscard-item-delete" : "searchResults__newscard-item-bookmark"
 
   const clickStatus = () => {
     setIsClicked(true)
   }
 
   const bookmarkStatus = () => {
-    (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(true) || setIsBookmarked(!isBookmarked)
+    (isClicked ? "searchResults__newscard-item-bookmark" : "searchResults__newscard-item") && setIsClicked(true) || setIsBookmarked(!isBookmarked)
   }
+
+  // bookmarked cards a function to group and map them on the savedcards list
+    const bookMarkedCard = (card) => {
+
+    }
+
 
   // console.log("bookmark", isBookmarked);
   // console.log("isClicked=>", isClicked);
@@ -62,4 +68,4 @@ function NewsCard ({ card, isLoggedIn }) {
   )
 }
 
-export default NewsCard ;
+export default SavedCard ;

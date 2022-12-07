@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import { useLocation } from 'react-router-dom';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import SavedCardList from '../SavedCardList/SavedCardList';
 
 function SearchResults({ isLoggedIn, isBookmarked }) {
   // const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle for displaying  both versions note to reviewer
-
+  const location = useLocation();
+  const isSavedArticles = location.pathname === '/saved-articles';
 
   return (
     <section className="searchResults">
@@ -14,7 +16,7 @@ function SearchResults({ isLoggedIn, isBookmarked }) {
         : (<div></div>)
         }
       <div className="searchResults_newscards">
-        { isBookmarked
+        { isSavedArticles
           ? (<SavedCardList
               isBookmarked={isBookmarked}
               isLoggedIn={isLoggedIn}
