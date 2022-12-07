@@ -6,7 +6,7 @@ import SavedCardList from '../SavedCardList/SavedCardList';
 function SearchResults({ isLoggedIn, isBookmarked }) {
   // const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle for displaying  both versions note to reviewer
   const location = useLocation();
-  const isSavedArticles = location.pathname === '/saved-articles';
+  const isSavedArticles = location.pathname === '/saved-articles' || '/#saved-articles';
 
   return (
     <section className="searchResults">

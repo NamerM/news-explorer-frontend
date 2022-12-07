@@ -31,18 +31,18 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px)  {
   .searchResults__newscards {
     max-width: 768px ;
     grid-gap: 8px;
     grid-template-columns: repeat(auto-fit, 224px);
   }
 }
-@media screen and (max-width: 736px ) {
+@media screen and (max-width: 767px ) {
   .searchResults__newscards {
     max-width: 736px ;
-    grid-gap: auto;
-    grid-template-columns: repeat(2 , 220px);
+    grid-gap: 8px;
+    grid-template-columns: repeat(1 , auto);
   }
 }
 

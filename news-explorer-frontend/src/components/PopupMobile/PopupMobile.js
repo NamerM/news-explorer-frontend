@@ -20,7 +20,7 @@ const currentUser = useContext(CurrentUserContext);
 
 return (
   <>
-  <section className={`popup-mobile popup-mobile__type-${name} ${isOpen ? "popup-mobile_open" : ""} `}>
+  <section className={`popup-mobile popup-mobile_type_${name} ${isOpen ? "popup-mobile_open" : ""} `}>
     <div className="popup-mobile__container"  onClick={onSubmit}>
       <nav>
         <img className="popup-mobile-logo" src={logoWhite} alt="NewsExplorer Logo, white color"/>

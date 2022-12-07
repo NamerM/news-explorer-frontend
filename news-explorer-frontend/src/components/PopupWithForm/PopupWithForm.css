@@ -266,4 +266,23 @@
     padding: 16px;
     border-radius: 25px;
   }
+  .popup__close{
+    top: -50px;
+    right: 0px;
+  }
+  .popup__square_success {
+    display: flex;
+    flex-direction: column;
+    width:90%;
+    padding: 8px 8px 24px;
+  }
+  .popup__success-title {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .popup__success-link {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }

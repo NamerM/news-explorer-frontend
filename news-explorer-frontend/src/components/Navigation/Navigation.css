@@ -37,7 +37,7 @@ list-style: none;
 }
 
 .navigation__menu-item {
-  font-family: "Roboto-Slab", "Arial", sans-serif;
+  font-family: "Roboto", "Arial", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -54,9 +54,9 @@ list-style: none;
   border-bottom: 3px solid #ffffff ;
 }
 
-.navigation__menu-item:active {
+/* .navigation__menu-item:active {
   border-bottom: 3px solid #ffffff ;
-}
+} */
 
 .navigation__menu-item-button {
   display: flex;

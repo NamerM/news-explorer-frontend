@@ -43,7 +43,7 @@ buttonText="Sign Out"
       <Link to='/'>
         <p className="popup-mobile-text" onClick={onClose}>Home</p>
       </Link>
-      <HashLink to='/#savedarticles' >
+      <HashLink to='/#saved-articles' >
         <p className="popup-mobile-text" onClick={onClose}>Saved Articles</p>
       </HashLink>
       <button  className="popup-mobile__btn"  onClick={onSignOut}  >

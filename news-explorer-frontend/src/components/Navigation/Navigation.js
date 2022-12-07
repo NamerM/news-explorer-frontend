@@ -46,14 +46,14 @@ function Navigation({
         </div>
         <ul className="navigation__menu">
           <li className="navigation__menu-list">
-            <Link className="navigation__menu-item" to="/">Home</Link>
+            <NavLink className="navigation__menu-item" to="/">Home</NavLink>
           </li>
           <li className="navigation__menu-list">
-            <Link className="navigation__menu-item-link"  to="/signin" >
+            <NavLink className="navigation__menu-item-link"  to="/signin" >
               <button className="navigation__menu-item navigation__menu-item-button" onClick={onDesktopClick} >
                 Sign in
               </button>
-            </Link>
+            </NavLink>
               <button className="navigation__menu-item-button_mobile" onClick={onMobileClick} />
 
           </li>

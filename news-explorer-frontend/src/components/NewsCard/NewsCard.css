@@ -235,7 +235,7 @@
   }
 }
 
-@media screen and (max-width: 320px ) {
+@media screen and (min-width: 318px )  and (max-width: 767px) {
   .searchResults__newscard-item {
     max-width: 288px;
     height: 440px;
@@ -243,5 +243,11 @@
   .searchResults__newscard-item-image {
     max-width: 288px;
     height: 196px;
+  }
+  .searchResults__newscard-item-tooltip {
+    width: 142px;
+    position: absolute;
+    top: 8px;
+    right: 56px;
   }
 }
