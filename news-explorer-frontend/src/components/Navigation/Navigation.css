@@ -13,6 +13,15 @@
   height:80px;
   margin: 0;
   padding: 0 104px;
+  border-bottom: 1px solid #d1d2d6;
+}
+.navigation-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:80px;
+  margin: 0;
+  padding: 0 104px;
   border-bottom: 1px solid #c4c4c4;
 }
 
@@ -45,18 +54,23 @@ list-style: none;
   text-decoration: none;
   margin-top: 30px;
   cursor: pointer;
-  padding: 0 8px;
+  padding: 0 38px;
 }
-
+/*
 .navigation__menu-item:visited {
   width: 68px;
   color: #ffffff;
   border-bottom: 3px solid #ffffff ;
+} */
+
+.navigation__menu-item:active {
+  border-bottom: 3px solid #ffffff ;
 }
 
-/* .navigation__menu-item:active {
+/* .active{
   border-bottom: 3px solid #ffffff ;
 } */
+
 
 .navigation__menu-item-button {
   display: flex;
@@ -78,10 +92,10 @@ list-style: none;
   text-decoration: inherit;
 }
 
-.navigation__menu-item-button:active {
+/* .navigation__menu-item-button:active {
   border: 1px solid #ffffff;
   text-decoration: inherit;
-}
+} */
 
 .navigation__menu-item-link {
   text-decoration: none;
@@ -102,14 +116,17 @@ list-style: none;
   background: none;
 }
 
-.navigation__menu-item_dark:visited {
+.navigation__menu-item_dark:active {
   color: #1a1b22;
   border-bottom: 3px solid #1a1b22;
+  text-decoration: inherit;
 }
 
-.active {
+
+
+/* .active {
   border-bottom: 3px solid #1a1b22;
-}
+} */
 
 .navigation__menu-item-button_dark {
   display: flex;
@@ -118,12 +135,30 @@ list-style: none;
   justify-content: center;
   padding: 12px 54px 12px 19px;
   /* width: 176px; */
-  height: 48px;
+  height: 40px;
   border: 1px solid #1a1b22;
   border-radius: 100px;
   text-decoration: none;
   margin: 19px 0 13px 26px;
   background-image: url('../../images/exitIcon.jpg');
+  background-repeat: no-repeat;
+  background-position-x:calc(100% - 19px);
+  background-position-y: center;
+}
+.navigation__menu-item-button_dark-home {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 19px 0 13px 26px;
+  padding: 12px 54px 12px 19px;
+  /* width: 176px; */
+  height: 40px;
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  text-decoration: none;
+  background-color: transparent;
+  background-image: url('../../images/Union.svg');
   background-repeat: no-repeat;
   background-position-x:calc(100% - 19px);
   background-position-y: center;
@@ -150,6 +185,12 @@ list-style: none;
   .navigation {
     padding: 0 40px;
     height: 66px;
+    border-bottom: 1px solid #d1d2d6;
+  }
+
+  .navigation-home {
+    padding: 0 40px;
+    height: 66px;
   }
 
   .navigation__logo {
@@ -158,10 +199,10 @@ list-style: none;
   }
 
   .navigation__menu-item {
+    margin: 0px 8px ;
+    padding: 22px 19px;
     font-size: 16px;
     line-height: 24px;
-    margin-top: 22px;
-    margin-bottom: 20px;
   }
 
   .navigation__menu-item-button {
@@ -182,7 +223,16 @@ list-style: none;
     /* padding-left: 16px; */
     padding: 0px 50px 0px 15px;
     background-position-x:calc(90%);
-
+  }
+  .navigation__menu-item-button_dark-home {
+    margin: 14px 0 12px 8px;
+    padding: 12px 54px 12px 15px;
+    /* width: 176px; */
+    height: 40px;
+    border: 1px solid #ffffff;
+    border-radius: 100px;
+    background-position-x:calc(90%);
+    background-position-y: calc(40%) ;
   }
 }
 

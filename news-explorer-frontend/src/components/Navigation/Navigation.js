@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { NavLink, Link } from 'react-router-dom';
 import logoWhite from '../../images/NewsExplorer.svg';
 import logoDark from '../../images/NewsExplorer-black.svg';
@@ -11,34 +12,39 @@ function Navigation({
   onSignOut,
   isLoggedIn
 }) {
-  // console.log("onsignout=>", onSignOut);
-  // console.log("onMobileMenu", onMobileMenu);
+
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const isHomeNavClass = isHome ? "navigation-home" : "navigation";
+  const isHomeClass = isHome ? "navigation__menu-item" : "navigation__menu-item_dark";
+  const isHomeButtonClass = isHome ? "navigation__menu-item navigation__menu-item-button_dark-home" : "navigation__menu-item_dark navigation__menu-item-button_dark";
+  const isHomeImage = isHome ? logoWhite : logoDark
 
   return (
 
     <>
 
     { isLoggedIn ?
-      (<nav className="navigation">
+      (<nav className={`${isHomeNavClass}`}>
         <div >
-          <img className="navigation__logo" src={logoDark} alt="News Explorer logo on black color" />
+          <img className="navigation__logo" src={`${isHomeImage}`} alt="News Explorer logo " />
         </div>
         <ul className="navigation__menu">
           <li className="navigation__menu-list">
-            <NavLink className="navigation__menu-item_dark" to="/">Home</NavLink>
+            <NavLink className={`${isHomeClass}`} to="/">Home</NavLink>
           </li>
           <li className="navigation__menu-list">
-            <NavLink className="navigation__menu-item_dark" to="/saved-articles">Saved articles</NavLink>
+            <NavLink className={`${isHomeClass}`} to="/saved-articles">Saved articles</NavLink>
           </li>
           <li>
-            <button className="navigation__menu-item_dark navigation__menu-item-button_dark" onClick={onSignOut}>Melih</button>
+            <button className={`${isHomeButtonClass}`} onClick={onSignOut}>Melih</button>
           </li>
           <li>
             <button className="navigation__menu-item-button_dark-mobile" onClick={onMobileMenu} />
           </li>
-
         </ul>
       </nav>
+
       ) :
       (<nav className="navigation">
         <div className="navigation__logo">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import SearchResults from '../SearchResults/SearchResults';
 import Preloader from '../Preloader/Preloader';
 import About from '../About/About';
@@ -10,11 +11,13 @@ function Main({
   isLoggedIn
 }) {
  const currentUser = React.useContext(CurrentUserContext)
+ const location = useLocation();
+ const isSavedArticles = location.pathname === '/saved-articles';
 
   return(
     <>
       <main className="main">
-        {isLoggedIn
+        {isLoggedIn && isSavedArticles
           ? <SavedArticles
               isLoggedIn={isLoggedIn}
             />

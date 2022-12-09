@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import SavedArticles from '../SavedArticles/SavedArticles';
 import SearchForm from '../SearchForm/SearchForm';
@@ -7,12 +8,15 @@ import SearchForm from '../SearchForm/SearchForm';
 
 function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onMobilePopupMenu, onSignOut  }) {
 
-  // console.log("onSignout-headerjs", onSignOut);
+  const location = useLocation();
+  const isSavedArticles = location.pathname === '/saved-articles';
+
+
 
   return (
   <header className="header" >
-    { isLoggedIn  ?
-    ( <section className="header__logged_in">
+    { isLoggedIn && isSavedArticles ?
+    ( <section className="header__logged-in">
         <Navigation
           isLoggedIn={isLoggedIn}
           onDesktopClick={onSignInPopupClick}
@@ -20,10 +24,10 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
           onMobileMenu={onMobilePopupMenu}
           onSignOut={onSignOut}
         />
-        <SavedArticles />
+
       </section>) :
     (
-      <section className="header__nologin">
+      <section className="header__nologin" a>
         <Navigation
           isLoggedIn={isLoggedIn}
           onDesktopClick={onSignInPopupClick}

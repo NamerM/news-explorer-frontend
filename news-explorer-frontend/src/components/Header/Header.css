@@ -20,7 +20,7 @@
   margin: 0;
 }
 
-.header__logged_in {
+.header__logged-in {
   background-color: #ffffff;
   height: 80px;
 }
@@ -36,7 +36,7 @@
     height: 400px;
   }
 
-  .header__logged_in {
+  .header__logged-in {
     height: 66px;
   }
 }
@@ -51,7 +51,7 @@
     height: 536px;
   }
 
-  .header__logged_in {
+  .header__logged-in {
     height: 56px;
   }
 
