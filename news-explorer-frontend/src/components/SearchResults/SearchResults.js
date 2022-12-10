@@ -11,7 +11,7 @@ function SearchResults({ isLoggedIn, isBookmarked }) {
   return (
     <section className="searchResults">
       <div className="searchResults__content">
-        <div className="searchResults_newscards">
+        <div className="searchResults__content-newscards">
           { isSavedArticles
             ? (
                 <SavedCardList
@@ -20,12 +20,12 @@ function SearchResults({ isLoggedIn, isBookmarked }) {
                 />
               )
             : (<>
-                <h2 className="searchResults__title">Search Results</h2>
+                <h2 className="searchResults__content-title">Search Results</h2>
                 <NewsCardList
                 isBookmarked={isBookmarked}
                 isLoggedIn={isLoggedIn}
                 />
-                 <button type="button" className="searchResults__showbtn">Show More</button>
+                 <button type="button" className="searchResults__content-showbtn">Show More</button>
               </>
               )
           }

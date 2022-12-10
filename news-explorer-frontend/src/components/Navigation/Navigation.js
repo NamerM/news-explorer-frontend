@@ -16,9 +16,9 @@ function Navigation({
   const location = useLocation();
   const isHome = location.pathname === '/';
   const isHomeNavClass = isHome ? "navigation-home" : "navigation";
-  const isHomeClass = isHome ? "navigation__menu-item" : "navigation__menu-item_dark";
-  const isHomeButtonClass = isHome ? "navigation__menu-item navigation__menu-item-button_dark-home" : "navigation__menu-item_dark navigation__menu-item-button_dark";
-  const isHomeImage = isHome ? logoWhite : logoDark
+  const isHomeClass = isHome ? "navigation__menu-item" : "navigation__menu-item-dark";
+  const isHomeButtonClass = isHome ? "navigation__menu-item navigation__menu-item-button-dark-home" : "navigation__menu-item-dark navigation__menu-item-button-dark";
+  const isHomeImage = isHome ? logoWhite : logoDark;
 
   return (
 
@@ -34,13 +34,13 @@ function Navigation({
             <NavLink className={`${isHomeClass}`} to="/">Home</NavLink>
           </li>
           <li className="navigation__menu-list">
-            <NavLink className={`${isHomeClass}`} to="/saved-articles">Saved articles</NavLink>
+            <NavLink className={` ${isHomeClass}` } to="/saved-articles">Saved articles</NavLink>
           </li>
           <li>
             <button className={`${isHomeButtonClass}`} onClick={onSignOut}>Melih</button>
           </li>
           <li>
-            <button className="navigation__menu-item-button_dark-mobile" onClick={onMobileMenu} />
+            <button className="navigation__menu-item-button-dark-mobile" onClick={onMobileMenu} />
           </li>
         </ul>
       </nav>
