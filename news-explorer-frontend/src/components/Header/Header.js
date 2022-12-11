@@ -12,7 +12,6 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
   const isSavedArticles = location.pathname === '/saved-articles';
 
 
-
   return (
   <header className="header" >
     { isLoggedIn && isSavedArticles ?
