@@ -193,11 +193,15 @@ list-style: none;
     font-size: 16px;
     line-height: 24px;
   }
-
   .navigation__menu-item-button {
     width: 152px;
     height: 40px;
+    border: 1px solid #ffffff;
+    border-radius: 100px;
+    text-decoration: none;
+    background: none;
     margin: 14px auto 12px 8px;
+    padding: 0;
   }
 
   .navigation__menu-item-dark {
