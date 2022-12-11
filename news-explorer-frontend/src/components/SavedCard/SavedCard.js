@@ -5,7 +5,7 @@ import '../NewsCard/NewsCard.css';
 function SavedCard ({ card, isLoggedIn }) {
 
   const [toolTipVisible, setToolTipVisible] = useState(false); //
-  const [isBookmarked, setIsBookmarked] = useState(false); // toggle  true of false for bookmark icon/tooltip changes
+  const [isBookmarked, setIsBookmarked] = useState(true); // toggle  true of false for bookmark icon/tooltip changes
   const [isClicked, setIsClicked] = useState(false); //toggle
 
   const cursorOnBox = () => {

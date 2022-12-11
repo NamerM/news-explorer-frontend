@@ -1,5 +1,5 @@
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Switch, Route } from 'react-router-dom';
 import react, { useState, useEffect} from 'react';
 import './App.css';
 import '../../index';
