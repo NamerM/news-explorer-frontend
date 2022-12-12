@@ -23,6 +23,7 @@ class MainApi {
       },
       body: JSON.stringify({name, email, password}),
     })
+    .then(this._checkResponse)
   }
 
   signin(email, password) {
@@ -34,6 +35,7 @@ class MainApi {
       },
       body: JSON.stringify({ email, password})
     })
+    .then(this._checkResponse)
   }
 
   checkToken(token) {
@@ -44,8 +46,51 @@ class MainApi {
         "Content-Type": "application/json",
         authorization: `Bearer ${token}`
       },
-    }
-
-    )
+    })
+    .then(this._checkResponse)
   }
+
+  savedArticleStatusChange(id, isSaved) {
+    const method = isSaved ? "DELETE" : "PUT";
+    return this._checkFetch(`${this._baseUrl}/articles/${id}/saves`, {  // cards /${id}/likes
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("jwt")}`
+      },
+      method: method,
+    })
+    .then(this._checkResponse)
+  }
+
+  deleteArticle(id) {
+    return this._checkFetch(`${this._baseUrl}/articles/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStoragegetItem("jwt")}`
+      },
+      method: "DELETE",
+    })
+    .then(this._checkResponse)
+  }
+
+  getArticles(){
+    return this._checkFetch(`${this._baseUrl/articles}`, {
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(this._checkResponse)
+  }
+
 }
+
+const api = new MainApi ({
+  baseUrl : "http://localhost:3000",
+  headers: {
+    authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    "Content-Type": "application/json"
+  }
+})
+
+export default api;
