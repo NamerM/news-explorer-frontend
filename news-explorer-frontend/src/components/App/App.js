@@ -1,6 +1,6 @@
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { useLocation, Switch, Route } from 'react-router-dom';
 import react, { useState, useEffect} from 'react';
+import { useLocation, useNavigate, Switch, Route } from 'react-router-dom';
 import './App.css';
 import '../../index';
 import Main from '../Main/Main';
@@ -12,10 +12,16 @@ import SignUpPopup from '../SignUp/Signup';
 import RegisterationSuccess from '../Success/Success';
 import MobileSignIn from '../MobileSignIn/MobileSignIn';
 import MobileMenu from '../MobileMenu/MobileMenu';
+import api from '../../utils/MainApi';
 
 
-function App( onSignInPopupClick) {
+function App() {
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
+  const [savedArticle, isSavedArticle] = useState ({ name: '', link: ''});
+  const [articles, setArticles] = useState([]);
+  const [userDate, setUserData] = useState({ name: 'name'});
+  const [isCheckingToken, setIsCheckingToken] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
@@ -23,9 +29,77 @@ function App( onSignInPopupClick) {
   const [isMobileClicked, setIsMobileClicked] = useState(false);
   const [isMobileMenuClicked, setIsMobileMenuClicked] = useState(false);
 
+    //MainApi signup
+    const onRegisterUser = ({ name, email, password }) => {
+      api.signup(name, email, password)
+        .then((res) => {
+          if(res.data._id) {
+            setIsLoggedIn(true);
+            setUserData({ name }); // check if I need to use this later on
+            localStorage.setItem('jwt', res.token);
+            navigate('/')
+          }
+        })
+        .catch((err) => {
+          console.log("signup err =>", err)
+        })
+    }
+    // MainApi Signin
+    const onLogin = ({ email, password }) => {
+      api.signin(email, password)
+        .then((res) => {
+          if(res.data._id) {
+            navigate('/signin');
+          } else {
+            console.log("signin fail")
+          }
+        })
+        .catch((err) => {
+          console.log("signin fail=>", err);
+        })
+    }
+
+    //MainApi checkToken
+    useEffect(() => {
+      const token = localStorage.getItem('jwt')
+      if(token) {
+        api.checkToken(token)
+        .then((res) => {
+          if(res.data._id) {
+            setIsLoggedIn(true);
+            setUserData({ email: res.data.email})
+            navigate('/')
+          } else {
+            navigate('/signin');
+            localStorage.removeItem(token);
+          }
+        })
+        .catch((err) => {
+          console.log("err =>", err)
+          navigate('/signin')
+        })
+        .finally(() => setIsCheckingToken(false))
+      }
+    }, [navigate])
+
+    //MainApi getUserInfo getArticles
+    useEffect(() => {
+      const token = localStorage.getItem('jwt')
+      if(token) {
+        api.getUserInfo(token)
+          .then( res => {
+            setCurrentUser(res.data);
+          })
+          .catch((err) => console.log(err));
+        api.getArticles(token)
+          .then(res => {
+            setArticles(res.data);
+          })
+          .catch((err) => console.log(err));
+      }
+    }, [])
 
   useEffect(() => {
-
     const closeByEscape = (e) => {
       if (e.key === 'Escape') {
         closeAllPopups();
@@ -70,7 +144,9 @@ function App( onSignInPopupClick) {
 
   function handlesignOut() {
     setIsLoggedIn(false);
+    localStorage.removeItem('jwt');
     closeAllPopups();
+    navigate('/');
   }
 
   function handleMobileClick () {
@@ -101,11 +177,13 @@ function App( onSignInPopupClick) {
           isOpen={isSignInPopupOpen}
           onClose={closeAllPopups}
           onLoginUser={closeAllPopups}
+          onLogin={onLogin}
         />
         <SignUpPopup
           isOpen={isSignUpPopupOpen}
           onClose={closeAllPopups}
           onSignupUser={handleRegisterSuccess}
+          onRegisterUser={onRegisterUser}
         />
         <RegisterationSuccess
           isOpen={isRegisterPopupOpen}
@@ -114,6 +192,7 @@ function App( onSignInPopupClick) {
         <MobileSignIn
           isOpen={isMobileClicked}
           onClose={closeAllPopups}
+          onLogin={onLogin}
         />
         <MobileMenu
           isOpen={isMobileMenuClicked}

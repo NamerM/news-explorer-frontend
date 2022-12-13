@@ -1,21 +1,24 @@
+export const BASE_URL = "http://localhost:3001";
+
 class MainApi {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
 
+
   _checkResponse(res){
     return res.ok ? res.json() : Promise.reject(`Error: ${res.StatusText}`)
   }
 
-  _checkFetch(url, headers) {
-    return fetch(url, headers).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.StatusText}`)
-    )
-  }
+  // _checkFetch(url, headers) {
+  //   return fetch(url, headers).then((res) =>
+  //     res.ok ? res.json() : Promise.reject(`Error: ${res.StatusText}`)
+  //   )
+  // }
 
   signup(name, email, password) {
-    return this._checkFetch(`${BASE_URL}/signup`, {
+    return fetch(`${BASE_URL}/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -27,7 +30,7 @@ class MainApi {
   }
 
   signin(email, password) {
-    return this._checkFetch(`${BASE_URL}/signin`, {
+    return fetch(`${BASE_URL}/signin`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -38,8 +41,18 @@ class MainApi {
     .then(this._checkResponse)
   }
 
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    })
+    .then(this._checkResponse)
+  }
+
   checkToken(token) {
-    return this._checkFetch(`${BASE_URL}/users/me`, {
+    return fetch(`${BASE_URL}/users/me`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -52,7 +65,7 @@ class MainApi {
 
   savedArticleStatusChange(id, isSaved) {
     const method = isSaved ? "DELETE" : "PUT";
-    return this._checkFetch(`${this._baseUrl}/articles/${id}/saves`, {  // cards /${id}/likes
+    return fetch(`${this._baseUrl}/articles/${id}/saves`, {  // cards /${id}/likes
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("jwt")}`
@@ -63,10 +76,10 @@ class MainApi {
   }
 
   deleteArticle(id) {
-    return this._checkFetch(`${this._baseUrl}/articles/${id}`, {
+    return fetch(`${this._baseUrl}/articles/${id}`, {
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStoragegetItem("jwt")}`
+        authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
       method: "DELETE",
     })
@@ -74,7 +87,7 @@ class MainApi {
   }
 
   getArticles(){
-    return this._checkFetch(`${this._baseUrl/articles}`, {
+    return fetch(`${this._baseUrl}/articles`, {
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem('jwt')}`

@@ -10,7 +10,8 @@ function Navigation({
   onMobileClick,
   onMobileMenu,
   onSignOut,
-  isLoggedIn
+  isLoggedIn,
+  username
 }) {
 
   const location = useLocation();
@@ -19,6 +20,7 @@ function Navigation({
   const isHomeClass = isHome ? "navigation__menu-item" : "navigation__menu-item-dark";
   const isHomeButtonClass = isHome ? "navigation__menu-item navigation__menu-item-button-dark-home" : "navigation__menu-item-dark navigation__menu-item-button-dark";
   const isHomeImage = isHome ? logoWhite : logoDark;
+  const isSignIn = location.pathname === '/signin';
 
   return (
 
@@ -37,7 +39,7 @@ function Navigation({
             <NavLink className={` ${isHomeClass}` } to="/saved-articles">Saved articles</NavLink>
           </li>
           <li>
-            <button className={`${isHomeButtonClass}`} onClick={onSignOut}>Melih</button>
+            <button className={`${isHomeButtonClass}`} onClick={onSignOut}>{username}M</button>
           </li>
           <li>
             <button className="navigation__menu-item-button-dark-mobile" onClick={onMobileMenu} />

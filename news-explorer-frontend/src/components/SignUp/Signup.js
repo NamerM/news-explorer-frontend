@@ -16,13 +16,14 @@ function SignUpPopup({ isOpen, onClose, isLoading, onSignupUser}){
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(email, password, username);
+    console.log(formData);
     const userData = {
       email,
       password,
-     username,
+      username,
     }
     onSignupUser(userData);  // app.js function name
+
   }
 
   const [formData, setFormData ] = React.useState({});
