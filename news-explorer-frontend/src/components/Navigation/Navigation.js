@@ -11,7 +11,7 @@ function Navigation({
   onMobileMenu,
   onSignOut,
   isLoggedIn,
-  username
+  name
 }) {
 
   const location = useLocation();
@@ -39,7 +39,7 @@ function Navigation({
             <NavLink className={` ${isHomeClass}` } to="/saved-articles">Saved articles</NavLink>
           </li>
           <li>
-            <button className={`${isHomeButtonClass}`} onClick={onSignOut}>{username}M</button>
+            <button className={`${isHomeButtonClass}`} onClick={onSignOut}>{name}M</button>
           </li>
           <li>
             <button className="navigation__menu-item-button-dark-mobile" onClick={onMobileMenu} />

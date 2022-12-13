@@ -4,7 +4,7 @@ import {Link, useLocation} from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-function SignUpPopup({ isOpen, onClose, isLoading, onSignupUser}){
+function SignUpPopup({ isOpen, onClose, isLoading, onRegisterUser}){
   const currentUser = React.useContext(CurrentUserContext)
 
   const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ function SignUpPopup({ isOpen, onClose, isLoading, onSignupUser}){
       password,
       username,
     }
-    onSignupUser(userData);  // app.js function name
+    onRegisterUser(userData);  // app.js function name
 
   }
 

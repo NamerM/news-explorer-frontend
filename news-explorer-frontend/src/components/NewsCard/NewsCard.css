@@ -192,6 +192,9 @@
   .searchResults__newscard-item {
     max-width: 360px;
   }
+  .searchResults__newscard-item-tooltip {
+    width: 125px;
+  }
 }
 
 /*tablet size */

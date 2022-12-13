@@ -1,6 +1,7 @@
 export const BASE_URL = "http://localhost:3001";
 
 class MainApi {
+
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
@@ -29,14 +30,14 @@ class MainApi {
     .then(this._checkResponse)
   }
 
-  signin(email, password) {
+  signin(name, email, password) {
     return fetch(`${BASE_URL}/signin`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ email, password})
+      body: JSON.stringify({ name, email, password})
     })
     .then(this._checkResponse)
   }
@@ -99,7 +100,7 @@ class MainApi {
 }
 
 const api = new MainApi ({
-  baseUrl : "http://localhost:3000",
+  baseUrl : "http://localhost:3001",
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json"

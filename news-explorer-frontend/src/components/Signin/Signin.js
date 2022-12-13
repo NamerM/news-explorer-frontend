@@ -3,7 +3,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 
-function SignInPopup({ isOpen, onClose, isLoading, onLoginUser}){
+function SignInPopup({ isOpen, onClose, isLoading, onLogin}){
   const currentUser = React.useContext(CurrentUserContext)
 
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ function SignInPopup({ isOpen, onClose, isLoading, onLoginUser}){
       email,
       password,
     }
-    onLoginUser(userData);  // app.js function name
+    onLogin(userData);  // app.js function name
   }
 
   const [formData, setFormData ] = useState({});

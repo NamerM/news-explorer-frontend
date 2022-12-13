@@ -20,7 +20,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [savedArticle, isSavedArticle] = useState ({ name: '', link: ''});
   const [articles, setArticles] = useState([]);
-  const [userDate, setUserData] = useState({ name: 'name'});
+  const [userData, setUserData] = useState({ name: 'name'});
   const [isCheckingToken, setIsCheckingToken] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
@@ -34,22 +34,24 @@ function App() {
       api.signup(name, email, password)
         .then((res) => {
           if(res.data._id) {
-            setIsLoggedIn(true);
-            setUserData({ name }); // check if I need to use this later on
-            localStorage.setItem('jwt', res.token);
-            navigate('/')
+            navigate('/signin')
           }
+          console.log(res.data._id)
         })
         .catch((err) => {
-          console.log("signup err =>", err)
+          console.log("signup err =>", err);
+
         })
     }
     // MainApi Signin
-    const onLogin = ({ email, password }) => {
+    const onLogin = ({ name, email, password }) => {
       api.signin(email, password)
         .then((res) => {
-          if(res.data._id) {
-            navigate('/signin');
+          if(res.token) {
+            setIsLoggedIn(true);
+            setUserData({ name }); // check if I need to use this later on
+            localStorage.setItem('jwt', res.token);
+            navigate('/');
           } else {
             console.log("signin fail")
           }
