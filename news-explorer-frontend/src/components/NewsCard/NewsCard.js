@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import '../NewsCard/NewsCard.css';
+import { CurrentUserContext } from '../../src/contexts/CurrentUserContext';
 
 
-function NewsCard ({ card, isLoggedIn }) {
-
+function NewsCard ({ card, isLoggedIn, onArticleClick }) {
+  const currentUser = React.useContext(CurrentUserContext);
   const [toolTipVisible, setToolTipVisible] = useState(false); //
   const [isBookmarked, setIsBookmarked] = useState(false); // toggle  true of false for bookmark icon/tooltip changes
   const [isClicked, setIsClicked] = useState(false); //toggle
@@ -26,8 +27,9 @@ function NewsCard ({ card, isLoggedIn }) {
     (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(true) || setIsBookmarked(!isBookmarked)
   }
 
-  // console.log("bookmark", isBookmarked);
-  // console.log("isClicked=>", isClicked);
+  // const isOwn = card.owner === currentUser._id;
+  const isSaved = card.articles.some(user => user === currentUser._id );
+  const cardBookMarkToggle = `${isSaved ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"}`;
 
 
 
