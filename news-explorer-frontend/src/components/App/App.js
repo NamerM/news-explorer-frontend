@@ -6,13 +6,14 @@ import '../../index';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import Navigation from '../Navigation/Navigation';
+// import Navigation from '../Navigation/Navigation';
 import SignInPopup from '../Signin/Signin';
 import SignUpPopup from '../SignUp/Signup';
 import RegisterationSuccess from '../Success/Success';
 import MobileSignIn from '../MobileSignIn/MobileSignIn';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import api from '../../utils/MainApi';
+import { data } from '../../utils/data';
 
 
 function App() {
@@ -31,25 +32,24 @@ function App() {
 
     //MainApi signup
     const onRegisterUser = ({ name, email, password }) => {
-      api.signup(name, email, password)
+      api.signup({name, email, password})
         .then((res) => {
-          if(res.data._id) {
+          if(res._id) {
             navigate('/signin')
           }
-          console.log(res.data._id)
+          console.log(res._id)
         })
         .catch((err) => {
           console.log("signup err =>", err);
-
         })
     }
     // MainApi Signin
-    const onLogin = ({ name, email, password }) => {
-      api.signin(email, password)
+    const onLogin = ({  email, password }) => {
+      api.signin({email, password})
         .then((res) => {
           if(res.token) {
             setIsLoggedIn(true);
-            setUserData({ name }); // check if I need to use this later on
+            setUserData(res.name); // check if I need to use this later on
             localStorage.setItem('jwt', res.token);
             navigate('/');
           } else {
@@ -59,6 +59,7 @@ function App() {
         .catch((err) => {
           console.log("signin fail=>", err);
         })
+        .finally(() => closeAllPopups())
     }
 
     //MainApi checkToken
@@ -100,6 +101,14 @@ function App() {
           .catch((err) => console.log(err));
       }
     }, [])
+
+    //signout
+    function handlesignOut() {
+      setIsLoggedIn(false);
+      localStorage.removeItem('jwt');
+      navigate('/signin');
+    }
+
 
   useEffect(() => {
     const closeByEscape = (e) => {
@@ -144,12 +153,12 @@ function App() {
     setIsMobileMenuClicked(false);
   }
 
-  function handlesignOut() {
-    setIsLoggedIn(false);
-    localStorage.removeItem('jwt');
-    closeAllPopups();
-    navigate('/');
-  }
+  // function handlesignOut() {
+  //   setIsLoggedIn(false);
+  //   localStorage.removeItem('jwt');
+  //   closeAllPopups();
+  //   navigate('/');
+  // }
 
   function handleMobileClick () {
    !isLoggedIn && setIsMobileClicked(true);

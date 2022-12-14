@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import notFoundIcon from '../../images/not-found_v1.png'
 
 function NotFound() {
+  const [isNotFound, setIsNotFound] = useState(false);
 
   return (
     <div className="notfound">

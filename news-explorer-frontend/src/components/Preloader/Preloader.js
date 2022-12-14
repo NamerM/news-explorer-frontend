@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState} from "react";
 
 
 function Preloader() {
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className="preloader">

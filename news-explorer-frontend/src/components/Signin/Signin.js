@@ -5,24 +5,20 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 function SignInPopup({ isOpen, onClose, isLoading, onLogin}){
   const currentUser = React.useContext(CurrentUserContext)
-
-  const [email, setEmail] = useState('');
-  const [password , setPassword] = useState('');
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const [formData, setFormData ] = useState({});
+  const [formErrors, setFormErrors] = useState({ email: false, password: false }); // { password: false, email: 'Please fill out this field.' }
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(formData)
     // console.log(email, password);
-    const userData = {
+    const {
       email,
       password,
-    }
-    onLogin(userData);  // app.js function name
+    } = formData
+    onLogin({email, password });  // app.js function name
   }
-
-  const [formData, setFormData ] = useState({});
-  const [formErrors, setFormErrors] = useState({ email: false, password: false }); // { password: false, email: 'Please fill out this field.' }
 
 
   function handleChange(e) {

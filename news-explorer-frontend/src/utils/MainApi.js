@@ -18,7 +18,8 @@ class MainApi {
   //   )
   // }
 
-  signup(name, email, password) {
+  signup({name, email, password}) {
+    console.log(name, email, password)
     return fetch(`${BASE_URL}/signup`, {
       method: "POST",
       headers: {
@@ -30,14 +31,14 @@ class MainApi {
     .then(this._checkResponse)
   }
 
-  signin(name, email, password) {
+  signin({ email, password}) {
     return fetch(`${BASE_URL}/signin`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ name, email, password})
+      body: JSON.stringify({ email, password})
     })
     .then(this._checkResponse)
   }

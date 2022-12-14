@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useRouteLoaderData } from "react-router-dom";
 import { NavLink, Link } from 'react-router-dom';
 import logoWhite from '../../images/NewsExplorer.svg';
 import logoDark from '../../images/NewsExplorer-black.svg';
 import PopupMobile from "../PopupMobile/PopupMobile";
+import { data } from "../../utils/data";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 function Navigation({
   onDesktopClick,
@@ -13,7 +15,7 @@ function Navigation({
   isLoggedIn,
   name
 }) {
-
+  const currentUser = React.useContext(CurrentUserContext)
   const location = useLocation();
   const isHome = location.pathname === '/';
   const isHomeNavClass = isHome ? "navigation-home" : "navigation";
@@ -22,10 +24,10 @@ function Navigation({
   const isHomeImage = isHome ? logoWhite : logoDark;
   const isSignIn = location.pathname === '/signin';
 
+
+
   return (
-
     <>
-
     { isLoggedIn ?
       (<nav className={`${isHomeNavClass}`}>
         <div >
@@ -39,7 +41,7 @@ function Navigation({
             <NavLink className={` ${isHomeClass}` } to="/saved-articles">Saved articles</NavLink>
           </li>
           <li>
-            <button className={`${isHomeButtonClass}`} onClick={onSignOut}>{name}M</button>
+            <button className={`${isHomeButtonClass}`} onClick={onSignOut}>{currentUser.name}</button>
           </li>
           <li>
             <button className="navigation__menu-item-button-dark-mobile" onClick={onMobileMenu} />
