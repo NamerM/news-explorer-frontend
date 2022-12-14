@@ -39,7 +39,18 @@ function SearchResults({ isLoggedIn, isBookmarked }) {
     </section>
   )
 }
+  // const onShowMoreClick = () => {
+  //   setIsClicked(true);
+  // }
 
+  // const [renderedCards, setRenderedCards] = useState([]);
+  // const [cards, setCards] = useState([]);
+  // const displayedCards = 3;
+
+  // const clickHandle = () => {
+  //   const addThreeMore = data.slice(0, renderedCards.length + displayedCards + 1 )   //cards.slice
+  //   setRenderedCards([...addThreeMore ])
+  // }
 
 
 export default SearchResults;

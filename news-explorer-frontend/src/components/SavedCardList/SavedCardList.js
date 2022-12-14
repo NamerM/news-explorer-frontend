@@ -7,9 +7,12 @@ import {Link, useLocation } from 'react-router-dom';
 function SavedCardList ({
   isLoggedIn,
   isBookmarked,
+  onClick,
 }) {
 
 console.log(isBookmarked);
+
+
 
 return (
   <section className="searchResults__newscards-content">

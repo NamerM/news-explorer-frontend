@@ -8,11 +8,13 @@ import SavedArticles from "../SavedArticles/SavedArticles";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 function Main({
-  isLoggedIn
+  isLoggedIn,
+  onArticleClick
 }) {
  const currentUser = React.useContext(CurrentUserContext)
  const location = useLocation();
  const isSavedArticles = location.pathname === '/saved-articles';
+
 
   return(
     <>

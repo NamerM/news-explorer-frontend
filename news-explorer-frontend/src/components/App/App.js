@@ -20,7 +20,7 @@ function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
   const [savedArticle, isSavedArticle] = useState ({ name: '', link: ''});
-  const [articles, setArticles] = useState([]);
+  const [cards, setCards] = useState([]);
   const [userData, setUserData] = useState({ name: 'name'});
   const [isCheckingToken, setIsCheckingToken] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -96,7 +96,7 @@ function App() {
           .catch((err) => console.log(err));
         api.getArticles(token)
           .then(res => {
-            setArticles(res.data);
+            setCards(res.data);
           })
           .catch((err) => console.log(err));
       }
@@ -109,6 +109,22 @@ function App() {
       navigate('/signin');
     }
 
+    //bookmarking news
+    function bookmarkCard(card) {
+      const isSaved = card.articles.some(user => user === currentUser._id); //likes yerine articles link takibi//
+      api
+        .savedArticleStatusChange(card._id, isSaved)
+        .then((newCard) => {
+          setCards((state) => // defined above articles/setArticles
+            state.map(currentCard => {
+              return currentCard._id === card._id
+              ? newCard.data
+              : currentCard;
+            })
+          );
+        })
+        .catch((err) => console.log(err));
+    }
 
   useEffect(() => {
     const closeByEscape = (e) => {
@@ -220,6 +236,7 @@ function App() {
           />
         <Main
           isLoggedIn={isLoggedIn}
+          onArticleClick={bookmarkCard}
         />
         <Footer />
 
