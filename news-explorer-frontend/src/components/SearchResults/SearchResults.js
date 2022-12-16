@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useLocation } from 'react-router-dom';
-import SearchForm, {searchInput, filteredResults } from '../SearchForm/SearchForm';
+// import SearchForm, {searchInput, filteredResults } from '../SearchForm/SearchForm';
 import NewsCard from '../NewsCard/NewsCard';
 import NotFound from '../NotFound/NotFound';
 
@@ -8,17 +8,18 @@ function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, search
   // const [ searchResults, setSearchResults ] = useState('1');
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
-
   // function searchFilter(){
   //   setSearchResults = 12345
   // }
-
+  console.log(searchInput, filteredResults)
+  
   return (
     <section className="searchResults">
       <div className="searchResults__content">
         <div className="searchResults__content-newscards">
           { !isSavedArticles && <h2 className="searchResults__content-title">Search Results</h2> }
-          { searchInput.length > 1 ?
+
+          { searchInput > 1 ?
             (filteredResults.map((card) => {
               return(
                 <NewsCard
@@ -34,7 +35,7 @@ function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, search
           }
         
           {/* { !searchResults? (<NotFound />): ""} */}
-          { !isSavedArticles && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
+          { !isSavedArticles && filteredResults && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
         </div>
       </div>
     </section>

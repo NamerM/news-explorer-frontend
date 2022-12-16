@@ -6,11 +6,12 @@ function SearchForm({handleSubmit, onSubmit}) {
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState('');
   const [searchFormData, setSearchFormData] = useState({});
+  const [searchFomInput, setSearchFormInput] = useState({ keyword: '', title: '', text: '', source: '' })
 
 
   function searchItems(searchValue) {
     setSearchInput(searchValue)
-    console.log(searchValue);
+    // console.log(searchValue);
     if(searchInput !== '') {
       const searchResult = data.filter((item) => {
         return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
@@ -24,24 +25,23 @@ function SearchForm({handleSubmit, onSubmit}) {
     console.log(filteredResults);
   }
 
-  function handleChange(e) {
-    const { value } = e.target;
-    setSearchInput(value);
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(filteredResults);
-    searchInput = searchFormData
-
+    const { keyword, title, text, source
+    } = searchFomInput
+   setSearchFormInput({keyword, title, text, source});
+   console.log(keyword, title, text, source);
+   console.log(searchFomInput)
   }
 
 
-  // const searchData = () => {data.map((card) =>  {
-    
-  //   })
-  //  }
-  
+  function handleChange(e) {
+    const input = e.target;
+    const { name, value } = e.target;
+    setSearchFormData({ ...searchFomInput, [name]: value });
+    console.log(searchFormData)
+  }
+
 
   return(
     <section className="search-form__content">
@@ -54,7 +54,7 @@ function SearchForm({handleSubmit, onSubmit}) {
             className="search-form__content-form-input" 
             type="text" 
             placeholder="Enter Topic"  
-            onChange={(e) => searchItems(e.target.value)}
+            onChange={(e) => searchItems(e.target.value) && handleChange}
             value={searchInput || ''}
             id="search-input" name="search-input"
             required
@@ -71,20 +71,4 @@ function SearchForm({handleSubmit, onSubmit}) {
 
 }
 
-
 export default SearchForm;
-
-  // const [isLoading, setIsLoading] = useState(false);  //Preloader ile bağla
-  // const [notFound, setNotFound] = useState(false);
-
-  // __setIsLoading = () => {
-  //   setIsLoading(true);
-  //   setNotFound(false);
-  //   setCards([]);
-  // };
-
-  // __setNotFound = () => {
-  //   setIsLoading(false);
-  //   setNotFound(true);
-  //   setCards([]);
-  // }
