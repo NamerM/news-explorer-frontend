@@ -65,14 +65,26 @@ class MainApi {
     .then(this._checkResponse)
   }
 
-  savedArticleStatusChange(id, isSaved) {
-    const method = isSaved ? "DELETE" : "PUT";
-    return fetch(`${this._baseUrl}/articles/${id}/saves`, {  // cards /${id}/likes
+  // savedArticleStatusChange(id, isSaved) {
+  //   const method = isSaved ? "DELETE" : "PUT";
+  //   return fetch(`${this._baseUrl}/articles/${id}`, {  // cards/${id}/likes
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       authorization: `Bearer ${localStorage.getItem("jwt")}`
+  //     },
+  //     method: method,
+  //   })
+  //   .then(this._checkResponse)
+  // }
+  saveArticle(article) {
+    // const method = isSaved ? "DELETE" : "PUT";
+    return fetch(`${this._baseUrl}/articles/`, {  // cards/${id}/likes
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
-      method: method,
+      method: "POST",
+      body: JSON.stringify(article),
     })
     .then(this._checkResponse)
   }

@@ -26,7 +26,7 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
 
       </section>) :
     (
-      <section className="header__nologin" a>
+      <section className="header__nologin">
         <Navigation
           isLoggedIn={isLoggedIn}
           onDesktopClick={onSignInPopupClick}

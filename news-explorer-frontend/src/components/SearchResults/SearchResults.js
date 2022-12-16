@@ -1,40 +1,41 @@
 import React, {useState} from 'react';
 import { useLocation } from 'react-router-dom';
-import NewsCardList from '../NewsCardList/NewsCardList';
-import SavedCardList from '../SavedCardList/SavedCardList';
+import SearchForm, {searchInput, filteredResults } from '../SearchForm/SearchForm';
+import NewsCard from '../NewsCard/NewsCard';
+import NotFound from '../NotFound/NotFound';
 
-function SearchResults({ isLoggedIn, isBookmarked }) {
-  // const [isLoggedIn, setIsLoggedIn] = useState(true); //toggle for displaying  both versions note to reviewer
+function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, searchInput, filteredResults }) {
+  // const [ searchResults, setSearchResults ] = useState('1');
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
+
+  // function searchFilter(){
+  //   setSearchResults = 12345
+  // }
 
   return (
     <section className="searchResults">
       <div className="searchResults__content">
         <div className="searchResults__content-newscards">
-          { isSavedArticles
-            ? (
-                <SavedCardList
-                isBookmarked={isBookmarked}
-                isLoggedIn={isLoggedIn}
+          { !isSavedArticles && <h2 className="searchResults__content-title">Search Results</h2> }
+          { searchInput.length > 1 ?
+            (filteredResults.map((card) => {
+              return(
+                <NewsCard
+                  isLoggedIn={isLoggedIn}
+                  isBookmarked={isBookmarked}
+                  card={card}
+                  iconType={isSavedArticles ? 'bin' : 'bookmark'}
+                  onArticleClick={onArticleClick}
                 />
               )
-            : (<>
-                <h2 className="searchResults__content-title">Search Results</h2>
-                <NewsCardList
-                isBookmarked={isBookmarked}
-                isLoggedIn={isLoggedIn}
-                />
-                 <button type="button" className="searchResults__content-showbtn">Show More</button>
-              </>
-              )
+            })
+            ) : ( <NotFound />)
           }
-
+        
+          {/* { !searchResults? (<NotFound />): ""} */}
+          { !isSavedArticles && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
         </div>
-          {/* { !isLoggedIn  ? (
-            <button type="button" className="searchResults__showbtn">Show More</button>
-            ) : (<></>)
-          } */}
       </div>
     </section>
   )

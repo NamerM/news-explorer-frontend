@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
 import NewsCard from '../NewsCard/NewsCard';
 import {data} from '../../utils/data';
+import SearchForm from '../SearchForm/SearchForm';
+import SearchResults from '../SearchResults/SearchResults';
 
-function NewsCardList({ isLoggedIn }) {
+
+function NewsCardList({ isLoggedIn, cards, iconType, onArticleClick }) {
   const [isClicked, setIsClicked] = useState(false); //toggle
 
+  // const {data2} = filteredResults
+  // console.log({data2})
 
   return (
     <section className="searchResults__newscards-content">
@@ -17,13 +22,8 @@ function NewsCardList({ isLoggedIn }) {
             <NewsCard
               isLoggedIn={isLoggedIn}
               card={card}
-              key={card._id}
-              image={card.image}
-              date={card.date}
-              title={card.title}
-              text={card.text}
-              source={card.source}
-              keyword={card.keyword}
+              iconType={iconType}
+              onArticleClick={onArticleClick}
             />
           )}
         )}
@@ -42,15 +42,3 @@ function NewsCardList({ isLoggedIn }) {
 
 export default NewsCardList;
 
-  // const onShowMoreClick = () => {
-  //   setIsClicked(true);
-  // }
-
-  // const [renderedCards, setRenderedCards] = useState([]);
-  // const [cards, setCards] = useState([]);
-  // const displayedCards = 3;
-
-  // const clickHandle = () => {
-  //   const addThreeMore = data.slice(0, renderedCards.length + displayedCards + 1 )   //cards.slice
-  //   setRenderedCards([...addThreeMore ])
-  // }

@@ -40,7 +40,7 @@ function App() {
           console.log(res._id)
         })
         .catch((err) => {
-          console.log("signup err =>", err);
+          console.log("signup err =>", `Error: ${err.status}`);
         })
     }
     // MainApi Signin
@@ -83,7 +83,7 @@ function App() {
         })
         .finally(() => setIsCheckingToken(false))
       }
-    }, [navigate])
+    }, [])
 
     //MainApi getUserInfo getArticles
     useEffect(() => {
@@ -109,11 +109,15 @@ function App() {
       navigate('/signin');
     }
 
-    //bookmarking news
+    //bookmarking newscard
     function bookmarkCard(card) {
-      const isSaved = card.articles.some(user => user === currentUser._id); //likes yerine articles link takibi//
+      console.log('bookmarkCard function!!!'); 
+      console.log(card)
+      console.log(card.keyword)
+      const isSaved = card.article.some((user) => user === currentUser._id); //likes yerine schemadan id koydum//
+      console.log( isSaved);
       api
-        .savedArticleStatusChange(card._id, isSaved)
+        .saveArticle(card._id, isSaved)
         .then((newCard) => {
           setCards((state) => // defined above articles/setArticles
             state.map(currentCard => {
@@ -123,7 +127,22 @@ function App() {
             })
           );
         })
-        .catch((err) => console.log(err));
+        .then()
+      .catch((err) => console.log("bookmark Error =>", err));
+    }
+     //remove bookmark
+     function deleteCardFromSaved(card) {
+      console.log('deleteCardFromSaved function!!!')
+
+      // api.deleteCard(card._id)
+      //   .then((res) => {
+      //     const state = cards.filter(
+      //       (stateCards) => stateCards._id !== card._id
+      //     );
+      //     setCards(state);
+      //     closeAllPopups();
+      //   })
+      //   .catch((err) => console.log(err))
     }
 
   useEffect(() => {
@@ -237,6 +256,8 @@ function App() {
         <Main
           isLoggedIn={isLoggedIn}
           onArticleClick={bookmarkCard}
+          onSavedArticleClick={deleteCardFromSaved}
+          onSearchArticleClicked={bookmarkCard}
         />
         <Footer />
 

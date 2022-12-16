@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import '../NewsCard/NewsCard.css';
-import { CurrentUserContext } from '../../src/contexts/CurrentUserContext';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
-function NewsCard ({ card, isLoggedIn, onArticleClick }) {
+function NewsCard ({ card, isLoggedIn, iconType, onArticleClick }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [toolTipVisible, setToolTipVisible] = useState(false); //
   const [isBookmarked, setIsBookmarked] = useState(false); // toggle  true of false for bookmark icon/tooltip changes
@@ -19,19 +19,19 @@ function NewsCard ({ card, isLoggedIn, onArticleClick }) {
   const toolTipText = isBookmarked ? "Remove bookmark" : "Add bookmark"
   const buttonClass = isBookmarked ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"
 
-  const clickStatus = () => {
-    setIsClicked(true)
-  }
-
+  // const clickStatus = () => {
+  //   setIsClicked(true)
+  // }
   const bookmarkStatus = () => {
-    (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(true) || setIsBookmarked(!isBookmarked)
+    (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(!true) || setIsBookmarked(!isBookmarked)
   }
 
+  
   // const isOwn = card.owner === currentUser._id;
-  const isSaved = card.articles.some(user => user === currentUser._id );
-  const cardBookMarkToggle = `${isSaved ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"}`;
+  const isSaved = card && card.articles && card.articles.some(user => user === currentUser._id );
+  // const cardBookMarkToggle = `${isSaved ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"}`;
 
-
+  const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
 
   return(
     <li className="searchResults__newscard ">
@@ -42,13 +42,12 @@ function NewsCard ({ card, isLoggedIn, onArticleClick }) {
         </button>
        )}
 
-        <button className={`searchResults__newscard-item-box ${
-          isLoggedIn
-            ? buttonClass
-            : "searchResults__newscard-item-bookmark" }`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
+        <button className={`searchResults__newscard-item-box ${buttonTypeClass}`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
             onMouseEnter={cursorOnBox}
             onMouseLeave={cursorOffBox}
-            onClick={bookmarkStatus}
+            // onClick={bookmarkStatus}
+            onClick={() => onArticleClick(card) }
+            onMouseUp={bookmarkStatus}
             >
             </button>
         <img className="searchResults__newscard-item-image" src={card.image} alt={card.title} />
@@ -57,7 +56,7 @@ function NewsCard ({ card, isLoggedIn, onArticleClick }) {
           <h2 className="searchResults__newscard-item-title">{card.title}</h2>
           <p className="searchResults__newscard-item-text">{card.text}</p>
           <p className="searchResults__newscard-item-source">{card.source}</p>
-          { isLoggedIn && <p className="searchResults__newscard-item-keyword">{card.keyword}</p>  }
+          { isLoggedIn && <p className="searchResults__newscard-item-keyword">{card.keyword}</p> }
         </div>
       </div>
     </li>

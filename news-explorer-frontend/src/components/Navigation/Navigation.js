@@ -13,7 +13,6 @@ function Navigation({
   onMobileMenu,
   onSignOut,
   isLoggedIn,
-  name
 }) {
   const currentUser = React.useContext(CurrentUserContext)
   const location = useLocation();

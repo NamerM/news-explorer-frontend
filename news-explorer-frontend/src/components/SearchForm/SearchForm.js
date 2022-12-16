@@ -1,17 +1,47 @@
 import React, {useState} from 'react';
 import './SearchForm.css';
+import {data} from '../../utils/data.js';
 
-function SearchForm(handleSubmit) {
-  const [search, setSearch] = useState('');
-  const [keyword, setKeyword] = useState('');
-  const [cards, setCards] = useState([]);
+function SearchForm({handleSubmit, onSubmit}) {
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredResults, setFilteredResults] = useState('');
+  const [searchFormData, setSearchFormData] = useState({});
+
+
+  function searchItems(searchValue) {
+    setSearchInput(searchValue)
+    console.log(searchValue);
+    if(searchInput !== '') {
+      const searchResult = data.filter((item) => {
+        return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
+      })
+      console.log(searchResult);
+      setFilteredResults(searchResult);
+    } 
+    else {
+      console.log("nothing found") // NotFound component activate gerekli
+    }
+    console.log(filteredResults);
+  }
 
   function handleChange(e) {
     const { value } = e.target;
-    setSearch(value);
+    setSearchInput(value);
   }
 
-  //search function
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(filteredResults);
+    searchInput = searchFormData
+
+  }
+
+
+  // const searchData = () => {data.map((card) =>  {
+    
+  //   })
+  //  }
+  
 
   return(
     <section className="search-form__content">
@@ -24,8 +54,8 @@ function SearchForm(handleSubmit) {
             className="search-form__content-form-input" 
             type="text" 
             placeholder="Enter Topic"  
-            value={search || ''}
-            onChange={handleChange}
+            onChange={(e) => searchItems(e.target.value)}
+            value={searchInput || ''}
             id="search-input" name="search-input"
             required
           />
@@ -40,6 +70,7 @@ function SearchForm(handleSubmit) {
   )
 
 }
+
 
 export default SearchForm;
 
