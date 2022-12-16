@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './SearchForm.css';
 import {data} from '../../utils/data.js';
+import { SearchResultContext } from '../../contexts/SearchResultContext';
 
 function SearchForm({handleSubmit, onSubmit}) {
   const [searchInput, setSearchInput] = useState('');
@@ -8,30 +9,36 @@ function SearchForm({handleSubmit, onSubmit}) {
   const [searchFormData, setSearchFormData] = useState({});
   const [searchFomInput, setSearchFormInput] = useState({ keyword: '', title: '', text: '', source: '' })
 
+  let searchResults = React.useContext(SearchResultContext)
 
   function searchItems(searchValue) {
     setSearchInput(searchValue)
     // console.log(searchValue);
     if(searchInput !== '') {
-      const searchResult = data.filter((item) => {
+      let searchResult = data.filter((item) => {
         return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
       })
       console.log(searchResult);
       setFilteredResults(searchResult);
+      searchResults = filteredResults;
     } 
     else {
       console.log("nothing found") // NotFound component activate gerekli
     }
     console.log(filteredResults);
+    console.log("searchResult context =>" , searchResults)
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const { keyword, title, text, source
-    } = searchFomInput
-   setSearchFormInput({keyword, title, text, source});
-   console.log(keyword, title, text, source);
-   console.log(searchFomInput)
+
+
+    // const { keyword, title, text, source  } = searchFomInput
+    // setSearchFormInput({keyword, title, text, source});
+    // console.log(keyword, title, text, source);
+    // console.log(searchFomInput)
+
+    // searchResultFunction()
   }
 
 
