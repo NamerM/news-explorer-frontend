@@ -4,14 +4,14 @@ import { useLocation } from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
 import NotFound from '../NotFound/NotFound';
 
-function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, searchInput, filteredResults }) {
+function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, isSearchInput, isFilteredResults }) {
   // const [ searchResults, setSearchResults ] = useState('1');
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
   // function searchFilter(){
   //   setSearchResults = 12345
   // }
-  console.log(searchInput, filteredResults)
+  console.log(isSearchInput, isFilteredResults)
   
   return (
     <section className="searchResults">
@@ -19,8 +19,8 @@ function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, search
         <div className="searchResults__content-newscards">
           { !isSavedArticles && <h2 className="searchResults__content-title">Search Results</h2> }
 
-          { searchInput > 1 ?
-            (filteredResults.map((card) => {
+          { isSearchInput > 1 ?
+            (isFilteredResults.map((card) => {
               return(
                 <NewsCard
                   isLoggedIn={isLoggedIn}
@@ -35,7 +35,7 @@ function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, search
           }
         
           {/* { !searchResults? (<NotFound />): ""} */}
-          { !isSavedArticles && filteredResults && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
+          { !isSavedArticles && isFilteredResults && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
         </div>
       </div>
     </section>

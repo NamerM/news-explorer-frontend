@@ -29,7 +29,9 @@ function App() {
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isMobileClicked, setIsMobileClicked] = useState(false);
   const [isMobileMenuClicked, setIsMobileMenuClicked] = useState(false);
-
+  const [isSearchInput, setIsSearchInput ] = useState({});
+  const [isFilteredResults, setIsFilteredResults] = useState({});
+  
     //MainApi signup
     const onRegisterUser = ({ name, email, password }) => {
       api.signup({name, email, password})
@@ -258,6 +260,8 @@ function App() {
           onArticleClick={bookmarkCard}
           onSavedArticleClick={deleteCardFromSaved}
           onSearchArticleClicked={bookmarkCard}
+          isSearchInput={isSearchInput}
+          isFilteredResults={isFilteredResults}
         />
         <Footer />
 

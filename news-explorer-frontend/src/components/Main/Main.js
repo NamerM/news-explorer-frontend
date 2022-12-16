@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import SearchResults from '../SearchResults/SearchResults';
+import {searchInput, filteredResults} from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import About from '../About/About';
 import NotFound from "../NotFound/NotFound";
@@ -12,6 +13,8 @@ function Main({
   onSavedArticleClick,
   onSearchArticleClicked,
   cards,
+  isSearchInput,
+  isFilteredResults
 }) {
  const currentUser = React.useContext(CurrentUserContext)
  const location = useLocation();
@@ -27,6 +30,8 @@ function Main({
           isLoggedIn={isLoggedIn}
           cards={cards}
           onArticleClick={isSavedArticles ? onSavedArticleClick : onSearchArticleClicked}
+          searchInput={isSearchInput}
+          filteredResults={isFilteredResults}
          />
         {/* <Preloader />
         <NotFound />  uncomment to see the components*/ }
