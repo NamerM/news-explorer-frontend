@@ -21,7 +21,8 @@ import SearchResults from '../SearchResults/SearchResults';
 function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
-  const [searchOutput, setSearchOutput] = useState({});
+  const [searchOutput, setSearchOutput] = useState({}); // contextedn almam lazım
+  const [isSubmitPressed, setIsSubmitPressed] = useState(false);
   const [savedArticle, isSavedArticle] = useState ({ name: '', link: ''});
   const [cards, setCards] = useState([]);
   const [userData, setUserData] = useState({ name: 'name'});
@@ -208,6 +209,10 @@ function App() {
     isLoggedIn && setIsMobileMenuClicked(true);
   }
 
+  function toggleHandleSubmitButton() {
+    setIsSubmitPressed(true);
+  }
+
   let location = useLocation();
 
   useEffect(() => {
@@ -264,6 +269,7 @@ function App() {
             onArticleClick={bookmarkCard}
             onSavedArticleClick={deleteCardFromSaved}
             onSearchArticleClicked={bookmarkCard}
+            onHandleSearchSubmit={toggleHandleSubmitButton}
             // isSearchInput={isSearchInput}
             // isFilteredResults={isFilteredResults}
           />

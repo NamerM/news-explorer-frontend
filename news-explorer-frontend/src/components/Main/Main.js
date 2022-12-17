@@ -13,6 +13,7 @@ function Main({
   onSavedArticleClick,
   onSearchArticleClicked,
   cards,
+  onHandleSearchSubmit,
   // isSearchInput,
   // isFilteredResults
 }) {
@@ -29,7 +30,7 @@ function Main({
         <SearchResults
           isLoggedIn={isLoggedIn}
           cards={cards}
-          onArticleClick={isSavedArticles ? onSavedArticleClick : onSearchArticleClicked}
+          onHandleSearchSubmit={onHandleSearchSubmit}
           // searchInput={isSearchInput}
           // filteredResults={isFilteredResults}
          />
