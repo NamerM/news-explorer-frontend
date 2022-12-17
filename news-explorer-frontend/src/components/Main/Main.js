@@ -13,8 +13,8 @@ function Main({
   onSavedArticleClick,
   onSearchArticleClicked,
   cards,
-  isSearchInput,
-  isFilteredResults
+  // isSearchInput,
+  // isFilteredResults
 }) {
  const currentUser = React.useContext(CurrentUserContext)
  const location = useLocation();
@@ -30,8 +30,8 @@ function Main({
           isLoggedIn={isLoggedIn}
           cards={cards}
           onArticleClick={isSavedArticles ? onSavedArticleClick : onSearchArticleClicked}
-          searchInput={isSearchInput}
-          filteredResults={isFilteredResults}
+          // searchInput={isSearchInput}
+          // filteredResults={isFilteredResults}
          />
         {/* <Preloader />
         <NotFound />  uncomment to see the components*/ }

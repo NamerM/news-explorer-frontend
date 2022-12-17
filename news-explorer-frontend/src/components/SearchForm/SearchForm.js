@@ -9,7 +9,7 @@ function SearchForm({handleSubmit, onSubmit}) {
   const [searchFormData, setSearchFormData] = useState({});
   const [searchFomInput, setSearchFormInput] = useState({ keyword: '', title: '', text: '', source: '' })
 
-  let searchResults = React.useContext(SearchResultContext)
+  let searchOutput = React.useContext(SearchResultContext);
 
   function searchItems(searchValue) {
     setSearchInput(searchValue)
@@ -18,35 +18,31 @@ function SearchForm({handleSubmit, onSubmit}) {
       let searchResult = data.filter((item) => {
         return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
       })
-      console.log(searchResult);
       setFilteredResults(searchResult);
-      searchResults = filteredResults;
+  
+      console.log("filteredResults =>" , filteredResults);
     } 
-    else {
-      console.log("nothing found") // NotFound component activate gerekli
-    }
-    console.log(filteredResults);
-    console.log("searchResult context =>" , searchResults)
+    else { console.log("nothing found...")}
   }
 
   function handleSubmit(e) {
+
     e.preventDefault();
-
-
-    // const { keyword, title, text, source  } = searchFomInput
-    // setSearchFormInput({keyword, title, text, source});
-    // console.log(keyword, title, text, source);
-    // console.log(searchFomInput)
-
-    // searchResultFunction()
+    console.log("submit button pressed, search result:");
+    searchItems(e); 
+    searchOutput = filteredResults;
+    console.log("searchcontext =>", searchOutput);
+    console.log("--------------------------------------")
+    handleChange(e);
   }
 
 
   function handleChange(e) {
-    const input = e.target;
-    const { name, value } = e.target;
-    setSearchFormData({ ...searchFomInput, [name]: value });
-    console.log(searchFormData)
+    setSearchInput(e.target.value);
+    // const input = e.target;
+    // const { name, value } = e.target;
+    // setSearchFormData({ ...searchFomInput, [name]: value });
+    // console.log(searchFormData)
   }
 
 
@@ -60,8 +56,8 @@ function SearchForm({handleSubmit, onSubmit}) {
           <input 
             className="search-form__content-form-input" 
             type="text" 
-            placeholder="Enter Topic"  
-            onChange={(e) => searchItems(e.target.value) && handleChange}
+            placeholder="Enter Search Topic"  
+            onChange={handleChange} // onChange={(e) => searchItems(e.target.value) && handleChange(e)}
             value={searchInput || ''}
             id="search-input" name="search-input"
             required

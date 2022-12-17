@@ -14,11 +14,14 @@ import MobileSignIn from '../MobileSignIn/MobileSignIn';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import api from '../../utils/MainApi';
 import { data } from '../../utils/data';
+import { SearchResultContext } from '../../contexts/SearchResultContext';
+import SearchResults from '../SearchResults/SearchResults';
 
 
 function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
+  const [searchOutput, setSearchOutput] = useState({});
   const [savedArticle, isSavedArticle] = useState ({ name: '', link: ''});
   const [cards, setCards] = useState([]);
   const [userData, setUserData] = useState({ name: 'name'});
@@ -220,52 +223,53 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="app">
-        <SignInPopup
-          isOpen={isSignInPopupOpen}
-          onClose={closeAllPopups}
-          onLoginUser={closeAllPopups}
-          onLogin={onLogin}
-        />
-        <SignUpPopup
-          isOpen={isSignUpPopupOpen}
-          onClose={closeAllPopups}
-          onSignupUser={handleRegisterSuccess}
-          onRegisterUser={onRegisterUser}
-        />
-        <RegisterationSuccess
-          isOpen={isRegisterPopupOpen}
-          onClose={closeAllPopups}
-        />
-        <MobileSignIn
-          isOpen={isMobileClicked}
-          onClose={closeAllPopups}
-          onLogin={onLogin}
-        />
-        <MobileMenu
-          isOpen={isMobileMenuClicked}
-          onClose={closeAllPopups}
-          onSignOut={handlesignOut}
-        />
-        <Header
-          isLoggedIn={isLoggedIn}
-          onSignInPopupClick={handleSignInClick}
-          onSignUpPopupClick={handleSignUpClick}
-          onSignOut={handlesignOut}
-          onMobilePopupClick={handleMobileClick}
-          onMobilePopupMenu={handleMobileMenuClick}
+      <SearchResultContext.Provider value={searchOutput}>
+        <div className="app">
+          <SignInPopup
+            isOpen={isSignInPopupOpen}
+            onClose={closeAllPopups}
+            onLoginUser={closeAllPopups}
+            onLogin={onLogin}
           />
-        <Main
-          isLoggedIn={isLoggedIn}
-          onArticleClick={bookmarkCard}
-          onSavedArticleClick={deleteCardFromSaved}
-          onSearchArticleClicked={bookmarkCard}
-          isSearchInput={isSearchInput}
-          isFilteredResults={isFilteredResults}
-        />
-        <Footer />
-
-    </div>
+          <SignUpPopup
+            isOpen={isSignUpPopupOpen}
+            onClose={closeAllPopups}
+            onSignupUser={handleRegisterSuccess}
+            onRegisterUser={onRegisterUser}
+          />
+          <RegisterationSuccess
+            isOpen={isRegisterPopupOpen}
+            onClose={closeAllPopups}
+          />
+          <MobileSignIn
+            isOpen={isMobileClicked}
+            onClose={closeAllPopups}
+            onLogin={onLogin}
+          />
+          <MobileMenu
+            isOpen={isMobileMenuClicked}
+            onClose={closeAllPopups}
+            onSignOut={handlesignOut}
+          />
+          <Header
+            isLoggedIn={isLoggedIn}
+            onSignInPopupClick={handleSignInClick}
+            onSignUpPopupClick={handleSignUpClick}
+            onSignOut={handlesignOut}
+            onMobilePopupClick={handleMobileClick}
+            onMobilePopupMenu={handleMobileMenuClick}
+            />
+          <Main
+            isLoggedIn={isLoggedIn}
+            onArticleClick={bookmarkCard}
+            onSavedArticleClick={deleteCardFromSaved}
+            onSearchArticleClicked={bookmarkCard}
+            // isSearchInput={isSearchInput}
+            // isFilteredResults={isFilteredResults}
+          />
+          <Footer />
+        </div>
+      </SearchResultContext.Provider>
     </CurrentUserContext.Provider>
   );
 }

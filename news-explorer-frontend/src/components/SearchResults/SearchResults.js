@@ -1,20 +1,24 @@
-import React, {useState} from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useContext, useState} from 'react';
+import { useLocation} from 'react-router-dom';
 // import SearchForm, {searchInput, filteredResults } from '../SearchForm/SearchForm';
 import NewsCard from '../NewsCard/NewsCard';
 import NotFound from '../NotFound/NotFound';
 import Preloader from '../Preloader/Preloader';
 import { SearchResultContext } from '../../contexts/SearchResultContext';
 
-function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, isSearchInput, isFilteredResults }) {
+
+function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, }) { //isSearchInput, isFilteredResults
   const [isSearching, setIsSearching] = useState(false);
 
-  let searchResults = React.useContext(SearchResultContext)
+  let searchOutput = React.useContext(SearchResultContext)
+  let searchResults = searchOutput;
+
+  console.log("searchResultscontext" , searchOutput); 
+
+
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
 
-  // console.log(isSearchInput, isFilteredResults)
-  console.log(searchResults);
   
   return (
     <section className="searchResults">
@@ -22,8 +26,9 @@ function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, isSear
         <div className="searchResults__content-newscards">
           { !isSavedArticles && <h2 className="searchResults__content-title">Search Results</h2> }
           { isSearching ? <Preloader/> : ''}
-          { isSearchInput > 1 ?
-            (searchResults.map((card) => { //isFilteredResults.map
+          
+          { searchResults > 1 ?
+            (searchOutput.map((card) => { //isFilteredResults.map
               setIsSearching(false);
               return(
                 <NewsCard
@@ -37,9 +42,7 @@ function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, isSear
             })
             ) : ( <NotFound />)
           }
-        
-
-          { !isSavedArticles && isFilteredResults && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
+          { !isSavedArticles && !searchOutput && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
         </div>
       </div>
     </section>
