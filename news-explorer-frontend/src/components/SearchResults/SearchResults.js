@@ -4,34 +4,30 @@ import { useLocation} from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
 import NotFound from '../NotFound/NotFound';
 import Preloader from '../Preloader/Preloader';
-import SearchForm from '../SearchForm/SearchForm';
 import { SearchResultContext } from '../../contexts/SearchResultContext';
 
+function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, searchSubmitClicked, isSubmitPressed }) { //isSearchInput, isFilteredResults
+  let  searchOutput = React.useContext(SearchResultContext); 
+  console.log(searchOutput);;
 
-function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, onHandleSearchSubmit }) { //isSearchInput, isFilteredResults
-  // let searchOutput = React.useContext(SearchResultContext)
-  const [isSubmitPressed, setIsSubmitPressed] = useState('');
   const [isSearching, setIsSearching] = useState(false);
-
-  let searchOutput = React.useContext(SearchResultContext)
-  let searchResults = searchOutput;
-
-  console.log("searchResultscontext =>" , searchOutput); 
  
+  console.log("searchResultscontext =>" , searchOutput); 
+  console.log("isSubmitPressed click ==>", searchSubmitClicked); 
 
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
 
   
   return (
-    <section className="searchResults">
-      { onHandleSearchSubmit 
-        ? (      <div className="searchResults__content">
+    <> { searchSubmitClicked ?
+(      <section className="searchResults">
+      <div className="searchResults__content">
         <div className="searchResults__content-newscards">
-          { !isSavedArticles && <h2 className="searchResults__content-title">Search Results</h2> }
+          { !isSavedArticles &&  <h2 className="searchResults__content-title">Search Results</h2> }
           { isSearching ? <Preloader/> : ''}
           
-          { onHandleSearchSubmit && searchResults > 1 ?
+          { searchSubmitClicked > 1 ?
             (searchOutput.map((card) => { //isFilteredResults.map
               setIsSearching(false);
               return(
@@ -44,16 +40,21 @@ function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, onHand
                 />
               )
             })
-            ) : ( !isSavedArticles && <NotFound />)
+            ) : ( !isSavedArticles && searchSubmitClicked && <NotFound />)
           }
           { !isSavedArticles && !searchOutput && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
         </div>
-      </div>)
-        : ''
-      }
-    </section>
+      </div>
+    </section>) : ('')
+    }
+
+    </>
+
   )
 }
+
+export default SearchResults;
+
   // const [ searchResults, setSearchResults ] = useState('1');
   // function searchFilter(){
   //   setSearchResults = 12345
@@ -71,6 +72,3 @@ function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, onHand
   //   setRenderedCards([...addThreeMore ])
   // }
           {/* { !searchResults? (<NotFound />): ""} */}
-
-export default SearchResults;
-

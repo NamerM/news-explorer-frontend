@@ -35,6 +35,7 @@ function App() {
   const [isMobileMenuClicked, setIsMobileMenuClicked] = useState(false);
   const [isSearchInput, setIsSearchInput ] = useState({});
   const [isFilteredResults, setIsFilteredResults] = useState({});
+
   
     //MainApi signup
     const onRegisterUser = ({ name, email, password }) => {
@@ -209,7 +210,7 @@ function App() {
     isLoggedIn && setIsMobileMenuClicked(true);
   }
 
-  function toggleHandleSubmitButton() {
+  function handleSubmitClicked() {
     setIsSubmitPressed(true);
   }
 
@@ -228,7 +229,12 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <SearchResultContext.Provider value={searchOutput}>
+      <SearchResultContext.Provider 
+        value={{
+          searchOutput: searchOutput,
+          isSubmitPressed: isSubmitPressed
+        
+      }}>
         <div className="app">
           <SignInPopup
             isOpen={isSignInPopupOpen}
@@ -263,13 +269,16 @@ function App() {
             onSignOut={handlesignOut}
             onMobilePopupClick={handleMobileClick}
             onMobilePopupMenu={handleMobileMenuClick}
+            searchSubmitClicked={handleSubmitClicked}
+            isSubmitPressed={isSubmitPressed}
             />
           <Main
             isLoggedIn={isLoggedIn}
             onArticleClick={bookmarkCard}
             onSavedArticleClick={deleteCardFromSaved}
             onSearchArticleClicked={bookmarkCard}
-            onHandleSearchSubmit={toggleHandleSubmitButton}
+            searchSubmitClicked={handleSubmitClicked}
+            isSubmitPressed={isSubmitPressed}
             // isSearchInput={isSearchInput}
             // isFilteredResults={isFilteredResults}
           />

@@ -6,7 +6,7 @@ import SearchForm from '../SearchForm/SearchForm';
 
 
 
-function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onMobilePopupMenu, onSignOut, onHandleSearchSubmit }) {
+function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onMobilePopupMenu, onSignOut, searchSubmitClicked }) {
 
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
@@ -34,7 +34,9 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
           onMobileMenu={onMobilePopupMenu}
           onSignOut={onSignOut}
            />
-        <SearchForm  />
+        <SearchForm 
+          searchSubmitClicked={searchSubmitClicked}
+        />
       </section>)
     }
   </header>

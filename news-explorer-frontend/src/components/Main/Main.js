@@ -6,18 +6,20 @@ import Preloader from '../Preloader/Preloader';
 import About from '../About/About';
 import NotFound from "../NotFound/NotFound";
 import SavedArticles from "../SavedArticles/SavedArticles";
-import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { SearchResultContext } from '../../contexts/SearchResultContext';
 
 function Main({
   isLoggedIn,
   onSavedArticleClick,
   onSearchArticleClicked,
   cards,
-  onHandleSearchSubmit,
+  searchSubmitClicked,
   // isSearchInput,
   // isFilteredResults
 }) {
- const currentUser = React.useContext(CurrentUserContext)
+ const currentUser = React.useContext(CurrentUserContext);
+ const searchOutput = React.useContext(SearchResultContext);
  const location = useLocation();
  const isSavedArticles = location.pathname === '/saved-articles';
 
@@ -30,10 +32,12 @@ function Main({
         <SearchResults
           isLoggedIn={isLoggedIn}
           cards={cards}
-          onHandleSearchSubmit={onHandleSearchSubmit}
+          searchSubmitClicked={searchSubmitClicked}
+          searchOutput={searchOutput}
           // searchInput={isSearchInput}
           // filteredResults={isFilteredResults}
          />
+
         {/* <Preloader />
         <NotFound />  uncomment to see the components*/ }
         <About />
