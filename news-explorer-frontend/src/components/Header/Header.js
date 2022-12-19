@@ -6,7 +6,9 @@ import SearchForm from '../SearchForm/SearchForm';
 
 
 
-function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onMobilePopupMenu, onSignOut, searchSubmitClicked }) {
+function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onMobilePopupMenu, onSignOut, 
+  searchSubmitClicked, searchInput, setSearchInput, filteredResults, setFilteredResults
+ }) {
 
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
@@ -36,6 +38,10 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
            />
         <SearchForm 
           searchSubmitClicked={searchSubmitClicked}
+          // searchInput={searchInput}
+          // setSearchInput={setSearchInput}
+          setFilteredResults={setFilteredResults}
+          filteredResults={filteredResults}
         />
       </section>)
     }

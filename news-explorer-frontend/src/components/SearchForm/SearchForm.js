@@ -1,59 +1,42 @@
 import React, {useState} from 'react';
 import './SearchForm.css';
 import {data} from '../../utils/data.js';
-import { SearchResultContext } from '../../contexts/SearchResultContext';
+import searchItems from '../../utils/searchItem';
 
 
-function SearchForm({searchSubmitClicked}) {
-  let searchOutput = React.useContext(SearchResultContext);
-  let {
-    searchResult,
-    // filteredResults,
-    // setFilteredResults,
-    isSubmitPressed,
-    setIsSubmitPressed,
-    handleSubmitClicked
-  } = searchOutput
+function SearchForm({handleSubmitClicked, onSubmit, }) {
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState('');
-  // const [isSubmitPressed, setIsSubmitPressed] = useState('');
+  // const [searchFormData, setSearchFormData] = useState({});
+  // const [searchFomInput, setSearchFormInput] = useState({ keyword: '', title: '', text: '', source: '' })
 
 
-  function searchItems(searchValue) {
-    setSearchInput(searchValue)    // console.log(searchValue);
-    // const keyword = data.map((card) => card.keyword);
-    // const searchKeywords= [...new Set(keyword)];
-    // console.log(searchKeywords);
-
-    if(searchInput !== ''){
-      let searchResult = data.filter((item) => {
-        return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
-      })
-      setFilteredResults(searchResult);
+  // function searchItems(searchValue) {
+  //   setSearchInput(searchValue)
+  //   // console.log(searchValue);
+  //   if(searchInput !== '') {
+  //     let searchResult = data.filter((item) => {
+  //       return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
+  //     })
+  //     setFilteredResults(searchResult);
   
-      console.log("filteredResults =>" , filteredResults);
-    } 
-    else { console.log("nothing found....")}
-  }
+  //     console.log("filteredResults =>" , filteredResults);
+  //   } 
+  //   else { console.log("nothing found....")}
+  // }
 
   function handleSearchSubmit(e) {
     e.preventDefault(e);
     console.log(`submit button pressed, search result for:  ${searchInput} `); 
     searchItems(e); 
-    searchResult = searchOutput;
-    console.log("searchcontext =>", searchResult);
+    console.log("search querry=>", filteredResults);
     console.log("---------------------------------------")
     handleChange(e);
-
   }
 
   function handleChange(e) {
     setSearchInput(e.target.value);
   }
-
-//  function submitClick() {
-//     isSubmitPressed(true);
-//  }
 
   return(
     <section className="search-form__content">
@@ -71,7 +54,7 @@ function SearchForm({searchSubmitClicked}) {
             id="search-input" name="search-input"
             required
           />
-          <button type="submit" className="search-form__content-form_submit"  onClick={handleSubmitClicked}>
+          <button type="submit" className="search-form__content-form_submit"  onClick={onSubmit}>
           Search
           </button>
         </label>
@@ -80,7 +63,6 @@ function SearchForm({searchSubmitClicked}) {
 
   </section>
   )
-
 }
 
 export default SearchForm;

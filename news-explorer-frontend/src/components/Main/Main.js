@@ -7,7 +7,7 @@ import About from '../About/About';
 import NotFound from "../NotFound/NotFound";
 import SavedArticles from "../SavedArticles/SavedArticles";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { SearchResultContext } from '../../contexts/SearchResultContext';
+
 
 function Main({
   isLoggedIn,
@@ -15,11 +15,11 @@ function Main({
   onSearchArticleClicked,
   cards,
   searchSubmitClicked,
-  // isSearchInput,
-  // isFilteredResults
+  isSearchInput,
+  isFilteredResults
 }) {
  const currentUser = React.useContext(CurrentUserContext);
- const searchOutput = React.useContext(SearchResultContext);
+
  const location = useLocation();
  const isSavedArticles = location.pathname === '/saved-articles';
 
@@ -33,9 +33,8 @@ function Main({
           isLoggedIn={isLoggedIn}
           cards={cards}
           searchSubmitClicked={searchSubmitClicked}
-          searchOutput={searchOutput}
-          // searchInput={isSearchInput}
-          // filteredResults={isFilteredResults}
+          searchInput={isSearchInput}
+          filteredResults={isFilteredResults}
          />
 
         {/* <Preloader />

@@ -6,7 +6,8 @@ import '../../index';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-// import Navigation from '../Navigation/Navigation';
+// import SearchForm from '../SearchForm/SearchForm';
+import searchItems from '../../utils/searchItem';
 import SignInPopup from '../Signin/Signin';
 import SignUpPopup from '../SignUp/Signup';
 import RegisterationSuccess from '../Success/Success';
@@ -14,15 +15,13 @@ import MobileSignIn from '../MobileSignIn/MobileSignIn';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import api from '../../utils/MainApi';
 import { data } from '../../utils/data';
-import { SearchResultContext } from '../../contexts/SearchResultContext';
-import SearchResults from '../SearchResults/SearchResults';
 
 
 function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
   const [searchOutput, setSearchOutput] = useState({}); // contextedn almam lazım
-  const [isSubmitPressed, setIsSubmitPressed] = useState(false);
+ 
   const [savedArticle, isSavedArticle] = useState ({ name: '', link: ''});
   const [cards, setCards] = useState([]);
   const [userData, setUserData] = useState({ name: 'name'});
@@ -32,9 +31,11 @@ function App() {
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isMobileClicked, setIsMobileClicked] = useState(false);
-  const [isMobileMenuClicked, setIsMobileMenuClicked] = useState(false);
-  const [isSearchInput, setIsSearchInput ] = useState({});
-  const [isFilteredResults, setIsFilteredResults] = useState({});
+  const [isMobileMenuClicked, setIsMobileMenuClicked] = useState(false); 
+  const [isSubmitPressed, setIsSubmitPressed] = useState(false);
+  // const [searchInput, setSearchInput] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+  const [filteredResults, setFilteredResults] = useState([]);
 
   
     //MainApi signup
@@ -210,9 +211,17 @@ function App() {
     isLoggedIn && setIsMobileMenuClicked(true);
   }
 
-  function handleSubmitClicked() {
+  function handleSubmitClicked(){
     setIsSubmitPressed(true);
   }
+  
+  // function handleSubmitClicked(value) {
+  //   console.log(value);
+  //   const newSearch = searchItems(value);
+  //   setFilteredResults([...newSearch])
+  //   setIsSubmitPressed(true);
+  // }
+
 
   let location = useLocation();
 
@@ -229,12 +238,6 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <SearchResultContext.Provider 
-        value={{
-          searchOutput: searchOutput,
-          isSubmitPressed: isSubmitPressed
-        
-      }}>
         <div className="app">
           <SignInPopup
             isOpen={isSignInPopupOpen}
@@ -269,6 +272,7 @@ function App() {
             onSignOut={handlesignOut}
             onMobilePopupClick={handleMobileClick}
             onMobilePopupMenu={handleMobileMenuClick}
+            onSubmit={handleSubmitClicked}
             searchSubmitClicked={handleSubmitClicked}
             isSubmitPressed={isSubmitPressed}
             />
@@ -279,12 +283,13 @@ function App() {
             onSearchArticleClicked={bookmarkCard}
             searchSubmitClicked={handleSubmitClicked}
             isSubmitPressed={isSubmitPressed}
-            // isSearchInput={isSearchInput}
-            // isFilteredResults={isFilteredResults}
+            onSubmit={handleSubmitClicked}
+            // searchInput={searchInput}
+            filteredResults={filteredResults}
+            setFilteredResults={setFilteredResults}
           />
           <Footer />
         </div>
-      </SearchResultContext.Provider>
     </CurrentUserContext.Provider>
   );
 }

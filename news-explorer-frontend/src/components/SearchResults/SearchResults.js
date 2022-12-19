@@ -1,34 +1,40 @@
 import React, { useContext, useState} from 'react';
 import { useLocation} from 'react-router-dom';
-// import SearchForm, {searchInput, filteredResults } from '../SearchForm/SearchForm';
+import SearchForm from '../SearchForm/SearchForm';
+import searchItems from '../../utils/searchItem';
+
 import NewsCard from '../NewsCard/NewsCard';
 import NotFound from '../NotFound/NotFound';
 import Preloader from '../Preloader/Preloader';
-import { SearchResultContext } from '../../contexts/SearchResultContext';
 
-function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, searchSubmitClicked, isSubmitPressed }) { //isSearchInput, isFilteredResults
-  let  searchOutput = React.useContext(SearchResultContext); 
-  console.log(searchOutput);;
 
-  const [isSearching, setIsSearching] = useState(false);
- 
-  console.log("searchResultscontext =>" , searchOutput); 
-  console.log("isSubmitPressed click ==>", searchSubmitClicked); 
+function SearchResults({ isLoggedIn, isBookmarked,  onArticleClick, isSubmitPressed, isSearching, setIsSearching, 
+  filteredResults, setFilteredResults
+}) { //isSearchInput, isFilteredResults
+  // const [filteredResults, setFilteredResults] = useState([]);
 
+  console.log("isSubmitPressed click ==>", isSubmitPressed); 
+  console.log("filteredResults =>", filteredResults);
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
 
+
+  // const newSearch = searchItems();
+  // setFilteredResults([...newSearch])
   
+  
+
   return (
-    <> { searchSubmitClicked ?
+    <> { isSubmitPressed ?
 (      <section className="searchResults">
       <div className="searchResults__content">
         <div className="searchResults__content-newscards">
           { !isSavedArticles &&  <h2 className="searchResults__content-title">Search Results</h2> }
           { isSearching ? <Preloader/> : ''}
           
-          { searchSubmitClicked > 1 ?
-            (searchOutput.map((card) => { //isFilteredResults.map
+          { isSubmitPressed > 1 ?
+            (filteredResults.map((card) => { //isFilteredResults.map
+              console.log(filteredResults)
               setIsSearching(false);
               return(
                 <NewsCard
@@ -40,9 +46,9 @@ function SearchResults({ isLoggedIn, isBookmarked, cards, onArticleClick, search
                 />
               )
             })
-            ) : ( !isSavedArticles && searchSubmitClicked && <NotFound />)
+            ) : ( !isSavedArticles && isSubmitPressed && <NotFound />)
           }
-          { !isSavedArticles && !searchOutput && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
+          { !isSavedArticles && !filteredResults && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
         </div>
       </div>
     </section>) : ('')
