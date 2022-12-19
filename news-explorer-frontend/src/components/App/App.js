@@ -211,16 +211,16 @@ function App() {
     isLoggedIn && setIsMobileMenuClicked(true);
   }
 
-  function handleSubmitClicked(){
-    setIsSubmitPressed(true);
-  }
-  
-  // function handleSubmitClicked(value) {
-  //   console.log(value);
-  //   const newSearch = searchItems(value);
-  //   setFilteredResults([...newSearch])
+  // function handleSubmitClicked(){
   //   setIsSubmitPressed(true);
   // }
+  
+  function handleSubmitClicked(value) {
+    console.log(value);
+    const newSearch = searchItems(value);
+    setFilteredResults([...newSearch])
+    setIsSubmitPressed(true);
+  }
 
 
   let location = useLocation();
@@ -272,7 +272,7 @@ function App() {
             onSignOut={handlesignOut}
             onMobilePopupClick={handleMobileClick}
             onMobilePopupMenu={handleMobileMenuClick}
-            onSubmit={handleSubmitClicked}
+            // onSubmit={handleSubmitClicked}
             searchSubmitClicked={handleSubmitClicked}
             isSubmitPressed={isSubmitPressed}
             />
@@ -283,7 +283,7 @@ function App() {
             onSearchArticleClicked={bookmarkCard}
             searchSubmitClicked={handleSubmitClicked}
             isSubmitPressed={isSubmitPressed}
-            onSubmit={handleSubmitClicked}
+            // onSubmit={handleSubmitClicked}
             // searchInput={searchInput}
             filteredResults={filteredResults}
             setFilteredResults={setFilteredResults}

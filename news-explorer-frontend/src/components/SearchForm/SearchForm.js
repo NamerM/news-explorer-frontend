@@ -6,24 +6,24 @@ import searchItems from '../../utils/searchItem';
 
 function SearchForm({handleSubmitClicked, onSubmit, }) {
   const [searchInput, setSearchInput] = useState('');
-  const [filteredResults, setFilteredResults] = useState('');
+  const [filteredResults, setFilteredResults] = useState([]);
   // const [searchFormData, setSearchFormData] = useState({});
   // const [searchFomInput, setSearchFormInput] = useState({ keyword: '', title: '', text: '', source: '' })
 
 
-  // function searchItems(searchValue) {
-  //   setSearchInput(searchValue)
-  //   // console.log(searchValue);
-  //   if(searchInput !== '') {
-  //     let searchResult = data.filter((item) => {
-  //       return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
-  //     })
-  //     setFilteredResults(searchResult);
+  function searchItems(searchValue) {
+    setSearchInput(searchValue)
+    // console.log(searchValue);
+    if(searchInput !== '') {
+      let searchResult = data.filter((item) => {
+        return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
+      })
+      setFilteredResults(searchResult);
   
-  //     console.log("filteredResults =>" , filteredResults);
-  //   } 
-  //   else { console.log("nothing found....")}
-  // }
+      console.log("filteredResults =>" , filteredResults);
+    } 
+    else { console.log("nothing found....")}
+  }
 
   function handleSearchSubmit(e) {
     e.preventDefault(e);
@@ -54,7 +54,7 @@ function SearchForm({handleSubmitClicked, onSubmit, }) {
             id="search-input" name="search-input"
             required
           />
-          <button type="submit" className="search-form__content-form_submit"  onClick={onSubmit}>
+          <button type="submit" className="search-form__content-form_submit"  onClick={handleSubmitClicked}>
           Search
           </button>
         </label>
