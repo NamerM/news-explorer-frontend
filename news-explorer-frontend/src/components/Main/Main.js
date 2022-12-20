@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import SearchResults from '../SearchResults/SearchResults';
-import {searchInput, filteredResults} from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import About from '../About/About';
 import NotFound from "../NotFound/NotFound";
+import NewsCard from '../NewsCard/NewsCard';
 import SavedArticles from "../SavedArticles/SavedArticles";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -12,11 +12,12 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 function Main({
   isLoggedIn,
   onSavedArticleClick,
-  onSearchArticleClicked,
+  onArticleClick,
   cards,
-  searchSubmitClicked,
-  isSearchInput,
-  isFilteredResults
+  filteredResults,
+  setIsSearching,
+  savedArticle,
+  searchCounter,
 }) {
  const currentUser = React.useContext(CurrentUserContext);
 
@@ -27,19 +28,24 @@ function Main({
   return(
     <>
       <main className="main">
-        {isSavedArticles && <SavedArticles isLoggedIn={isLoggedIn} />}
+        { isSavedArticles &&
+        <SavedArticles isLoggedIn={isLoggedIn} /> 
+        //NewsCard with savedArticle/bookmark status here?
+        }      
 
-        <SearchResults
+         <SearchResults
           isLoggedIn={isLoggedIn}
           cards={cards}
-          searchSubmitClicked={searchSubmitClicked}
-          searchInput={isSearchInput}
-          filteredResults={isFilteredResults}
-         />
-
-        {/* <Preloader />
-        <NotFound />  uncomment to see the components*/ }
-        <About />
+          filteredResults={filteredResults}
+          setIsSearching={setIsSearching}
+          onArticleClick={onArticleClick}
+          searchCounter={searchCounter} 
+         /> 
+        
+            // {/* <Preloader />}
+            // <NotFound />  uncomment to see the components*/ }
+        { !isSavedArticles && <About /> } 
+      
       </main>
     </>
 

@@ -77,10 +77,9 @@ class MainApi {
   //   .then(this._checkResponse)
   // }
   saveArticle(article) {
-    // const method = isSaved ? "DELETE" : "PUT";
-    return fetch(`${this._baseUrl}/articles/`, {  // cards/${id}/likes
+    return fetch(`${this._baseUrl}/articles/`, {
       headers: {
-        "Content-Type": "application/json",
+        ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
       method: "POST",
@@ -92,7 +91,7 @@ class MainApi {
   deleteArticle(id) {
     return fetch(`${this._baseUrl}/articles/${id}`, {
       headers: {
-        "Content-Type": "application/json",
+        ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
       method: "DELETE",

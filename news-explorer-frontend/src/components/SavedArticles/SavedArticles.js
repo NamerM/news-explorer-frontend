@@ -1,8 +1,9 @@
 import React from 'react';
 import {data} from '../../utils/data';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+// data yerine savedArticle dan çekeceğiz
 
-function SavedArticles({ name }) {
+function SavedArticles({  }) {
   const currentUser = React.useContext(CurrentUserContext)
   const keyword = data.map((card) => card.keyword);
   const separateKeywords = [...new Set(keyword)];

@@ -1,42 +1,22 @@
 import React, {useState} from 'react';
 import './SearchForm.css';
 import {data} from '../../utils/data.js';
-import searchItems from '../../utils/searchItem';
 
-
-function SearchForm({handleSubmitClicked, onSubmit, }) {
-  const [searchInput, setSearchInput] = useState('');
-  const [filteredResults, setFilteredResults] = useState([]);
-  // const [searchFormData, setSearchFormData] = useState({});
-  // const [searchFomInput, setSearchFormInput] = useState({ keyword: '', title: '', text: '', source: '' })
-
-
-  function searchItems(searchValue) {
-    setSearchInput(searchValue)
-    // console.log(searchValue);
-    if(searchInput !== '') {
-      let searchResult = data.filter((item) => {
-        return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
-      })
-      setFilteredResults(searchResult);
-  
-      console.log("filteredResults =>" , filteredResults);
-    } 
-    else { console.log("nothing found....")}
-  }
+function SearchForm({handleSubmitClicked, setKeyword, searchCounter }) {
+ const [searchInput, setSearchInput] = useState("");
 
   function handleSearchSubmit(e) {
     e.preventDefault(e);
-    console.log(`submit button pressed, search result for:  ${searchInput} `); 
-    searchItems(e); 
-    console.log("search querry=>", filteredResults);
-    console.log("---------------------------------------")
-    handleChange(e);
+    setKeyword(searchInput);
   }
 
   function handleChange(e) {
     setSearchInput(e.target.value);
   }
+  // function counter(e) {
+  //   let i = 0;
+  //   searchCounter(i++);
+  // }
 
   return(
     <section className="search-form__content">
@@ -54,7 +34,7 @@ function SearchForm({handleSubmitClicked, onSubmit, }) {
             id="search-input" name="search-input"
             required
           />
-          <button type="submit" className="search-form__content-form_submit"  onClick={handleSubmitClicked}>
+          <button type="submit" className="search-form__content-form_submit"  onClick={handleSubmitClicked} >
           Search
           </button>
         </label>

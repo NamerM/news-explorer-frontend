@@ -6,8 +6,6 @@ import '../../index';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-// import SearchForm from '../SearchForm/SearchForm';
-import searchItems from '../../utils/searchItem';
 import SignInPopup from '../Signin/Signin';
 import SignUpPopup from '../SignUp/Signup';
 import RegisterationSuccess from '../Success/Success';
@@ -20,9 +18,7 @@ import { data } from '../../utils/data';
 function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
-  const [searchOutput, setSearchOutput] = useState({}); // contextedn almam lazım
- 
-  const [savedArticle, isSavedArticle] = useState ({ name: '', link: ''});
+  const [savedArticle, isSavedArticle] = useState ([]);
   const [cards, setCards] = useState([]);
   const [userData, setUserData] = useState({ name: 'name'});
   const [isCheckingToken, setIsCheckingToken] = useState(true)
@@ -33,11 +29,11 @@ function App() {
   const [isMobileClicked, setIsMobileClicked] = useState(false);
   const [isMobileMenuClicked, setIsMobileMenuClicked] = useState(false); 
   const [isSubmitPressed, setIsSubmitPressed] = useState(false);
-  // const [searchInput, setSearchInput] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [filteredResults, setFilteredResults] = useState([]);
+  const [keyword, setKeyword] = useState('');
+  let searchCounter = 0;
 
-  
     //MainApi signup
     const onRegisterUser = ({ name, email, password }) => {
       api.signup({name, email, password})
@@ -114,16 +110,15 @@ function App() {
     function handlesignOut() {
       setIsLoggedIn(false);
       localStorage.removeItem('jwt');
-      navigate('/signin');
+      navigate('/');
     }
 
     //bookmarking newscard
     function bookmarkCard(card) {
       console.log('bookmarkCard function!!!'); 
       console.log(card)
-      console.log(card.keyword)
       const isSaved = card.article.some((user) => user === currentUser._id); //likes yerine schemadan id koydum//
-      console.log( isSaved);
+      console.log("app isSaved", isSaved);
       api
         .saveArticle(card._id, isSaved)
         .then((newCard) => {
@@ -152,6 +147,29 @@ function App() {
       //   })
       //   .catch((err) => console.log(err))
     }
+
+    function searchItems(searchValue) {
+      if(searchValue !== '') {
+        // console.log(searchValue);
+        let searchResult = data.filter((item) => {
+          return Object.values(item)
+            .join('')
+            .toLowerCase()
+            .includes(searchValue.toLowerCase());
+        })
+        console.log(searchResult);
+        setFilteredResults(searchResult);
+        //setIsSubmitPressed(true);
+      } else { 
+        console.log("nothing found....");
+        setFilteredResults(0)
+      }
+    }
+
+    useEffect(() => {
+      searchItems(keyword);
+    }, [keyword]);
+
 
   useEffect(() => {
     const closeByEscape = (e) => {
@@ -211,16 +229,16 @@ function App() {
     isLoggedIn && setIsMobileMenuClicked(true);
   }
 
-  // function handleSubmitClicked(){
-  //   setIsSubmitPressed(true);
-  // }
-  
-  function handleSubmitClicked(value) {
-    console.log(value);
-    const newSearch = searchItems(value);
-    setFilteredResults([...newSearch])
+  function handleSubmitClicked(){
     setIsSubmitPressed(true);
-  }
+  } 
+
+  useEffect(() => {
+    if(isSubmitPressed) {
+      searchCounter++;
+      console.log(searchCounter)
+    }
+  }, [])
 
 
   let location = useLocation();
@@ -272,21 +290,18 @@ function App() {
             onSignOut={handlesignOut}
             onMobilePopupClick={handleMobileClick}
             onMobilePopupMenu={handleMobileMenuClick}
-            // onSubmit={handleSubmitClicked}
-            searchSubmitClicked={handleSubmitClicked}
-            isSubmitPressed={isSubmitPressed}
+            setKeyword={setKeyword}
+            searchCounter={searchCounter}
             />
           <Main
             isLoggedIn={isLoggedIn}
             onArticleClick={bookmarkCard}
             onSavedArticleClick={deleteCardFromSaved}
-            onSearchArticleClicked={bookmarkCard}
-            searchSubmitClicked={handleSubmitClicked}
-            isSubmitPressed={isSubmitPressed}
-            // onSubmit={handleSubmitClicked}
-            // searchInput={searchInput}
+            searchCounter={searchCounter}
+            onSearchSubmit={handleSubmitClicked}
             filteredResults={filteredResults}
-            setFilteredResults={setFilteredResults}
+            setIsSearching={setIsSearching}
+            savedArticles={savedArticle}
           />
           <Footer />
         </div>

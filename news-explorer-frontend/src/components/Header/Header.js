@@ -7,7 +7,7 @@ import SearchForm from '../SearchForm/SearchForm';
 
 
 function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePopupClick, onMobilePopupMenu, onSignOut, 
-  searchSubmitClicked, searchInput, setSearchInput, filteredResults, setFilteredResults
+  searchSubmitClicked, setKeyword, filteredResults, setFilteredResults , searchCounter
  }) {
 
   const location = useLocation();
@@ -37,11 +37,10 @@ function Header({isLoggedIn, onSignInPopupClick, onSignUpPopupClick, onMobilePop
           onSignOut={onSignOut}
            />
         <SearchForm 
-          searchSubmitClicked={searchSubmitClicked}
-          // searchInput={searchInput}
-          // setSearchInput={setSearchInput}
-          setFilteredResults={setFilteredResults}
           filteredResults={filteredResults}
+          setFilteredResults={setFilteredResults}
+          setKeyword={setKeyword}
+          searchCounter={searchCounter}
         />
       </section>)
     }
