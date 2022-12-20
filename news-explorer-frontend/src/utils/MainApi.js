@@ -12,11 +12,10 @@ class MainApi {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.StatusText}`)
   }
 
-  // _checkFetch(url, headers) {
-  //   return fetch(url, headers).then((res) =>
-  //     res.ok ? res.json() : Promise.reject(`Error: ${res.StatusText}`)
-  //   )
-  // }
+async _connect(url, headers) {
+  const res = await fetch(url, headers);
+    return res.ok ? res.json() : await Promise.reject(`Error: ${res.status}`)
+ }
 
   signup({name, email, password}) {
     console.log(name, email, password)
@@ -65,24 +64,14 @@ class MainApi {
     .then(this._checkResponse)
   }
 
-  // savedArticleStatusChange(id, isSaved) {
-  //   const method = isSaved ? "DELETE" : "PUT";
-  //   return fetch(`${this._baseUrl}/articles/${id}`, {  // cards/${id}/likes
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       authorization: `Bearer ${localStorage.getItem("jwt")}`
-  //     },
-  //     method: method,
-  //   })
-  //   .then(this._checkResponse)
-  // }
   saveArticle(article) {
+    console.log("article id",article);
     return fetch(`${this._baseUrl}/articles/`, {
+      method: "POST",
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
-      method: "POST",
       body: JSON.stringify(article),
     })
     .then(this._checkResponse)

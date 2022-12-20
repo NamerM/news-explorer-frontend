@@ -3,12 +3,21 @@ import { useLocation} from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
 import NotFound from '../NotFound/NotFound';
 import Preloader from '../Preloader/Preloader';
+import NewsCardList from '../NewsCardList/NewsCardList';
 
 
-function SearchResults({ isLoggedIn,   onArticleClick, isSearching, setIsSearching, 
+function SearchResults({ card, isLoggedIn, onArticleClick, isSearching, setIsSearching, 
   filteredResults, savedArticle, searchCounter,
   }) 
 {
+  const [renderedCards, setRenderedCards] = useState([]);
+  const [cards, setCards] = useState([]);
+  const displayedCards = 3;
+
+  const clickHandle = () => {
+    const addThreeMore = cards.slice(0, renderedCards.length + displayedCards + 1 )   //cards.slice
+    setRenderedCards([...addThreeMore ])
+  }
 
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
@@ -23,26 +32,17 @@ function SearchResults({ isLoggedIn,   onArticleClick, isSearching, setIsSearchi
         <div className="searchResults__content-newscards">
           { !isSavedArticles &&  <h2 className="searchResults__content-title">Search Results</h2> }
           { isSearching ? <Preloader/> : ''}
-          
-          { //filteredResults.length > 0 ? 
-            (   
-              filteredResults.map((card) => { //isFilteredResults.map
-              console.log("search result in function=>", filteredResults)
-              setIsSearching(false);
-              return(
-                <NewsCard
-                  isLoggedIn={isLoggedIn}
-                  savedArticle={savedArticle}
-                  card={card}
-                  iconType={isSavedArticles ? 'bin' : 'bookmark'}
-                  onArticleClick={onArticleClick}
-                />
-              )
-            })
-            ) 
-          //  : (!isSavedArticles && !filteredResults && <NotFound />)
-          }
-          { !isSavedArticles && !filteredResults && <button type="button" className="searchResults__content-showbtn">Show More</button> }     
+          <NewsCardList 
+            filteredResults={filteredResults}
+            setIsSearching={setIsSearching}
+            isLoggedIn={isLoggedIn}
+            savedArticle={savedArticle}
+            card={card}
+            iconType={isSavedArticles ? 'bin' : 'bookmark'}
+            onArticleClick={onArticleClick}
+          />
+          {  <button type="button"className="searchResults__content-showbtn"
+           onClick={clickHandle}>Show More</button> }     
         </div>
       </div>
     </section>) 
@@ -58,13 +58,7 @@ function SearchResults({ isLoggedIn,   onArticleClick, isSearching, setIsSearchi
 
 export default SearchResults;
 
-  // const [ searchResults, setSearchResults ] = useState('1');
-  // function searchFilter(){
-  //   setSearchResults = 12345
-  // }
-  // const onShowMoreClick = () => {
-  //   setIsClicked(true);
-  // }
+
 
   // const [renderedCards, setRenderedCards] = useState([]);
   // const [cards, setCards] = useState([]);

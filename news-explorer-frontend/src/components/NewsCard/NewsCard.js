@@ -26,15 +26,28 @@ function NewsCard ({ card, isLoggedIn, iconType, onArticleClick }) {
     (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(!true) || setIsBookmarked(!isBookmarked)
   }
 
-  
   // const isOwn = card.owner === currentUser._id;
   const isSaved = card && card.articles && card.articles.some(user => user === currentUser._id );
   // const cardBookMarkToggle = `${isSaved ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"}`;
 
   const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
 
+  
+  // const formatDate = (date) => {
+  //   const newDate = new Date(date);
+  //   const options = {
+  //     month: 'long',
+  //     day: 'numeric',
+  //     year: 'numeric',
+  //   };
+  //   return newDate.toLocaleDateString(
+  //     'en-US',
+  //     options
+  //   );
+  // }
+
   return(
-    <li className="searchResults__newscard ">
+   <li className="searchResults__newscard "> 
       <div className="searchResults__newscard-item">
       { toolTipVisible && (
         <button className="searchResults__newscard-item-tooltip">
@@ -55,7 +68,10 @@ function NewsCard ({ card, isLoggedIn, iconType, onArticleClick }) {
           <p className="searchResults__newscard-item-date">{card.date}</p>
           <h2 className="searchResults__newscard-item-title">{card.title}</h2>
           <p className="searchResults__newscard-item-text">{card.text}</p>
-          <p className="searchResults__newscard-item-source">{card.source}</p>
+          {/* <p className="searchResults__newscard-item-source">{card.source}</p> */}
+          <a className="searchResults__newscard-item-source" target="_blank" href={card.link}>
+          {card.source}
+          </a>
           { isLoggedIn && <p className="searchResults__newscard-item-keyword">{card.keyword}</p> }
         </div>
       </div>

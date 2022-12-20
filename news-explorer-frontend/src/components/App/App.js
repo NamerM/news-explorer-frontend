@@ -12,6 +12,7 @@ import RegisterationSuccess from '../Success/Success';
 import MobileSignIn from '../MobileSignIn/MobileSignIn';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import api from '../../utils/MainApi';
+import newsApi from '../../utils/NewsApi';
 import { data } from '../../utils/data';
 
 
@@ -66,6 +67,13 @@ function App() {
         .finally(() => closeAllPopups())
     }
 
+    //signout
+    function handlesignOut() {
+      setIsLoggedIn(false);
+      localStorage.removeItem('jwt');
+      navigate('/');
+    }
+
     //MainApi checkToken
     useEffect(() => {
       const token = localStorage.getItem('jwt')
@@ -103,22 +111,22 @@ function App() {
             setCards(res.data);
           })
           .catch((err) => console.log(err));
-      }
+        newsApi.getNews()
+          .then(res=> {
+            setCards(res.data);
+            console.log(res);
+          })
+          .catch((err) => console.log("NewsApi =>", err));
+      } 
     }, [])
-
-    //signout
-    function handlesignOut() {
-      setIsLoggedIn(false);
-      localStorage.removeItem('jwt');
-      navigate('/');
-    }
+    
 
     //bookmarking newscard
     function bookmarkCard(card) {
       console.log('bookmarkCard function!!!'); 
       console.log(card)
-      const isSaved = card.article.some((user) => user === currentUser._id); //likes yerine schemadan id koydum//
-      console.log("app isSaved", isSaved);
+      const isSaved = card.articles?.some((user) => user === currentUser._id); //likes yerine schemadan id koydum//
+      console.log("card isSaved", isSaved);
       api
         .saveArticle(card._id, isSaved)
         .then((newCard) => {
@@ -126,7 +134,7 @@ function App() {
             state.map(currentCard => {
               return currentCard._id === card._id
               ? newCard.data
-              : currentCard;
+              : currentCard
             })
           );
         })

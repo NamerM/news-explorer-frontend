@@ -172,6 +172,7 @@
   line-height: 20px;
   color: #b6bcbf;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 1260px) {
