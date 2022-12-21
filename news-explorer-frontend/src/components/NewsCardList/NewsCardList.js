@@ -6,14 +6,14 @@ import SearchForm from '../SearchForm/SearchForm';
 import SearchResults from '../SearchResults/SearchResults';
 
 
-function NewsCardList({ isLoggedIn, card, iconType, onArticleClick, filteredResults, savedArticle, setIsSearching}) {
-  // const [cardsPresent, setCardsPresent] = useState(3);
-  // const showMoreBtn = cardsPresent < card?.length;
+function NewsCardList({ isLoggedIn, cards, iconType, onArticleClick, filteredResults, savedArticle}) {
+  const [cardsPresent, setCardsPresent] = useState(3);
 
   const location = useLocation();
   const isSavedArticles = location.pathname === '/saved-articles';
 
   return (
+    <>
     <section className="searchResults__newscards-content">
       <ul className={`${ isLoggedIn
         ? "searchResults__newscards"
@@ -21,9 +21,8 @@ function NewsCardList({ isLoggedIn, card, iconType, onArticleClick, filteredResu
         }`}>
         { 
           (   
-            filteredResults.map((card) => { 
+            filteredResults.slice(0, cardsPresent).map((card) => { 
             console.log("search result in function=>", filteredResults)
-            setIsSearching(false);
             return(
               <NewsCard
                 isLoggedIn={isLoggedIn}
@@ -38,18 +37,10 @@ function NewsCardList({ isLoggedIn, card, iconType, onArticleClick, filteredResu
         }
       </ul>
     </section>
-
+         <button type="button"className="searchResults__content-showbtn"
+          onClick={() => setCardsPresent((prev) => (prev += 3))}>Show More</button>    </>
   )
 }
 
 export default NewsCardList;
 
-      {/* <div>
-        { showMoreBtn && (
-          <button type="button" className="earchResults__content-showbtn" 
-           onClick={() => cardsPresent((prev) => (prev += 3))}>
-            Show More
-          </button>
-          ) 
-        }
-      </div> */}

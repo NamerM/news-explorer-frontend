@@ -2,7 +2,7 @@ import React, { useState} from "react";
 
 
 function Preloader() {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className="preloader">

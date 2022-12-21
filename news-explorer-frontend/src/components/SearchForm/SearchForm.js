@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './SearchForm.css';
 import {data} from '../../utils/data.js';
 
-function SearchForm({handleSubmitClicked, setKeyword, searchCounter }) {
+function SearchForm({onSearchSubmit, setKeyword,  }) {
  const [searchInput, setSearchInput] = useState("");
 
   function handleSearchSubmit(e) {
@@ -13,10 +13,6 @@ function SearchForm({handleSubmitClicked, setKeyword, searchCounter }) {
   function handleChange(e) {
     setSearchInput(e.target.value);
   }
-  // function counter(e) {
-  //   let i = 0;
-  //   searchCounter(i++);
-  // }
 
   return(
     <section className="search-form__content">
@@ -34,7 +30,7 @@ function SearchForm({handleSubmitClicked, setKeyword, searchCounter }) {
             id="search-input" name="search-input"
             required
           />
-          <button type="submit" className="search-form__content-form_submit"  onClick={handleSubmitClicked} >
+          <button type="submit" className="search-form__content-form_submit"  onClick={onSearchSubmit} >
           Search
           </button>
         </label>

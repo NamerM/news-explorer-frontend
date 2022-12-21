@@ -24,16 +24,14 @@ function App() {
   const [userData, setUserData] = useState({ name: 'name'});
   const [isCheckingToken, setIsCheckingToken] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isMobileClicked, setIsMobileClicked] = useState(false);
   const [isMobileMenuClicked, setIsMobileMenuClicked] = useState(false); 
-  const [isSubmitPressed, setIsSubmitPressed] = useState(false);
-  const [isSearching, setIsSearching] = useState(false);
   const [filteredResults, setFilteredResults] = useState([]);
   const [keyword, setKeyword] = useState('');
-  let searchCounter = 0;
 
     //MainApi signup
     const onRegisterUser = ({ name, email, password }) => {
@@ -105,12 +103,12 @@ function App() {
           .then( res => {
             setCurrentUser(res.data);
           })
-          .catch((err) => console.log(err));
+          .catch((err) => console.log("getUserInfo=>", err));
         api.getArticles(token)
           .then(res => {
             setCards(res.data);
           })
-          .catch((err) => console.log(err));
+          .catch((err) => console.log("getArticles=>" , err));
         newsApi.getNews()
           .then(res=> {
             setCards(res.data);
@@ -159,6 +157,7 @@ function App() {
     function searchItems(searchValue) {
       if(searchValue !== '') {
         // console.log(searchValue);
+        setIsLoading(true);
         let searchResult = data.filter((item) => {
           return Object.values(item)
             .join('')
@@ -238,15 +237,16 @@ function App() {
   }
 
   function handleSubmitClicked(){
-    setIsSubmitPressed(true);
+    setIsLoading(true);
   } 
 
-  useEffect(() => {
-    if(isSubmitPressed) {
-      searchCounter++;
-      console.log(searchCounter)
-    }
-  }, [])
+
+  // useEffect(() => {
+  //   if(isSubmitPressed) {
+  //     searchCounter++;
+  //     console.log(searchCounter)
+  //   }
+  // }, [])
 
 
   let location = useLocation();
@@ -299,16 +299,16 @@ function App() {
             onMobilePopupClick={handleMobileClick}
             onMobilePopupMenu={handleMobileMenuClick}
             setKeyword={setKeyword}
-            searchCounter={searchCounter}
+            onSearchSubmit={handleSubmitClicked}
             />
           <Main
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
             isLoggedIn={isLoggedIn}
             onArticleClick={bookmarkCard}
             onSavedArticleClick={deleteCardFromSaved}
-            searchCounter={searchCounter}
             onSearchSubmit={handleSubmitClicked}
             filteredResults={filteredResults}
-            setIsSearching={setIsSearching}
             savedArticles={savedArticle}
           />
           <Footer />

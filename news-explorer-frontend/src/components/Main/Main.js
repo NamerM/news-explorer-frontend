@@ -12,21 +12,19 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Main({
   isLoggedIn,
+  isLoading,
+  setIsLoading,
   onSavedArticleClick,
   onArticleClick,
   cards,
-  card,
   filteredResults,
-  setIsSearching,
   savedArticle,
-  searchCounter,
   onClick,
 }) {
  const currentUser = React.useContext(CurrentUserContext);
 
  const location = useLocation();
  const isSavedArticles = location.pathname === '/saved-articles';
-
 
   return(
     <>
@@ -43,21 +41,17 @@ function Main({
         onSavedArticleClick={onSavedArticleClick}
         /> */}
       </>
-
         }      
-
         {!isSavedArticles && <SearchResults
           isLoggedIn={isLoggedIn}
-          // cards={cards}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
           filteredResults={filteredResults}
-          setIsSearching={setIsSearching}
           onArticleClick={onArticleClick}
-          searchCounter={searchCounter} 
           onClick={onClick}
          /> 
         } 
-            // {/* <Preloader />}
-            // <NotFound />  uncomment to see the components*/ }
+ 
         { !isSavedArticles && <About /> } 
       
       </main>
