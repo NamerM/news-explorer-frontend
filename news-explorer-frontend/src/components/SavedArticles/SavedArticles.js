@@ -1,10 +1,9 @@
 import React from 'react';
 import {data} from '../../utils/data';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
-import NewsCard from '../NewsCard/NewsCard';
 // data yerine savedArticle dan çekeceğiz
 
-function SavedArticles({ }) { //isLoggedIn, savedArticle,cards, isSavedArticles, onSavedArticleClick
+function SavedArticles({ savedArticle, cards, isSavedArticles, onSavedArticleClick }) { //isLoggedIn, savedArticle,cards, isSavedArticles, onSavedArticleClick
   const currentUser = React.useContext(CurrentUserContext)
   const keyword = data.map((card) => card.keyword);
   const separateKeywords = [...new Set(keyword)];
@@ -21,14 +20,17 @@ function SavedArticles({ }) { //isLoggedIn, savedArticle,cards, isSavedArticles,
           </span>
           </p>
       </div>
-    </section>
-    {/* { cards.length > 0 && <NewsCard 
-      isLoggedIn={isLoggedIn}
+      {/* { 
+      savedArticle &&  <NewsCardList   //SavedCardList gerekecek gibi
+      // isLoggedIn={isLoggedIn}
       savedArticle={savedArticle}
       cards={cards}
       iconType={isSavedArticles ? 'bin' : 'bookmark'}
       onSavedArticleClick={onSavedArticleClick}
-    />} */}
+    />
+    }  */}
+    </section>
+
     </>
   )
 }

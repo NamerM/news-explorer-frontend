@@ -25,8 +25,8 @@ function SearchResults({
 
   return (
     <> 
-    { isLoading && <Preloader/> }
-    { setIsLoading(false)}
+    {/* { isLoading && <Preloader/> } */}
+    {/* { setIsLoading(false)} */}
     { filteredResults.length >= 1  ?
       ( <section className="searchResults">
         <div className="searchResults__content">
@@ -44,7 +44,7 @@ function SearchResults({
         </div>
       </section>) 
       : (    
-      ( filteredResults && !isSavedArticles && <NotFound /> ) // searchCounter > 0
+      ( filteredResults  && <NotFound /> || null ) 
       )
     } 
 

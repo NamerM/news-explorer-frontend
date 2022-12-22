@@ -125,20 +125,24 @@ function App() {
     //   setSavedArticle([...new Set(bookmarkedCard)]);
     // }, [savedArticle])
 
-    function bookmarkCard({ keyword, title, text, source, date, link,image, _id }) {
-      const card = { keyword, title, text, source, date, link,image, _id};
+    function bookmarkCard({ keyword, title, text, source, date, link, image}) {
+      const card = { keyword, title, text, source, date, link,image };
       const currentCard = card;
       console.log("currentUser._id", currentUser._id);
 
       api
-        .saveArticle({ keyword, title, text, source, date, link,image, _id })
-          .then((card) => {       
-            setSavedArticle([...new Set(card)]);
+        .saveArticle({ keyword, title, text, source, date, link,image})
+          .then((card) => {  
+            // console.log("func", [...savedArticle, card]);    
+            setSavedArticle([...savedArticle, card]);
           })
-          .then(console.log("savedArticle =>" , savedArticle))
+          // .then(console.log("savedArticle =>" , savedArticle))
           .catch((err) => console.log("bookmark Error =>", err));
     }
 
+    useEffect(() =>  {
+      console.log("savedArticle =>" , savedArticle)
+    }, [savedArticle])
 
 
      //remove bookmark
