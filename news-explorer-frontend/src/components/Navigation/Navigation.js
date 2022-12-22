@@ -37,7 +37,7 @@ function Navigation({
             <NavLink className={`${isHomeClass}`} to="/">Home</NavLink>
           </li>
           <li className="navigation__menu-list">
-            <NavLink className={` ${isHomeClass}` } to="/saved-articles">Saved articles</NavLink>
+            <NavLink className={` ${isHomeClass}` } to="/articles/">Saved articles</NavLink>
           </li>
           <li>
             <button className={`${isHomeButtonClass}`} onClick={onSignOut}>{currentUser.name}</button>

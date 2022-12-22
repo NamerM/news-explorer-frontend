@@ -1,13 +1,12 @@
 import React, { useContext, useState} from 'react';
 import { useLocation} from 'react-router-dom';
-import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
 import NewsCardList from '../NewsCardList/NewsCardList';
 
 
 function SearchResults({ 
-  card,
+  cards,
   isLoggedIn, 
   isLoading,
   setIsLoading,
@@ -17,7 +16,7 @@ function SearchResults({
   }) 
 { 
   const location = useLocation();
-  const isSavedArticles = location.pathname === '/saved-articles';
+  const isSavedArticles = location.pathname === '/articles/';
   // const[seconds, setSeconds] = useState(0)
   // const timer = (() => {
   //   setSeconds(seconds => seconds + 1);
@@ -35,10 +34,9 @@ function SearchResults({
           { !isSavedArticles &&  <h2 className="searchResults__content-title">Search Results</h2> }
             <NewsCardList 
               filteredResults={filteredResults}
-              // setIsSearching={setIsSearching}
               isLoggedIn={isLoggedIn}
               savedArticle={savedArticle}
-              card={card}
+              cards={cards}
               iconType={isSavedArticles ? 'bin' : 'bookmark'}
               onArticleClick={onArticleClick}
             />

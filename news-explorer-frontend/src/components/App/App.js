@@ -14,12 +14,13 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 import api from '../../utils/MainApi';
 import newsApi from '../../utils/NewsApi';
 import { data } from '../../utils/data';
+import NewsCard from '../NewsCard/NewsCard';
 
 
 function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
-  const [savedArticle, isSavedArticle] = useState ([]);
+  const [savedArticle, setSavedArticle] = useState ([]);
   const [cards, setCards] = useState([]);
   const [userData, setUserData] = useState({ name: 'name'});
   const [isCheckingToken, setIsCheckingToken] = useState(true)
@@ -118,27 +119,28 @@ function App() {
       } 
     }, [])
     
-
     //bookmarking newscard
-    function bookmarkCard(card) {
-      console.log('bookmarkCard function!!!'); 
-      console.log(card)
-      const isSaved = card.articles?.some((user) => user === currentUser._id); //likes yerine schemadan id koydum//
-      console.log("card isSaved", isSaved);
+    // useEffect(() => {
+    //   const bookmarkedCard = savedArticle.map((card) => card._id)
+    //   setSavedArticle([...new Set(bookmarkedCard)]);
+    // }, [savedArticle])
+
+    function bookmarkCard({ keyword, title, text, source, date, link,image, _id }) {
+      const card = { keyword, title, text, source, date, link,image, _id};
+      const currentCard = card;
+      console.log("currentUser._id", currentUser._id);
+
       api
-        .saveArticle(card._id, isSaved)
-        .then((newCard) => {
-          setCards((state) => // defined above articles/setArticles
-            state.map(currentCard => {
-              return currentCard._id === card._id
-              ? newCard.data
-              : currentCard
-            })
-          );
-        })
-        .then()
-      .catch((err) => console.log("bookmark Error =>", err));
+        .saveArticle({ keyword, title, text, source, date, link,image, _id })
+          .then((card) => {       
+            setSavedArticle([...new Set(card)]);
+          })
+          .then(console.log("savedArticle =>" , savedArticle))
+          .catch((err) => console.log("bookmark Error =>", err));
     }
+
+
+
      //remove bookmark
      function deleteCardFromSaved(card) {
       console.log('deleteCardFromSaved function!!!')
@@ -221,13 +223,6 @@ function App() {
     setIsMobileMenuClicked(false);
   }
 
-  // function handlesignOut() {
-  //   setIsLoggedIn(false);
-  //   localStorage.removeItem('jwt');
-  //   closeAllPopups();
-  //   navigate('/');
-  // }
-
   function handleMobileClick () {
    !isLoggedIn && setIsMobileClicked(true);
   }
@@ -239,15 +234,6 @@ function App() {
   function handleSubmitClicked(){
     setIsLoading(true);
   } 
-
-
-  // useEffect(() => {
-  //   if(isSubmitPressed) {
-  //     searchCounter++;
-  //     console.log(searchCounter)
-  //   }
-  // }, [])
-
 
   let location = useLocation();
 
@@ -302,6 +288,7 @@ function App() {
             onSearchSubmit={handleSubmitClicked}
             />
           <Main
+            cards={cards}
             isLoading={isLoading}
             setIsLoading={setIsLoading}
             isLoggedIn={isLoggedIn}
@@ -309,7 +296,7 @@ function App() {
             onSavedArticleClick={deleteCardFromSaved}
             onSearchSubmit={handleSubmitClicked}
             filteredResults={filteredResults}
-            savedArticles={savedArticle}
+            savedArticle={savedArticle}
           />
           <Footer />
         </div>

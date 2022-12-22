@@ -3,7 +3,9 @@ import '../NewsCard/NewsCard.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
-function NewsCard ({ card, isLoggedIn, iconType, onArticleClick }) {
+function NewsCard ({ cards, isLoggedIn, iconType, savedArticle, onArticleClick,
+ image, date, title, text, source, link,
+}) {
   const currentUser = React.useContext(CurrentUserContext);
   const [toolTipVisible, setToolTipVisible] = useState(false); //
   const [isBookmarked, setIsBookmarked] = useState(false); // toggle  true of false for bookmark icon/tooltip changes
@@ -18,16 +20,12 @@ function NewsCard ({ card, isLoggedIn, iconType, onArticleClick }) {
 
   const toolTipText = isBookmarked ? "Remove bookmark" : "Add bookmark"
   const buttonClass = isBookmarked ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"
-
-  // const clickStatus = () => {
-  //   setIsClicked(true)
-  // }
   const bookmarkStatus = () => {
     (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(!true) || setIsBookmarked(!isBookmarked)
   }
 
   // const isOwn = card.owner === currentUser._id;
-  const isSaved = card && card.articles && card.articles.some(user => user === currentUser._id );
+  const isSaved = cards && cards.articles && cards.articles.some(user => user === currentUser._id );
   // const cardBookMarkToggle = `${isSaved ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"}`;
 
   const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
@@ -47,7 +45,7 @@ function NewsCard ({ card, isLoggedIn, iconType, onArticleClick }) {
   // }
 
   return(
-   <li className="searchResults__newscard "> 
+   <section className="searchResults__newscard "> 
       <div className="searchResults__newscard-item">
       { toolTipVisible && (
         <button className="searchResults__newscard-item-tooltip">
@@ -59,23 +57,23 @@ function NewsCard ({ card, isLoggedIn, iconType, onArticleClick }) {
             onMouseEnter={cursorOnBox}
             onMouseLeave={cursorOffBox}
             // onClick={bookmarkStatus}
-            onClick={() => onArticleClick(card) }
+            onClick={() => onArticleClick(cards) }
             onMouseUp={bookmarkStatus}
             >
             </button>
-        <img className="searchResults__newscard-item-image" src={card.image} alt={card.title} />
+        <img className="searchResults__newscard-item-image" src={image} alt={title} />
         <div className="searchResults__newscard-item-info">
-          <p className="searchResults__newscard-item-date">{card.date}</p>
-          <h2 className="searchResults__newscard-item-title">{card.title}</h2>
-          <p className="searchResults__newscard-item-text">{card.text}</p>
-          {/* <p className="searchResults__newscard-item-source">{card.source}</p> */}
-          <a className="searchResults__newscard-item-source" target="_blank" href={card.link}>
-          {card.source}
+          <p className="searchResults__newscard-item-date">{date}</p>
+          <h2 className="searchResults__newscard-item-title">{title}</h2>
+          <p className="searchResults__newscard-item-text">{text}</p>
+          {/* <p className="searchResults__newscard-item-source">{cards.source}</p> */}
+          <a className="searchResults__newscard-item-source" target="_blank" href={link}>
+          {source}
           </a>
-          { isLoggedIn && <p className="searchResults__newscard-item-keyword">{card.keyword}</p> }
+          { isLoggedIn && <p className="searchResults__newscard-item-keyword">{cards.keyword}</p> }
         </div>
       </div>
-    </li>
+    </section>
   )
 }
 

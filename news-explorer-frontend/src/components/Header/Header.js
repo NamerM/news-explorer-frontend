@@ -20,7 +20,7 @@ function Header({
  }) {
 
   const location = useLocation();
-  const isSavedArticles = location.pathname === '/saved-articles';
+  const isSavedArticles = location.pathname === '/articles/';
 
 
   return (

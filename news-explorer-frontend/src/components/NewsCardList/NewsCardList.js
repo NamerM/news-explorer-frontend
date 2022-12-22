@@ -1,16 +1,12 @@
 import React, {useState} from 'react';
 import { useLocation} from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
-// import {data} from '../../utils/data';
-import SearchForm from '../SearchForm/SearchForm';
-import SearchResults from '../SearchResults/SearchResults';
 
-
-function NewsCardList({ isLoggedIn, cards, iconType, onArticleClick, filteredResults, savedArticle}) {
+function NewsCardList({ cards, isLoggedIn, onArticleClick, filteredResults, savedArticle}) {
   const [cardsPresent, setCardsPresent] = useState(3);
 
   const location = useLocation();
-  const isSavedArticles = location.pathname === '/saved-articles';
+  const isSavedArticles = location.pathname === '/articles/';
 
   return (
     <>
@@ -21,16 +17,24 @@ function NewsCardList({ isLoggedIn, cards, iconType, onArticleClick, filteredRes
         }`}>
         { 
           (   
-            filteredResults.slice(0, cardsPresent).map((card) => { 
-            console.log("search result in function=>", filteredResults)
+            filteredResults.slice(0, cardsPresent).map((card, cardId) => { 
+            // console.log("search result in function=>", filteredResults)
             return(
+              <li key={cardId}>
               <NewsCard
                 isLoggedIn={isLoggedIn}
                 savedArticle={savedArticle}
-                card={card}
                 iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onArticleClick={onArticleClick}
+                image={card.image}
+                date={card.date}  //{article.publishedAt}
+                title={card.title}
+                text={card.text}
+                source={card.source}
+                link={card.link}
+                cards={card}
               />
+              </li>
               )
             })
           ) 
@@ -44,3 +48,10 @@ function NewsCardList({ isLoggedIn, cards, iconType, onArticleClick, filteredRes
 
 export default NewsCardList;
 
+  // const [renderedCards, setRenderedCards] = useState([]);
+  // const [cards, setCards] = useState([]);
+  // const displayedCards = 3;
+
+  // const clickHandle = () => {
+  //   const addThreeMore = data.slice(0, renderedCards.length + displayedCards + 1 )   //cards.slice
+  //   setRenderedCards([...addThreeMore ])
