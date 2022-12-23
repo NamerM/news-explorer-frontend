@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import '../NewsCard/NewsCard.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
-function NewsCard ({ cards, isLoggedIn, iconType, savedArticle, onArticleClick,
- image, date, title, text, source, link,
+function NewsCard ({ 
+  cards, 
+  isLoggedIn, 
+  iconType,  
+  onArticleClick, 
+  onRemoveArticleClick
 }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [toolTipVisible, setToolTipVisible] = useState(false); //
@@ -24,12 +29,12 @@ function NewsCard ({ cards, isLoggedIn, iconType, savedArticle, onArticleClick,
     (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(!true) || setIsBookmarked(!isBookmarked)
   }
 
-  // const isOwn = card.owner === currentUser._id;
   const isSaved = cards && cards.articles && cards.articles.some(user => user === currentUser._id );
-  // const cardBookMarkToggle = `${isSaved ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"}`;
-
   const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
 
+  const location = useLocation();
+  const isSavedArticles = location.pathname === '/articles/';
+  // const toggleBookmark = isSavedArticles ? (() => onArticleClick(cards)) : (() => onRemoveArticleClick(cards))
   
   // const formatDate = (date) => {
   //   const newDate = new Date(date);
@@ -54,21 +59,20 @@ function NewsCard ({ cards, isLoggedIn, iconType, savedArticle, onArticleClick,
        )}
 
         <button className={`searchResults__newscard-item-box ${buttonTypeClass}`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
-            onMouseEnter={cursorOnBox}
-            onMouseLeave={cursorOffBox}
-            // onClick={bookmarkStatus}
-            onClick={() => onArticleClick(cards) }
-            onMouseUp={bookmarkStatus}
-            >
-            </button>
-        <img className="searchResults__newscard-item-image" src={image} alt={title} />
+          onMouseEnter={cursorOnBox}
+          onMouseLeave={cursorOffBox}
+          onClick={!isSavedArticles ? () => onArticleClick(cards) : () => onRemoveArticleClick(cards) }
+          onMouseUp={bookmarkStatus}
+          >
+        </button>
+        <img className="searchResults__newscard-item-image" src={cards.image} alt={cards.title} />
         <div className="searchResults__newscard-item-info">
-          <p className="searchResults__newscard-item-date">{date}</p>
-          <h2 className="searchResults__newscard-item-title">{title}</h2>
-          <p className="searchResults__newscard-item-text">{text}</p>
+          <p className="searchResults__newscard-item-date">{cards.date}</p>
+          <h2 className="searchResults__newscard-item-title">{cards.title}</h2>
+          <p className="searchResults__newscard-item-text">{cards.text}</p>
           {/* <p className="searchResults__newscard-item-source">{cards.source}</p> */}
-          <a className="searchResults__newscard-item-source" target="_blank" href={link}>
-          {source}
+          <a className="searchResults__newscard-item-source" target="_blank" href={cards.link}>
+          {cards.source}
           </a>
           { isLoggedIn && <p className="searchResults__newscard-item-keyword">{cards.keyword}</p> }
         </div>

@@ -14,7 +14,6 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 import api from '../../utils/MainApi';
 import newsApi from '../../utils/NewsApi';
 import { data } from '../../utils/data';
-import NewsCard from '../NewsCard/NewsCard';
 
 
 function App() {
@@ -119,12 +118,6 @@ function App() {
       } 
     }, [])
     
-    //bookmarking newscard
-    // useEffect(() => {
-    //   const bookmarkedCard = savedArticle.map((card) => card._id)
-    //   setSavedArticle([...new Set(bookmarkedCard)]);
-    // }, [savedArticle])
-
     function bookmarkCard({ keyword, title, text, source, date, link, image}) {
       const card = { keyword, title, text, source, date, link,image };
       const currentCard = card;
@@ -136,7 +129,6 @@ function App() {
             // console.log("func", [...savedArticle, card]);    
             setSavedArticle([...savedArticle, card]);
           })
-          // .then(console.log("savedArticle =>" , savedArticle))
           .catch((err) => console.log("bookmark Error =>", err));
     }
 
@@ -148,6 +140,7 @@ function App() {
      //remove bookmark
      function deleteCardFromSaved(card) {
       console.log('deleteCardFromSaved function!!!')
+      
 
       // api.deleteCard(card._id)
       //   .then((res) => {
@@ -161,21 +154,23 @@ function App() {
     }
 
     function searchItems(searchValue) {
-      if(searchValue !== '') {
-        // console.log(searchValue);
+      if(searchValue !== '') {  // console.log(searchValue);
         setIsLoading(true);
-        let searchResult = data.filter((item) => {
-          return Object.values(item)
-            .join('')
-            .toLowerCase()
-            .includes(searchValue.toLowerCase());
-        })
-        console.log(searchResult);
-        setFilteredResults(searchResult);
-        //setIsSubmitPressed(true);
+
+        setTimeout(() => {
+          let searchResult = data.filter((item) => {
+            return Object.values(item)
+              .join('')
+              .toLowerCase()
+              .includes(searchValue.toLowerCase());
+          })
+          //console.log(searchResult);
+          setFilteredResults(searchResult);
+          setIsLoading(false);
+        }, 750)
       } else { 
         console.log("nothing found....");
-        setFilteredResults(0)
+        setFilteredResults('')
       }
     }
 

@@ -4,6 +4,7 @@ import SearchResults from '../SearchResults/SearchResults';
 import About from '../About/About';
 import SavedArticles from "../SavedArticles/SavedArticles";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import SavedNewsList from "../SavedNewsList/SavedNewsList";
 
 function Main({
   isLoggedIn,
@@ -13,23 +14,23 @@ function Main({
   cards,
   filteredResults,
   savedArticle,
-  onSavedArticleClick,
+  onRemoveArticleClick,
   onClick,
 }) {
  const currentUser = React.useContext(CurrentUserContext);
  const location = useLocation();
- const isSavedArticles = location.pathname === '/articles';  //saved-articles
+ const isSavedArticles = location.pathname === '/articles/';  //saved-articles
 
   return(
     <>
       <main className="main">
         { isSavedArticles &&
         <SavedArticles     
-        isLoggedIn={isLoggedIn}
-        savedArticle={savedArticle}
-        cards={cards}
-        iconType={isSavedArticles ? 'bin' : 'bookmark'}
-        onSavedArticleClick={onArticleClick} 
+          isLoggedIn={isLoggedIn}
+          savedArticle={savedArticle}
+          cards={cards}
+          iconType={isSavedArticles ? 'bin' : 'bookmark'}
+          onRemoveArticleClick={onRemoveArticleClick} 
         /> 
         }      
         {!isSavedArticles && 
@@ -42,6 +43,7 @@ function Main({
             onArticleClick={onArticleClick}
             onClick={onClick}
             savedArticle={savedArticle}
+            onRemoveArticleClick={onRemoveArticleClick} 
           /> 
         } 
         { !isSavedArticles && <About /> } 

@@ -26,12 +26,6 @@ function NewsCardList({ cards, isLoggedIn, onArticleClick, filteredResults, save
                 savedArticle={savedArticle}
                 iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onArticleClick={onArticleClick}
-                image={card.image}
-                date={card.date}  //{article.publishedAt}
-                title={card.title}
-                text={card.text}
-                source={card.source}
-                link={card.link}
                 cards={card}
               />
               </li>

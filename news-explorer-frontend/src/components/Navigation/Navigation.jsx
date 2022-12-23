@@ -3,8 +3,8 @@ import { useLocation, useRouteLoaderData } from "react-router-dom";
 import { NavLink, Link } from 'react-router-dom';
 import logoWhite from '../../images/NewsExplorer.svg';
 import logoDark from '../../images/NewsExplorer-black.svg';
-import PopupMobile from "../PopupMobile/PopupMobile";
-import { data } from "../../utils/data";
+// import PopupMobile from "../PopupMobile/PopupMobile";
+// import { data } from "../../utils/data";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 function Navigation({

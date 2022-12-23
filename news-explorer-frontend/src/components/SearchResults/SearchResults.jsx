@@ -12,21 +12,16 @@ function SearchResults({
   setIsLoading,
   onArticleClick,
   filteredResults, 
-  savedArticle, 
+  savedArticle,
+  onRemoveArticleClick,
   }) 
 { 
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles/';
-  // const[seconds, setSeconds] = useState(0)
-  // const timer = (() => {
-  //   setSeconds(seconds => seconds + 1);
-  // }, 1000);
-
 
   return (
     <> 
-    {/* { isLoading && <Preloader/> } */}
-    {/* { setIsLoading(false)} */}
+    { isLoading && <Preloader/> }
     { filteredResults.length >= 1  ?
       ( <section className="searchResults">
         <div className="searchResults__content">
@@ -39,6 +34,7 @@ function SearchResults({
               cards={cards}
               iconType={isSavedArticles ? 'bin' : 'bookmark'}
               onArticleClick={onArticleClick}
+              onRemoveArticleClick={onRemoveArticleClick} 
             />
           </div>
         </div>
