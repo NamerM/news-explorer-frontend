@@ -112,24 +112,16 @@ function App() {
       } 
     }, [])
 
-    //getNews newsapi
-    // useEffect(()=> {
-    //   newsApi.getNews()
-    //     .then(res => {
-    //       setCards(res);
-    //       console.log("newsapi res>> ", res);
-    //     })
-    //     .catch((err) => console.log("NewsApi =>", err));
-    // })
     
-    function bookmarkCard({ keyword, title, text, source, date, link, image }) {
-      const card = { keyword, title, text, source, date, link, image };
-      // const currentCard = card;
+    function bookmarkCard({ source, author, content, publishedAt, title, url, urlToImage}) {
+      const card = {source, author, content, publishedAt, title, url, urlToImage} 
+      //const currentCard = card;
+
       console.log("currentUser._id", currentUser._id);
       api
-        .saveArticle({ keyword, title, text, source, date, link, image})
+        .saveArticle({source, author, content, publishedAt, title, url, urlToImage})
           .then((card) => {  
-            //console.log("func", [...savedArticle, card]);    
+            console.log("card", card);
             setSavedArticle([...savedArticle, card]);
           })
           .catch((err) => console.log("bookmark Error =>", err));
@@ -161,7 +153,7 @@ function App() {
           newsApi.getNews(searchValue)
             .then( (res) => {   
               console.log("res--->", res)
-              let searchResult = res.data.filter((item) => {
+              let searchResult = res.articles.filter((item) => {
                 return Object.values(item)
                   .join('')
                   .toLowerCase()
@@ -177,26 +169,7 @@ function App() {
         setFilteredResults('')
       }
     }
-    // function searchItems(searchValue) {
-    //   if(searchValue !== '') {  // console.log(searchValue);
-    //     setIsLoading(true);
 
-    //     setTimeout(() => {
-    //       let searchResult = data.filter((item) => {
-    //         return Object.values(item)
-    //           .join('')
-    //           .toLowerCase()
-    //           .includes(searchValue.toLowerCase());
-    //       })
-    //       //console.log(searchResult);
-    //       setFilteredResults(searchResult);
-    //       setIsLoading(false);
-    //     }, 750)
-    //   } else { 
-    //     console.log("nothing found....");
-    //     setFilteredResults('')
-    //   }
-    // }
     useEffect(() => {
       searchItems(keyword);
     }, [keyword]);

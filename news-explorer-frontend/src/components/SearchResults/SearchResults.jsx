@@ -14,7 +14,7 @@ function SearchResults({
   filteredResults, 
   savedArticle,
   onRemoveArticleClick,
-  onClick
+
   }) 
 { 
   const location = useLocation();
@@ -34,7 +34,6 @@ function SearchResults({
               savedArticle={savedArticle}
               cards={cards}
               iconType={isSavedArticles ? 'bin' : 'bookmark'}
-              onClick={onClick}
               onArticleClick={onArticleClick}
               onRemoveArticleClick={onRemoveArticleClick} 
             />

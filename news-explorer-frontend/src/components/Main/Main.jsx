@@ -15,7 +15,6 @@ function Main({
   filteredResults,
   savedArticle,
   onRemoveArticleClick,
-  onClick,
 }) {
  const currentUser = React.useContext(CurrentUserContext);
  const location = useLocation();
@@ -41,7 +40,6 @@ function Main({
             setIsLoading={setIsLoading}
             filteredResults={filteredResults}
             onArticleClick={onArticleClick}
-            onClick={onClick}
             savedArticle={savedArticle}
             onRemoveArticleClick={onRemoveArticleClick} 
           /> 

@@ -6,7 +6,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function NewsCard ({ 
   cards,
-  // image, title, text, date, source, keyword, link ,
+  image, title, text, date, source, keyword,  
   isLoggedIn, 
   iconType,  
   onArticleClick, 
@@ -35,19 +35,20 @@ function NewsCard ({
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles/';
   // const toggleBookmark = isSavedArticles ? (() => onArticleClick(cards)) : (() => onRemoveArticleClick(cards))
+  //const timeStyle = new Date(date);
 
-  // const formatDate = (date) => {
-  //   const newDate = new Date(date);
-  //   const options = {
-  //     month: 'long',
-  //     day: 'numeric',
-  //     year: 'numeric',
-  //   };
-  //   return newDate.toLocaleDateString(
-  //     'en-US',
-  //     options
-  //   );
-  // }
+  const formatDate = (date) => {
+    const newDate = new Date(date);
+    const setting = {
+      month: 'long', 
+      day: 'numeric',
+      year: 'numeric',
+    };
+    return newDate.toLocaleDateString(
+      'en-US',
+      setting
+    );
+  }
 
   return(
    <section className="searchResults__newscard "> 
@@ -65,16 +66,16 @@ function NewsCard ({
           onMouseUp={bookmarkStatus}
           >
         </button>
-        <img className="searchResults__newscard-item-image" src={cards.image} alt={cards.title} />
+        <img className="searchResults__newscard-item-image" src={image} alt={title} />
         <div className="searchResults__newscard-item-info">
-          <p className="searchResults__newscard-item-date">{cards.date}</p>
-          <h2 className="searchResults__newscard-item-title">{cards.title}</h2>
-          <p className="searchResults__newscard-item-text">{cards.text}</p>
+          <p className="searchResults__newscard-item-date">{formatDate(date)}</p>
+          <h2 className="searchResults__newscard-item-title">{title}</h2>
+          <p className="searchResults__newscard-item-text">{text}</p>
           {/* <p className="searchResults__newscard-item-source">{cards.source}</p> */}
-          <a className="searchResults__newscard-item-source" target="_blank" href={cards.link}>
-          {cards.source}
+          <a className="searchResults__newscard-item-source" target="_blank" href={cards.url}>
+          {source}
           </a>
-          { isLoggedIn && <p className="searchResults__newscard-item-keyword">{cards.keyword}</p> }
+          { isLoggedIn && <p className="searchResults__newscard-item-keyword">{keyword}</p> }
         </div>
       </div>
     </section>

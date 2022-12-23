@@ -65,13 +65,14 @@ async _connect(url, headers) {
   }
 
   saveArticle(article) {
-    console.log("article read @mainApi=> ",article);
+    //console.log("article read @mainApi=> ", article);
     return fetch(`${this._baseUrl}/articles`, {
       method: "POST",
-      headers: {
-        ...this._headers,
-        authorization: `Bearer ${localStorage.getItem("jwt")}`
-      }, 
+      headers: this.headers,
+      // {
+      //   ...this._headers,
+      //   authorization: `Bearer ${localStorage.getItem("jwt")}`
+      // }, 
       body: JSON.stringify(article),
     })
     .then(this._checkResponse) 

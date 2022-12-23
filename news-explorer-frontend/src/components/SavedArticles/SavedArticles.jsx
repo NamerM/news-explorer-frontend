@@ -5,6 +5,7 @@ import SavedNewsList from '../SavedNewsList/SavedNewsList';
 // data yerine savedArticle dan çekeceğiz
 
 function SavedArticles({ 
+  article,
   savedArticle, 
   cards, 
   isSavedArticles, 

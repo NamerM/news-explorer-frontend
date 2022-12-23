@@ -3,6 +3,7 @@ import { useLocation} from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
 
 function SavedNewsList({ 
+  article,
   isLoggedIn, 
   onRemoveArticleClick, 
   savedArticle
@@ -20,8 +21,8 @@ function SavedNewsList({
         }`}>
         { 
           (   
-            savedArticle.map((card, cardId) => { 
-            // console.log("search result in function=>", filteredResults)
+            savedArticle?.map((article, cardId) => { 
+             
             return(
               <li key={cardId}>
               <NewsCard
@@ -29,7 +30,13 @@ function SavedNewsList({
                 savedArticle={savedArticle}
                 iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onRemoveArticleClick={onRemoveArticleClick}
-                cards={card.data}
+                cards={article}
+                image={article.urlToImage}
+                date={article.publishedAt}
+                title={article.title}
+                text={article.content}
+                source={article.source.name}
+                keyword={article.source.name}
               />
               </li>
               )

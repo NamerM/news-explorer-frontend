@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useLocation} from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
 
-function NewsCardList({ cards, isLoggedIn, onArticleClick, filteredResults, savedArticle}) {
+function NewsCardList({   isLoggedIn, onArticleClick, filteredResults, savedArticle}) {
   const [cardsPresent, setCardsPresent] = useState(3);
 
   const location = useLocation();
@@ -32,6 +32,7 @@ function NewsCardList({ cards, isLoggedIn, onArticleClick, filteredResults, save
                 title={article.title}
                 text={article.content}
                 source={article.source.name}
+                keyword={article.source.name}
               />
               </li>
               )

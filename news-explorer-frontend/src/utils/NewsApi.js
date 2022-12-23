@@ -22,14 +22,14 @@ class NewsApi {
     const getLastWeek = this._getLastWeek();  // from=${getLastWeek} //
     return fetch(`${this.url}?q=${keyword}&apiKey=${this.apiKey}&from=${getLastWeek}&to=${this.time}&pageSize=100`)
       .then((res) => {
-        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
   }
 }
 
 const newsApi = new NewsApi ({
   url : "https://nomoreparties.co/news/v2/everything",
-  apiKey: '64c063130e9f44cf9a9dffaf5e24dafe',
+  apiKey: 'c1e440ce21524f2d95ce3e6f011f1eb6', //64c063130e9f44cf9a9dffaf5e24dafe
 });
 
 export default newsApi;
