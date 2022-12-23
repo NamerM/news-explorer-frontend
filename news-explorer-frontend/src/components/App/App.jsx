@@ -109,24 +109,27 @@ function App() {
             setCards(res.data);
           })
           .catch((err) => console.log("getArticles=>" , err));
-        newsApi.getNews()
-          .then(res=> {
-            setCards(res.data);
-            console.log(res);
-          })
-          .catch((err) => console.log("NewsApi =>", err));
       } 
     }, [])
-    
-    function bookmarkCard({ keyword, title, text, source, date, link, image}) {
-      const card = { keyword, title, text, source, date, link,image };
-      const currentCard = card;
-      console.log("currentUser._id", currentUser._id);
 
+    //getNews newsapi
+    // useEffect(()=> {
+    //   newsApi.getNews()
+    //     .then(res => {
+    //       setCards(res);
+    //       console.log("newsapi res>> ", res);
+    //     })
+    //     .catch((err) => console.log("NewsApi =>", err));
+    // })
+    
+    function bookmarkCard({ keyword, title, text, source, date, link, image }) {
+      const card = { keyword, title, text, source, date, link, image };
+      // const currentCard = card;
+      console.log("currentUser._id", currentUser._id);
       api
-        .saveArticle({ keyword, title, text, source, date, link,image})
+        .saveArticle({ keyword, title, text, source, date, link, image})
           .then((card) => {  
-            // console.log("func", [...savedArticle, card]);    
+            //console.log("func", [...savedArticle, card]);    
             setSavedArticle([...savedArticle, card]);
           })
           .catch((err) => console.log("bookmark Error =>", err));
@@ -136,44 +139,64 @@ function App() {
       console.log("savedArticle =>" , savedArticle)
     }, [savedArticle])
 
-
      //remove bookmark
-     function deleteCardFromSaved(card) {
-      console.log('deleteCardFromSaved function!!!')
-      
+    function deleteCardFromSaved(card) {
+      console.log("card for deletion", card._id );
+      const { title, keyword, link, id } = card
+      api
+        .deleteArticle({ title, keyword, link, id })
+          .then((res) => {
+            console.log("res...>", res._id  )
+            const deleteById = savedArticle.filter((card) => card._id !== res._id);
+          setSavedArticle([...deleteById, savedArticle]);
 
-      // api.deleteCard(card._id)
-      //   .then((res) => {
-      //     const state = cards.filter(
-      //       (stateCards) => stateCards._id !== card._id
-      //     );
-      //     setCards(state);
-      //     closeAllPopups();
-      //   })
-      //   .catch((err) => console.log(err))
+        })
+        .catch((err) => console.log("delete function error =>", err))
     }
 
     function searchItems(searchValue) {
       if(searchValue !== '') {  // console.log(searchValue);
         setIsLoading(true);
-
-        setTimeout(() => {
-          let searchResult = data.filter((item) => {
-            return Object.values(item)
-              .join('')
-              .toLowerCase()
-              .includes(searchValue.toLowerCase());
-          })
-          //console.log(searchResult);
-          setFilteredResults(searchResult);
-          setIsLoading(false);
-        }, 750)
+    
+          newsApi.getNews(searchValue)
+            .then( (res) => {   
+              console.log("res--->", res)
+              let searchResult = res.data.filter((item) => {
+                return Object.values(item)
+                  .join('')
+                  .toLowerCase()
+                  .includes(searchValue.toLowerCase());
+              })
+              setFilteredResults(searchResult)
+            })
+            .finally(() => {
+              setIsLoading(false);
+            })          
       } else { 
         console.log("nothing found....");
         setFilteredResults('')
       }
     }
+    // function searchItems(searchValue) {
+    //   if(searchValue !== '') {  // console.log(searchValue);
+    //     setIsLoading(true);
 
+    //     setTimeout(() => {
+    //       let searchResult = data.filter((item) => {
+    //         return Object.values(item)
+    //           .join('')
+    //           .toLowerCase()
+    //           .includes(searchValue.toLowerCase());
+    //       })
+    //       //console.log(searchResult);
+    //       setFilteredResults(searchResult);
+    //       setIsLoading(false);
+    //     }, 750)
+    //   } else { 
+    //     console.log("nothing found....");
+    //     setFilteredResults('')
+    //   }
+    // }
     useEffect(() => {
       searchItems(keyword);
     }, [keyword]);
@@ -292,7 +315,7 @@ function App() {
             setIsLoading={setIsLoading}
             isLoggedIn={isLoggedIn}
             onArticleClick={bookmarkCard}
-            onSavedArticleClick={deleteCardFromSaved}
+            onRemoveArticleClick={deleteCardFromSaved}
             onSearchSubmit={handleSubmitClicked}
             filteredResults={filteredResults}
             savedArticle={savedArticle}

@@ -5,6 +5,11 @@ class NewsApi {
     this.time = new Date();
   }
 
+  // async _connect(url) {
+  //   const res = await fetch(url);
+  //   res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  // }
+
   _getLastWeek() {
     return new Date(
       this.time.getFullYear(),

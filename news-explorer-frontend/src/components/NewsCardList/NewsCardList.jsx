@@ -17,7 +17,7 @@ function NewsCardList({ cards, isLoggedIn, onArticleClick, filteredResults, save
         }`}>
         { 
           (   
-            filteredResults.slice(0, cardsPresent).map((card, cardId) => { 
+            filteredResults.slice(0, cardsPresent).map((article, cardId) => { 
             // console.log("search result in function=>", filteredResults)
             return(
               <li key={cardId}>
@@ -26,7 +26,12 @@ function NewsCardList({ cards, isLoggedIn, onArticleClick, filteredResults, save
                 savedArticle={savedArticle}
                 iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onArticleClick={onArticleClick}
-                cards={card}
+                cards={article}
+                image={article.urlToImage}
+                date={article.publishedAt}
+                title={article.title}
+                text={article.content}
+                source={article.source.name}
               />
               </li>
               )

@@ -5,7 +5,8 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
 function NewsCard ({ 
-  cards, 
+  cards,
+  // image, title, text, date, source, keyword, link ,
   isLoggedIn, 
   iconType,  
   onArticleClick, 
@@ -31,11 +32,10 @@ function NewsCard ({
 
   const isSaved = cards && cards.articles && cards.articles.some(user => user === currentUser._id );
   const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
-
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles/';
   // const toggleBookmark = isSavedArticles ? (() => onArticleClick(cards)) : (() => onRemoveArticleClick(cards))
-  
+
   // const formatDate = (date) => {
   //   const newDate = new Date(date);
   //   const options = {

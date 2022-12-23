@@ -66,7 +66,7 @@ async _connect(url, headers) {
 
   saveArticle(article) {
     console.log("article read @mainApi=> ",article);
-    return fetch(`${this._baseUrl}/articles/`, {
+    return fetch(`${this._baseUrl}/articles`, {
       method: "POST",
       headers: {
         ...this._headers,
@@ -79,11 +79,11 @@ async _connect(url, headers) {
 
   deleteArticle(id) {
     return fetch(`${this._baseUrl}/articles/${id}`, {
+      method: "DELETE",
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
-      method: "DELETE",
     })
     .then(this._checkResponse)
   }
