@@ -1,6 +1,6 @@
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import react, { useState, useEffect} from 'react';
-import { useLocation, useNavigate, Switch, Route } from 'react-router-dom';
+import { useLocation, useNavigate, Switch, Routes, Route } from 'react-router-dom';
 import './App.css';
 import '../../index';
 import Main from '../Main/Main';
@@ -14,6 +14,8 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 import api from '../../utils/MainApi';
 import newsApi from '../../utils/NewsApi';
 import { data } from '../../utils/data';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import SavedArticles from '../SavedArticles/SavedArticles';
 
 
 function App() {
@@ -116,8 +118,8 @@ function App() {
     function bookmarkCard({ source, author, content, publishedAt, title, url, urlToImage}) {
       const card = {source, author, content, publishedAt, title, url, urlToImage} 
       //const currentCard = card;
-
       console.log("currentUser._id", currentUser._id);
+
       api
         .saveArticle({source, author, content, publishedAt, title, url, urlToImage})
           .then((card) => {  
@@ -282,17 +284,26 @@ function App() {
             setKeyword={setKeyword}
             onSearchSubmit={handleSubmitClicked}
             />
-          <Main
-            cards={cards}
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
-            isLoggedIn={isLoggedIn}
-            onArticleClick={bookmarkCard}
-            onRemoveArticleClick={deleteCardFromSaved}
-            onSearchSubmit={handleSubmitClicked}
-            filteredResults={filteredResults}
-            savedArticle={savedArticle}
-          />
+          <Routes>
+            <Route path='/articles' 
+              element={
+                <ProtectedRoute children={<SavedArticles />} isLoggedIn={isLoggedIn}   />
+              } 
+            />
+            <Route path="/" element={
+              <Main
+                cards={cards}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+                isLoggedIn={isLoggedIn}
+                onArticleClick={bookmarkCard}
+                onRemoveArticleClick={deleteCardFromSaved}
+                onSearchSubmit={handleSubmitClicked}
+                filteredResults={filteredResults}
+                savedArticle={savedArticle}
+              />
+            } />
+          </Routes>
           <Footer />
         </div>
     </CurrentUserContext.Provider>
