@@ -12,10 +12,10 @@ class MainApi {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.StatusText}`)
   }
 
-async _connect(url, headers) {
-  const res = await fetch(url, headers);
-    return res.ok ? res.json() : await Promise.reject(`Error: ${res.status}`)
- }
+// async _connect(url, headers) {
+//   const res = await fetch(url, headers);
+//     return res.ok ? res.json() : await Promise.reject(`Error: ${res.status}`)
+//  }
 
   signup({name, email, password}) {
     console.log(name, email, password)
@@ -71,6 +71,8 @@ async _connect(url, headers) {
       headers: this.headers,
       // {
       //   ...this._headers,
+      //   Accept: "application/json",
+      //   "Content-Type": "application/json",
       //   authorization: `Bearer ${localStorage.getItem("jwt")}`
       // }, 
       body: JSON.stringify(article),

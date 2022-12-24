@@ -139,6 +139,11 @@
   font-size: 26px;
   line-height: 30px;
   color: #1a1b22;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   /* width: 352px; */
 }
 
