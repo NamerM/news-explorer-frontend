@@ -18,7 +18,7 @@ function SearchResults({
   }) 
 { 
   const location = useLocation();
-  const isSavedArticles = location.pathname === '/articles/';
+  const isSavedArticles = location.pathname === '/articles';
 
   return (
     <> 

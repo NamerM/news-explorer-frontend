@@ -5,8 +5,9 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
 function NewsCard ({ 
+  searchInput,
   cards,
-  image, title, text, date, source, keyword,  
+  image, title, text, date, source, keyword, link, url, urlToImage, publishedAt,
   isLoggedIn, 
   iconType,  
   onArticleClick, 
@@ -24,7 +25,7 @@ function NewsCard ({
     (isLoggedIn || !isLoggedIn) && setToolTipVisible(false);
   }
 
-  const toolTipText = isBookmarked ? "Remove bookmark" : "Add bookmark"
+  const toolTipText = isBookmarked ? "Remove bookmark" : "Add bookmark"   
   const buttonClass = isBookmarked ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"
   const bookmarkStatus = () => {
     (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(!true) || setIsBookmarked(!isBookmarked)
@@ -34,6 +35,7 @@ function NewsCard ({
   const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles/';
+  //console.log("keyword" , keyword);
   // const toggleBookmark = isSavedArticles ? (() => onArticleClick(cards)) : (() => onRemoveArticleClick(cards))
   //const timeStyle = new Date(date);
 
@@ -55,7 +57,7 @@ function NewsCard ({
       <div className="searchResults__newscard-item">
       { toolTipVisible && (
         <button className="searchResults__newscard-item-tooltip">
-          { isLoggedIn ? toolTipText : "Sign in to save articles" }
+          { isLoggedIn ? toolTipText : "Sign in to save articles" || isSavedArticles ? "Remove Bookmark": "" }
         </button>
        )}
 
@@ -72,7 +74,7 @@ function NewsCard ({
           <h2 className="searchResults__newscard-item-title">{title}</h2>
           <p className="searchResults__newscard-item-text">{text}</p>
           {/* <p className="searchResults__newscard-item-source">{cards.source}</p> */}
-          <a className="searchResults__newscard-item-source" target="_blank" href={cards.url}>
+          <a className="searchResults__newscard-item-source" target="_blank" href={link}>
           {source}
           </a>
           { isLoggedIn && <p className="searchResults__newscard-item-keyword">{keyword}</p> }

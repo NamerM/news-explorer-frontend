@@ -1,6 +1,6 @@
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import react, { useState, useEffect} from 'react';
-import { useLocation, useNavigate, Switch, Routes, Route } from 'react-router-dom';
+import { useLocation, useNavigate, Routes, Route } from 'react-router-dom';
 import './App.css';
 import '../../index';
 import Main from '../Main/Main';
@@ -25,7 +25,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [userData, setUserData] = useState({ name: 'name'});
   const [isCheckingToken, setIsCheckingToken] = useState(true)
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);  // isLoggedIn & isSignUpPopupOpen
@@ -115,30 +115,29 @@ function App() {
     }, [])
 
     
-    function bookmarkCard({ source, author, content, publishedAt, title, url, urlToImage}) {
-      const card = {source, author, content, publishedAt, title, url, urlToImage} 
+    function bookmarkCard({keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage }) {
+      const card = {keyword: source.name , title, text: description , source: source.name, date: publishedAt, link: url , image: urlToImage};
       //const currentCard = card;
       console.log("currentUser._id", currentUser._id);
-
       api
-        .saveArticle({source, author, content, publishedAt, title, url, urlToImage})
+        .saveArticle({keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage })
           .then((card) => {  
-            console.log("card", card);
-            setSavedArticle([...savedArticle, card]);
+            //console.log("[...new Set(card)]", [...savedArticle, card]);
+            setSavedArticle([...savedArticle, card]); //setSavedArticle([...savedArticle, card]);
           })
+          .then(console.log("savedArticle =>" , savedArticle))
           .catch((err) => console.log("bookmark Error =>", err));
     }
 
     useEffect(() =>  {
       console.log("savedArticle =>" , savedArticle)
     }, [savedArticle])
-
      //remove bookmark
-    function deleteCardFromSaved(card) {
-      console.log("card for deletion", card._id );
-      const { title, keyword, link, id } = card
+    function deleteCardFromSaved({keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage }) {
+      const card = {keyword: source.name , title, text: description , source: source.name, date: publishedAt, link: url , image: urlToImage};
+      //console.log("card for deletion", card._id );
       api
-        .deleteArticle({ title, keyword, link, id })
+        .deleteArticle({keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage })
           .then((res) => {
             console.log("res...>", res._id  )
             const deleteById = savedArticle.filter((card) => card._id !== res._id);
@@ -284,13 +283,8 @@ function App() {
             setKeyword={setKeyword}
             onSearchSubmit={handleSubmitClicked}
             />
-          <Routes>
-            <Route path='/articles' 
-              element={
-                <ProtectedRoute children={<SavedArticles />} isLoggedIn={isLoggedIn}   />
-              } 
-            />
-            <Route path="/" element={
+          {/*<Routes>
+            <Route path='/' element={  */}
               <Main
                 cards={cards}
                 isLoading={isLoading}
@@ -302,8 +296,13 @@ function App() {
                 filteredResults={filteredResults}
                 savedArticle={savedArticle}
               />
-            } />
-          </Routes>
+            {/* }></Route>
+         
+            <Route path='/articles' 
+              element={
+                <ProtectedRoute children={<SavedArticles />} isLoggedIn={isLoggedIn}   />
+              }></Route>
+            </Routes> */}
           <Footer />
         </div>
     </CurrentUserContext.Provider>

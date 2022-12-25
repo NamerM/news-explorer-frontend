@@ -5,11 +5,11 @@ import SavedNewsList from '../SavedNewsList/SavedNewsList';
 // data yerine savedArticle dan çekeceğiz
 
 function SavedArticles({ 
-  article,
   savedArticle, 
   cards, 
   isSavedArticles, 
-  onRemoveArticleClick 
+  onRemoveArticleClick,
+  onArticleClick
   }) {  
   const currentUser = React.useContext(CurrentUserContext);
   console.log("savedArticle component" , savedArticle);
@@ -36,8 +36,9 @@ function SavedArticles({
       <SavedNewsList 
         savedArticle={savedArticle}
         cards={cards.data}
-        iconType={isSavedArticles ? 'bin' : 'bookmark'}
+        iconType={isSavedArticles ? 'searchResults__newscard-item-delete' : 'bin'}
         onRemoveArticleClick={onRemoveArticleClick}
+        onArticleClick={onArticleClick}
       />
     } 
     </>

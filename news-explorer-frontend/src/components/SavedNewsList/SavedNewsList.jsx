@@ -3,15 +3,16 @@ import { useLocation} from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
 
 function SavedNewsList({ 
-  article,
+  cards,
   isLoggedIn, 
-  onRemoveArticleClick, 
+  onRemoveArticleClick,
+  onArticleClick,
   savedArticle
 }) {
   console.log("savedArticle", savedArticle);
 
   const location = useLocation();
-  const isSavedArticles = location.pathname === '/articles/';
+  const isSavedArticles = location.pathname === '/articles';
 
   return (
     <section className="searchResults__newscards-content">
@@ -21,7 +22,7 @@ function SavedNewsList({
         }`}>
         { 
           (   
-            savedArticle?.map((article, cardId) => { 
+            savedArticle?.map((card, cardId) => { 
              
             return(
               <li key={cardId}>
@@ -30,13 +31,14 @@ function SavedNewsList({
                 savedArticle={savedArticle}
                 iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onRemoveArticleClick={onRemoveArticleClick}
-                cards={article}
-                image={article.urlToImage}
-                date={article.publishedAt}
-                title={article.title}
-                text={article.content}
-                source={article.source.name}
-                keyword={article.source.name}
+                onArticleClick={onArticleClick}
+                cards={cards}
+                image={card.data.image}
+                date={card.data.date}
+                title={card.data.title}
+                text={card.data.texts}
+                source={card.data.source}
+                keyword={card.data.source}
               />
               </li>
               )

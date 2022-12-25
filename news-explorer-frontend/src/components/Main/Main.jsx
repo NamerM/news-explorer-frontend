@@ -18,7 +18,7 @@ function Main({
 }) {
  const currentUser = React.useContext(CurrentUserContext);
  const location = useLocation();
- const isSavedArticles = location.pathname === '/articles/';  //saved-articles
+ const isSavedArticles = location.pathname === '/articles';  //saved-articles
 
   return(
     <>
@@ -29,6 +29,7 @@ function Main({
           savedArticle={savedArticle}
           cards={cards}
           iconType={isSavedArticles ? 'bin' : 'bookmark'}
+          onArticleClick={onArticleClick}
           onRemoveArticleClick={onRemoveArticleClick} 
         /> 
         }      

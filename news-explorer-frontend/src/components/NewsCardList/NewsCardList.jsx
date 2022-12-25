@@ -11,13 +11,13 @@ function NewsCardList({   isLoggedIn, onArticleClick, filteredResults, savedArti
   return (
     <>
     <section className="searchResults__newscards-content">
-      <ul className={`${ isLoggedIn
+      <ul className={`${ isLoggedIn && isSavedArticles
         ? "searchResults__newscards"
         : "searchResults__newscards searchResults__newscards_notlogged"
         }`}>
         { 
           (   
-            filteredResults.slice(0, cardsPresent).map((article, cardId) => { 
+            filteredResults.slice(0, cardsPresent).map((Article, cardId) => { 
             // console.log("search result in function=>", filteredResults)
             return(
               <li key={cardId}>
@@ -26,13 +26,14 @@ function NewsCardList({   isLoggedIn, onArticleClick, filteredResults, savedArti
                 savedArticle={savedArticle}
                 iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onArticleClick={onArticleClick}
-                cards={article}
-                image={article.urlToImage}
-                date={article.publishedAt}
-                title={article.title}
-                text={article.content}
-                source={article.source.name}
-                keyword={article.source.name}
+                cards={Article}
+                image={Article.urlToImage}
+                date={Article.publishedAt}
+                title={Article.title}
+                text={Article.content}
+                source={Article.source.name}
+                keyword={Article.source.name}
+                link={Article.url}
               />
               </li>
               )

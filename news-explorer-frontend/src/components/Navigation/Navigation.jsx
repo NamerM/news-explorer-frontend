@@ -22,7 +22,7 @@ function Navigation({
   const isHomeButtonClass = isHome ? "navigation__menu-item navigation__menu-item-button-dark-home" : "navigation__menu-item-dark navigation__menu-item-button-dark";
   const isHomeImage = isHome ? logoWhite : logoDark;
   const isSignIn = location.pathname === '/signin';
-
+  // console.log(isLoggedIn);
 
 
   return (
@@ -37,7 +37,7 @@ function Navigation({
             <NavLink className={`${isHomeClass}`} to="/">Home</NavLink>
           </li>
           <li className="navigation__menu-list">
-            <NavLink className={` ${isHomeClass}` } to="/articles/">Saved articles</NavLink>
+            <NavLink className={` ${isHomeClass}` } to="/articles">Saved articles</NavLink>
           </li>
           <li>
             <button className={`${isHomeButtonClass}`} onClick={onSignOut}>{currentUser.name}</button>
@@ -49,7 +49,7 @@ function Navigation({
       </nav>
 
       ) :
-      (<nav className="navigation">
+      ( <nav className="navigation">
         <div className="navigation__logo">
           <img className="navigation__logo-image" src={logoWhite} alt="NewsExplorer logo, white color"/>
         </div>
