@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3001" || "https://namernews.students.nomoredomainssbs.ru/";
+export const BASE_URL = "http://localhost:3001" || "https://api.namernews.students.nomoredomainssbs.ru/";
 
 class MainApi {
 
