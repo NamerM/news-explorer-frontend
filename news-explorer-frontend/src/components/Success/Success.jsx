@@ -6,7 +6,6 @@ function RegisterationSuccess ({
   name="success",
   isOpen,
   onClose={onClose},
-  onLoginUser
 }) {
 
   const [isRegistered, setIsRegistered] =useState(false);

@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3001";
+export const BASE_URL = "http://localhost:3001" || "https://namernews.students.nomoredomainssbs.ru/";
 
 class MainApi {
 
@@ -104,7 +104,7 @@ class MainApi {
 }
 
 const api = new MainApi ({
-  baseUrl : "http://localhost:3001",
+  baseUrl : "http://localhost:3001" || "https://api.namernews.students.nomoredomainssbs.ru/",
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json"

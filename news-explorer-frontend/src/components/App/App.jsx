@@ -44,11 +44,11 @@ function App() {
           }
           console.log(res._id)
         })
+        // .then(() => { 
+        // })
         .then(() => {
           setIsSignInPopupOpen(false)
-          setIsSignUpPopupOpen(false)
-        })
-        .then(() => setIsRegisterPopupOpen(true))
+          setIsRegisterPopupOpen(true)})
         .catch((err) => {
           console.log("signup err =>", `Error: ${err.status}`);
         })
