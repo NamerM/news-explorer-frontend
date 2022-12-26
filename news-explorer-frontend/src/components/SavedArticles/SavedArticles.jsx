@@ -9,7 +9,8 @@ function SavedArticles({
   cards, 
   isSavedArticles, 
   onRemoveArticleClick,
-  onArticleClick
+  onArticleClick,
+  isLoggedIn
   }) {  
   const currentUser = React.useContext(CurrentUserContext);
   console.log("savedArticle component" , savedArticle);
@@ -35,6 +36,7 @@ function SavedArticles({
       savedArticle &&  
       <SavedNewsList 
         savedArticle={savedArticle}
+        isLoggedIn={isLoggedIn}
         cards={cards.data}
         iconType={isSavedArticles ? 'searchResults__newscard-item-delete' : 'bin'}
         onRemoveArticleClick={onRemoveArticleClick}

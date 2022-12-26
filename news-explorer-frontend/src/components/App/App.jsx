@@ -1,6 +1,6 @@
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import react, { useState, useEffect} from 'react';
-import { useLocation, useNavigate, Routes, Route } from 'react-router-dom';
+import { useLocation, useNavigate, Routes, Route, Router, Navigate } from 'react-router-dom';
 import './App.css';
 import '../../index';
 import Main from '../Main/Main';
@@ -124,24 +124,27 @@ function App() {
           .then((card) => {  
             //console.log("[...new Set(card)]", [...savedArticle, card]);
             setSavedArticle([...savedArticle, card]); //setSavedArticle([...savedArticle, card]);
+            
           })
-          .then(console.log("savedArticle =>" , savedArticle))
+          //.then(console.log("savedArticle =>" , savedArticle))
           .catch((err) => console.log("bookmark Error =>", err));
     }
 
     useEffect(() =>  {
       console.log("savedArticle =>" , savedArticle)
     }, [savedArticle])
+
      //remove bookmark
-    function deleteCardFromSaved({keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage }) {
-      const card = {keyword: source.name , title, text: description , source: source.name, date: publishedAt, link: url , image: urlToImage};
+    function deleteCardFromSaved(savedArticle) {
+      console.log("function for card deletion");
+      const {title, date, text, source, link } = savedArticle;
       //console.log("card for deletion", card._id );
       api
-        .deleteArticle({keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage })
-          .then((res) => {
-            console.log("res...>", res._id  )
-            const deleteById = savedArticle.filter((card) => card._id !== res._id);
-          setSavedArticle([...deleteById, savedArticle]);
+        .deleteArticle({title, date, text, source, link})
+          .then((savedArticle) => {
+            console.log("deleted card props...>", savedArticle._id  )
+            const deleteByLink = savedArticle.filter((card) => card.link !== savedArticle.link);
+          setSavedArticle([...deleteByLink, savedArticle]);
 
         })
         .catch((err) => console.log("delete function error =>", err))
@@ -283,8 +286,9 @@ function App() {
             setKeyword={setKeyword}
             onSearchSubmit={handleSubmitClicked}
             />
-          {/*<Routes>
-            <Route path='/' element={  */}
+
+          <Routes>
+            <Route path='/' element={
               <Main
                 cards={cards}
                 isLoading={isLoading}
@@ -294,15 +298,22 @@ function App() {
                 onRemoveArticleClick={deleteCardFromSaved}
                 onSearchSubmit={handleSubmitClicked}
                 filteredResults={filteredResults}
-                savedArticle={savedArticle}
-              />
-            {/* }></Route>
-         
-            <Route path='/articles' 
-              element={
-                <ProtectedRoute children={<SavedArticles />} isLoggedIn={isLoggedIn}   />
-              }></Route>
-            </Routes> */}
+                savedArticle={savedArticle}  />} >
+            </Route>
+            <Route path='/articles' element={
+                <ProtectedRoute isLoggedIn={isLoggedIn}  > 
+                  <SavedArticles 
+                    savedArticle={savedArticle} 
+                    cards={cards}
+                    isLoggedIn={isLoggedIn}
+                    onArticleClick={bookmarkCard}
+                    onRemoveArticleClick={deleteCardFromSaved}
+                  />
+                </ProtectedRoute> } 
+            >
+            </Route>
+            <Route path="*" element={<Navigate to ="/"/>} />
+          </Routes>
           <Footer />
         </div>
     </CurrentUserContext.Provider>

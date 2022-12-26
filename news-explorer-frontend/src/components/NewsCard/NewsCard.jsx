@@ -5,9 +5,9 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 
 function NewsCard ({ 
-  searchInput,
+  savedArticle,
   cards,
-  image, title, text, date, source, keyword, link, url, urlToImage, publishedAt,
+  image, title, text, date, source, keyword, link,
   isLoggedIn, 
   iconType,  
   onArticleClick, 
@@ -25,7 +25,8 @@ function NewsCard ({
     (isLoggedIn || !isLoggedIn) && setToolTipVisible(false);
   }
 
-  const toolTipText = isBookmarked ? "Remove bookmark" : "Add bookmark"   
+
+  const toolTipText = isBookmarked ? "Remove bookmark" : "Add bookmark"
   const buttonClass = isBookmarked ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"
   const bookmarkStatus = () => {
     (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(!true) || setIsBookmarked(!isBookmarked)
@@ -35,6 +36,8 @@ function NewsCard ({
   const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles/';
+  // const savedToolTipText = "Remove Bookmark"
+  // const toolTipStatus = isSavedArticles ? savedToolTipText : toolTipText
   //console.log("keyword" , keyword);
   // const toggleBookmark = isSavedArticles ? (() => onArticleClick(cards)) : (() => onRemoveArticleClick(cards))
   //const timeStyle = new Date(date);
@@ -57,14 +60,14 @@ function NewsCard ({
       <div className="searchResults__newscard-item">
       { toolTipVisible && (
         <button className="searchResults__newscard-item-tooltip">
-          { isLoggedIn ? toolTipText : "Sign in to save articles" || isSavedArticles ? "Remove Bookmark": "" }
+          { isLoggedIn ? toolTipText : "Sign in to save articles" } 
         </button>
        )}
 
-        <button className={`searchResults__newscard-item-box ${buttonTypeClass}`} type="button" aria-label={isLoggedIn ? "Save to bookmarks" : "Delete Article"}
+        <button className={`searchResults__newscard-item-box ${buttonTypeClass}`} type="button" aria-label={!isSavedArticles ? "Save to bookmarks" : "Delete Article"}
           onMouseEnter={cursorOnBox}
           onMouseLeave={cursorOffBox}
-          onClick={!isSavedArticles ? () => onArticleClick(cards) : () => onRemoveArticleClick(cards) }
+          onClick={!isSavedArticles ? () => onArticleClick(cards) :  () => onRemoveArticleClick(cards) }
           onMouseUp={bookmarkStatus}
           >
         </button>

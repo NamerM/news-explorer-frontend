@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useLocation} from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
+import SavedNewsCard from '../SavedNewsCard/SavedNewsCard';
 
 function SavedNewsList({ 
   cards,
@@ -26,7 +27,7 @@ function SavedNewsList({
              
             return(
               <li key={cardId}>
-              <NewsCard
+              <SavedNewsCard
                 isLoggedIn={isLoggedIn}
                 savedArticle={savedArticle}
                 iconType={isSavedArticles ? 'bin' : 'bookmark'}
@@ -36,9 +37,11 @@ function SavedNewsList({
                 image={card.data.image}
                 date={card.data.date}
                 title={card.data.title}
-                text={card.data.texts}
+                text={card.data.text}
                 source={card.data.source}
                 keyword={card.data.source}
+                link={card.data.link}
+                id={card.data._id}
               />
               </li>
               )

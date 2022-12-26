@@ -65,7 +65,7 @@ class MainApi {
   }
 
   saveArticle(article) {
-    console.log("article read @mainApi=> ", article);
+    //console.log("article read @mainApi=> ", article);
     return fetch(`${this._baseUrl}/articles`, {
       method: "POST",
       headers: //this.headers,
@@ -80,8 +80,8 @@ class MainApi {
     .then(this._checkResponse) 
   }
 
-  deleteArticle(id) {
-    return fetch(`${this._baseUrl}/articles/${id}`, {
+  deleteArticle(link) { //id
+    return fetch(`${this._baseUrl}/articles/${link}`, {  //${id}
       method: "DELETE",
       headers: {
         ...this._headers,

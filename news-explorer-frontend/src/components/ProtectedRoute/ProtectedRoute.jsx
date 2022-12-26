@@ -3,11 +3,8 @@ import { Route, Navigate } from 'react-router-dom';
 
 function ProtectedRoute({ children, isLoggedIn, ...props }) {
   const token = localStorage.getItem("jwt");
-  return (
-    <Route {...props}>
-       {(token || isLoggedIn) ? children : <Navigate to='/signin' /> }
-    </Route>
-  )
+  return  isLoggedIn ? children : <Navigate to='/signin' />;
+      
 }
 
 export default ProtectedRoute;
