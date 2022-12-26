@@ -5,18 +5,18 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 
 function PopupWithForm({
+  isLoggedIn,
   children,
   isOpen,
   name,
   title,
-  // isLoading,
   buttonText,
   onClose,
   onSubmit,
-  isButtonEnabled
+  isButtonEnabled,
 }) {
   const currentUser = react.useContext(CurrentUserContext);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false); //toggle true or false to see
+  // console.log(isLoggedIn);
   const location = useLocation();
   const isSignIn = location.pathname === '/signin'
 
@@ -31,8 +31,8 @@ function PopupWithForm({
           </button>
           <button type="button" className="popup__close" onClick={onClose}></button>
           <p className="popup__alt">or
-            <Link to={name=isSignIn ? "signup" : "signin"} className="popup__alt ">
-              {isSignIn ? ' Sign Up' : ' Sign In'}
+            <Link to={name=isLoggedIn ? "signup" : "signin"} className="popup__alt ">
+              {isLoggedIn ? ' Sign Up' : ' Sign In'}
             </Link>
           </p>
         </form>

@@ -44,9 +44,9 @@ return(
     isOpen={isOpen}
     onClose={onClose}
     onSubmit={handleSubmit}
-    isLoading={isLoading}
     buttonText= "Sign In"
     isButtonEnabled = {isButtonEnabled}
+    isLoggedIn
   >
     <label className="popup__formfield">
       <p className="popup__formfield__labeltype">Email</p>

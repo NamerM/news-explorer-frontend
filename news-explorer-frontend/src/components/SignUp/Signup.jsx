@@ -3,6 +3,7 @@ import '../PopupWithForm/PopupWithForm.css';
 import {Link, useLocation} from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import RegisterationSuccess from '../Success/Success';
 
 function SignUpPopup({ isOpen, onClose, isLoading, onRegisterUser}){
   const currentUser = React.useContext(CurrentUserContext)

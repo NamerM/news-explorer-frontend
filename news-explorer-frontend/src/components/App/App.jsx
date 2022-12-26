@@ -44,9 +44,15 @@ function App() {
           }
           console.log(res._id)
         })
+        .then(() => {
+          setIsSignInPopupOpen(false)
+          setIsSignUpPopupOpen(false)
+        })
+        .then(() => setIsRegisterPopupOpen(true))
         .catch((err) => {
           console.log("signup err =>", `Error: ${err.status}`);
         })
+      
     }
     // MainApi Signin
     const onLogin = ({  email, password }) => {
@@ -251,12 +257,14 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
         <div className="app">
           <SignInPopup
+            isLoggedIn={isLoggedIn}
             isOpen={isSignInPopupOpen}
             onClose={closeAllPopups}
             onLoginUser={closeAllPopups}
             onLogin={onLogin}
           />
           <SignUpPopup
+            isLoggedIn={isLoggedIn}
             isOpen={isSignUpPopupOpen}
             onClose={closeAllPopups}
             onSignupUser={handleRegisterSuccess}
