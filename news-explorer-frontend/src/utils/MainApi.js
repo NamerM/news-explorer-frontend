@@ -1,4 +1,4 @@
-export const BASE_URL = "https://www.namernews.students.nomoredomainssbs.ru/"; //"http://localhost:3001" 
+export const BASE_URL = "http://localhost:3001"   //"https://www.namernews.students.nomoredomainssbs.ru/";
 
 class MainApi {
 
@@ -80,8 +80,8 @@ class MainApi {
     .then(this._checkResponse) 
   }
 
-  deleteArticle(link) { //id
-    return fetch(`${this._baseUrl}/articles/${link}`, {  //${id}
+  deleteArticle(id) { //id
+    return fetch(`${this._baseUrl}/articles/${id}`, {  //${id}
       method: "DELETE",
       headers: {
         ...this._headers,
@@ -104,7 +104,7 @@ class MainApi {
 }
 
 const api = new MainApi ({ 
-  baseUrl : "https://api.namernews.students.nomoredomainssbs.ru/", //"http://localhost:3001" || 
+  baseUrl : "http://localhost:3001", //"https://api.namernews.students.nomoredomainssbs.ru/" || 
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json"

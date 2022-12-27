@@ -34,6 +34,7 @@ function NewsCardList({   isLoggedIn, onArticleClick, filteredResults, savedArti
                 source={Article.source.name}
                 keyword={Article.source.name}
                 link={Article.url}
+                _id={Article._id}
               />
               </li>
               )

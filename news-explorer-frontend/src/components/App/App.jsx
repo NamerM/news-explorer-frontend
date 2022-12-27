@@ -121,16 +121,15 @@ function App() {
     }, [])
 
     
-    function bookmarkCard({keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage }) {
-      const card = {keyword: source.name , title, text: description , source: source.name, date: publishedAt, link: url , image: urlToImage};
-      //const currentCard = card;
+    function bookmarkCard({ _id , keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage, }) {
+      //  const card = {keyword: source.name , title, text: description , source: source.name, date: publishedAt, link: url , image: urlToImage, _id };
+      //  const currentCard = card;
       console.log("currentUser._id", currentUser._id);
       api
-        .saveArticle({keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage })
+        .saveArticle({ _id, keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage,  })
           .then((card) => {  
-            //console.log("[...new Set(card)]", [...savedArticle, card]);
             setSavedArticle([...savedArticle, card]); //setSavedArticle([...savedArticle, card]);
-            
+            console.log("card-id", card.data._id);
           })
           //.then(console.log("savedArticle =>" , savedArticle))
           .catch((err) => console.log("bookmark Error =>", err));
@@ -141,16 +140,18 @@ function App() {
     }, [savedArticle])
 
      //remove bookmark
-    function deleteCardFromSaved(savedArticle) {
+    function deleteCardFromSaved(card) {
       console.log("function for card deletion");
-      const {title, date, text, source, link } = savedArticle;
       //console.log("card for deletion", card._id );
+      //console.log("card", card.data )
       api
-        .deleteArticle({title, date, text, source, link})
-          .then((savedArticle) => {
-            console.log("deleted card props...>", savedArticle._id  )
-            const deleteByLink = savedArticle.filter((card) => card.link !== savedArticle.link);
-          setSavedArticle([...deleteByLink, savedArticle]);
+        .deleteArticle(card.data)
+          .then((res) => {
+            console.log("deleted card props...>", res )
+            const deleteById = savedArticle.filter((card) => card.data._id !== res.data._id);
+          setSavedArticle(deleteById);//setSavedArticle([...deleteByLink, savedArticle]);
+          //setCards(deleteByLink);
+          console.log("savedArticles==>", savedArticle);
 
         })
         .catch((err) => console.log("delete function error =>", err))

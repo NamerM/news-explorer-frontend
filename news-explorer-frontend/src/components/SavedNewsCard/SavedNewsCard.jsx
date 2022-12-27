@@ -8,7 +8,7 @@ import { data } from "../../utils/data";
 function SavedNewsCard ({ 
   savedArticle,
   cards,
-  image, title, text, date, source, keyword, link, // _id,
+  image, title, text, date, source, keyword, link, id,
   isLoggedIn, 
   iconType,  
   onArticleClick, 
@@ -42,7 +42,7 @@ function SavedNewsCard ({
       setting
     );
   }
-  console.log("savedArticles all =>>,", savedArticle)
+  //console.log("savedArticles all =>>,", savedArticle)
 
   return(
    <section className="searchResults__newscard "> 
@@ -57,7 +57,7 @@ function SavedNewsCard ({
           onMouseEnter={cursorOnBox}
           onMouseLeave={cursorOffBox}
           onClick={() => {
-            onRemoveArticleClick({title, date, text, source, link});
+            onRemoveArticleClick({title, date, text, source, link, id});
 
           } }
           >
