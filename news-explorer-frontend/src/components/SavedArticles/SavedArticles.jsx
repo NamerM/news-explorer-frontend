@@ -2,7 +2,6 @@ import React from 'react';
 // import {data} from '../../utils/data';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import SavedNewsList from '../SavedNewsList/SavedNewsList';
-// data yerine savedArticle dan çekeceğiz
 
 function SavedArticles({ 
   savedArticle, 
@@ -14,9 +13,9 @@ function SavedArticles({
   }) {  
   const currentUser = React.useContext(CurrentUserContext);
   console.log("savedArticle component" , savedArticle);
-  const keyword = savedArticle.map((card) => card.data.keyword);
+  const keyword = savedArticle.map((card) => card.keyword);
   const separateKeywords = [...new Set(keyword)];
-  console.log("separateKeywords =>", separateKeywords)
+  //console.log("separateKeywords =>", separateKeywords)
 
 
   return(

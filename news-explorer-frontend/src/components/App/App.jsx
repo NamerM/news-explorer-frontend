@@ -128,8 +128,9 @@ function App() {
       api
         .saveArticle({ _id, keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage,  })
           .then((card) => {  
-            setSavedArticle([...savedArticle, card]); //setSavedArticle([...savedArticle, card]);
-            console.log("card-id", card.data._id);
+            const { data } = card;
+            setSavedArticle([...savedArticle, data]); //setSavedArticle([...savedArticle, card]);
+            console.log("card-id", data._id);
           })
           //.then(console.log("savedArticle =>" , savedArticle))
           .catch((err) => console.log("bookmark Error =>", err));
@@ -141,16 +142,12 @@ function App() {
 
      //remove bookmark
     function deleteCardFromSaved(card) {
-      console.log("function for card deletion");
-      //console.log("card for deletion", card._id );
-      //console.log("card", card.data )
       api
-        .deleteArticle(card.data)
+        .deleteArticle(card.id)
           .then((res) => {
-            console.log("deleted card props...>", res )
-            const deleteById = savedArticle.filter((card) => card.data._id !== res.data._id);
-          setSavedArticle(deleteById);//setSavedArticle([...deleteByLink, savedArticle]);
-          //setCards(deleteByLink);
+            console.log("deleted card props.id ...>", res._id )
+            const newSavedArticles = savedArticle.filter((card) => card._id !== res._id);
+          setSavedArticle(newSavedArticles);
           console.log("savedArticles==>", savedArticle);
 
         })

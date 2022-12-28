@@ -34,14 +34,14 @@ function SavedNewsList({
                 onRemoveArticleClick={onRemoveArticleClick}
                 onArticleClick={onArticleClick}
                 cards={cards}
-                image={card.data.image}
-                date={card.data.date}
-                title={card.data.title}
-                text={card.data.text}
-                source={card.data.source}
-                keyword={card.data.source}
-                link={card.data.link}
-                id={card.data._id}
+                image={card.image}
+                date={card.date}
+                title={card.title}
+                text={card.text}
+                source={card.source}
+                keyword={card.source}
+                link={card.link}
+                id={card._id}
               />
               </li>
               )
