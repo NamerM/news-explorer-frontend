@@ -10,7 +10,7 @@ function SavedNewsList({
   onArticleClick,
   savedArticle
 }) {
-  console.log("savedArticle", savedArticle);
+  //console.log("savedArticle", savedArticle);
 
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles';
@@ -33,7 +33,7 @@ function SavedNewsList({
                 iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onRemoveArticleClick={onRemoveArticleClick}
                 onArticleClick={onArticleClick}
-                cards={cards}
+                cards={cards} // cards={card} 
                 image={card.image}
                 date={card.date}
                 title={card.title}

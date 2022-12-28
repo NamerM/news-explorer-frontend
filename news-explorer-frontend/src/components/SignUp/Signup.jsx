@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../PopupWithForm/PopupWithForm.css';
-import {Link, useLocation} from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import RegisterationSuccess from '../Success/Success';

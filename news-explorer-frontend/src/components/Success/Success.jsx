@@ -5,7 +5,7 @@ import '../PopupWithForm/PopupWithForm.css';
 function RegisterationSuccess ({
   name="success",
   isOpen,
-  onClose={onClose},
+  onClose,
 }) {
 
   const [isRegistered, setIsRegistered] =useState(false);

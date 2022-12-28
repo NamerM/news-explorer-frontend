@@ -38,22 +38,23 @@ function App() {
     //MainApi signup
     const onRegisterUser = ({ name, email, password }) => {
       api.signup({name, email, password})
-        .then((res) => {
-          if(res._id) {
-            navigate('/signin')
-          }
-          console.log(res._id)
-        })
-        // .then(() => { 
+        // .then((res) => {
+        //   if(res._id) {
+        //     navigate('/signin')
+        //   }
         // })
-        .then(() => {
-          setIsSignInPopupOpen(false)
-          setIsRegisterPopupOpen(true)})
+        // .then(() => {
+        //   setIsSignInPopupOpen(false)
+        //   setIsRegisterPopupOpen(true)})
         .catch((err) => {
           console.log("signup err =>", `Error: ${err.status}`);
         })
-      
+        .finally(() => {
+          closeAllPopups();
+          setIsRegisterPopupOpen(true);
+        })
     }
+
     // MainApi Signin
     const onLogin = ({  email, password }) => {
       api.signin({email, password})
@@ -103,6 +104,19 @@ function App() {
       }
     }, [])
 
+    
+    useEffect(() => {
+      const token = localStorage.getItem('jwt')
+      //console.log("user", currentUser._id)
+      if( token && currentUser._id) {
+        api.getArticles()
+          .then(res => {
+            const savedArticlesFiltered = res.data.filter(article => article.owner == currentUser._id)
+            setSavedArticle(savedArticlesFiltered)
+          })
+      }
+    }, [currentUser])
+
     //MainApi getUserInfo getArticles
     useEffect(() => {
       const token = localStorage.getItem('jwt')
@@ -118,7 +132,7 @@ function App() {
           })
           .catch((err) => console.log("getArticles=>" , err));
       } 
-    }, [])
+    }, [isLoggedIn]) //dependency loggedin eklendi
 
     
     function bookmarkCard({ _id , keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage, }) {
@@ -136,9 +150,9 @@ function App() {
           .catch((err) => console.log("bookmark Error =>", err));
     }
 
-    useEffect(() =>  {
-      console.log("savedArticle =>" , savedArticle)
-    }, [savedArticle])
+    // useEffect(() =>  {
+    //   console.log("savedArticle =>" , savedArticle)
+    // }, [savedArticle])
 
      //remove bookmark
     function deleteCardFromSaved(card) {
@@ -244,11 +258,10 @@ function App() {
     if(location.pathname === '/signin') {
       setIsSignInPopupOpen(true);
       setIsSignUpPopupOpen(false);
-    }
-    if(location.pathname === '/signup') {
+    } else if (location.pathname === '/signup') {
       setIsSignInPopupOpen(false);
       setIsSignUpPopupOpen(true);
-    }
+    } 
   }, [location]);
 
   return (
