@@ -1,4 +1,5 @@
-export const BASE_URL = "https://www.namernews.students.nomoredomainssbs.ru/"; //"http://localhost:3001"   //
+export const BASE_URL = "http://localhost:3001"
+//"https://api.namernews.students.nomoredomainssbs.ru/"; // //
 
 class MainApi {
 
@@ -17,9 +18,13 @@ class MainApi {
 //     return res.ok ? res.json() : await Promise.reject(`Error: ${res.status}`)
 //  }
 
+  _request(url, options) {
+    return fetch(url, options).then(this._checkResponse)
+  }
+
   signup({name, email, password}) {
     console.log(name, email, password)
-    return fetch(`${BASE_URL}/signup`, {
+    return this._request(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -27,11 +32,11 @@ class MainApi {
       },
       body: JSON.stringify({name, email, password}),
     })
-    .then(this._checkResponse)
+
   }
 
   signin({ email, password}) {
-    return fetch(`${BASE_URL}/signin`, {
+    return this._request(`${this._baseUrl}/signin`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -39,21 +44,19 @@ class MainApi {
       },
       body: JSON.stringify({ email, password})
     })
-    .then(this._checkResponse)
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
     })
-    .then(this._checkResponse)
   }
 
   checkToken(token) {
-    return fetch(`${BASE_URL}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -61,12 +64,11 @@ class MainApi {
         authorization: `Bearer ${token}`
       },
     })
-    .then(this._checkResponse)
   }
 
   saveArticle(article) {
     //console.log("article read @mainApi=> ", article);
-    return fetch(`${this._baseUrl}/articles`, {
+    return this._request(`${this._baseUrl}/articles`, {
       method: "POST",
       headers: //this.headers,
       {
@@ -77,34 +79,31 @@ class MainApi {
       }, 
       body: JSON.stringify(article),
     })
-    .then(this._checkResponse) 
   }
 
   deleteArticle(id) { //id
-    return fetch(`${this._baseUrl}/articles/${id}`, {  //${id}
+    return this._request(`${this._baseUrl}/articles/${id}`, {  //${id}
       method: "DELETE",
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
     })
-    .then(this._checkResponse)
   }
 
   getArticles(){
-    return fetch(`${this._baseUrl}/articles`, {
+    return this._request(`${this._baseUrl}/articles`, {
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
-    .then(this._checkResponse)
   }
 
 }
 
 const api = new MainApi ({ 
-  baseUrl : "https://api.namernews.students.nomoredomainssbs.ru/",  //"http://localhost:3001",
+   baseUrl : "http://localhost:3001", //"https://api.namernews.students.nomoredomainssbs.ru",  
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json"

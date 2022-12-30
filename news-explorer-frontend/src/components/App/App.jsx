@@ -68,10 +68,10 @@ function App() {
             console.log("signin fail")
           }
         })
+        .then(() => closeAllPopups())
         .catch((err) => {
           console.log("signin fail=>", err);
         })
-        .finally(() => closeAllPopups())
     }
 
     //signout
@@ -114,6 +114,9 @@ function App() {
             const savedArticlesFiltered = res.data.filter(article => article.owner == currentUser._id)
             setSavedArticle(savedArticlesFiltered)
           })
+          .catch((err) => {
+            console.log("err", err)
+          })
       }
     }, [currentUser])
 
@@ -126,27 +129,19 @@ function App() {
             setCurrentUser(res.data);
           })
           .catch((err) => console.log("getUserInfo=>", err));
-        api.getArticles(token)
-          .then(res => {
-            setCards(res.data);
-          })
-          .catch((err) => console.log("getArticles=>" , err));
       } 
-    }, [isLoggedIn]) //dependency loggedin eklendi
+    }, [isLoggedIn])
 
     
     function bookmarkCard({ _id , keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage, }) {
-      //  const card = {keyword: source.name , title, text: description , source: source.name, date: publishedAt, link: url , image: urlToImage, _id };
-      //  const currentCard = card;
-      console.log("currentUser._id", currentUser._id);
+      //console.log("currentUser._id", currentUser._id);
       api
         .saveArticle({ _id, keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage,  })
           .then((card) => {  
             const { data } = card;
-            setSavedArticle([...savedArticle, data]); //setSavedArticle([...savedArticle, card]);
+            setSavedArticle([...savedArticle, data]); 
             console.log("card-id", data._id);
           })
-          //.then(console.log("savedArticle =>" , savedArticle))
           .catch((err) => console.log("bookmark Error =>", err));
     }
 
@@ -163,13 +158,12 @@ function App() {
             const newSavedArticles = savedArticle.filter((card) => card._id !== res._id);
           setSavedArticle(newSavedArticles);
           console.log("savedArticles==>", savedArticle);
-
         })
         .catch((err) => console.log("delete function error =>", err))
     }
 
     function searchItems(searchValue) {
-      if(searchValue !== '') {  // console.log(searchValue);
+      if(searchValue !== '') {  
         setIsLoading(true);
     
           newsApi.getNews(searchValue)
@@ -183,6 +177,9 @@ function App() {
               })
               setFilteredResults(searchResult)
             })
+            .catch((err) => {
+              console.log("err", err)
+            })
             .finally(() => {
               setIsLoading(false);
             })          
@@ -192,9 +189,9 @@ function App() {
       }
     }
 
-    useEffect(() => {
-      searchItems(keyword);
-    }, [keyword]);
+    // useEffect(() => {
+    //   searchItems(keyword);
+    // }, [keyword]);
 
 
   useEffect(() => {
@@ -250,9 +247,11 @@ function App() {
 
   function handleSubmitClicked(){
     setIsLoading(true);
+
+
   } 
 
-  let location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     if(location.pathname === '/signin') {
@@ -303,12 +302,15 @@ function App() {
             onMobilePopupClick={handleMobileClick}
             onMobilePopupMenu={handleMobileMenuClick}
             setKeyword={setKeyword}
+            searchItems={searchItems}
             onSearchSubmit={handleSubmitClicked}
             />
 
           <Routes>
             <Route path='/' element={
               <Main
+                keyword={keyword}
+                setKeyword={setKeyword}
                 cards={cards}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
@@ -320,7 +322,10 @@ function App() {
                 savedArticle={savedArticle}  />} >
             </Route>
             <Route path='/articles' element={
-                <ProtectedRoute isLoggedIn={isLoggedIn}  > 
+                <ProtectedRoute 
+                  isLoggedIn={isLoggedIn}  
+
+                > 
                   <SavedArticles 
                     savedArticle={savedArticle} 
                     cards={cards}
@@ -329,8 +334,8 @@ function App() {
                     onRemoveArticleClick={deleteCardFromSaved}
                   />
                 </ProtectedRoute> } 
-            >
-            </Route>
+            />
+            
             <Route path="*" element={<Navigate to ="/"/>} />
           </Routes>
           <Footer />

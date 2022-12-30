@@ -29,7 +29,7 @@ class NewsApi {
 
 const newsApi = new NewsApi ({
   url : "https://nomoreparties.co/news/v2/everything",
-  apiKey: 'c1e440ce21524f2d95ce3e6f011f1eb6', //64c063130e9f44cf9a9dffaf5e24dafe
+  apiKey: '64c063130e9f44cf9a9dffaf5e24dafe', // //c1e440ce21524f2d95ce3e6f011f1eb6
 });
 
 export default newsApi;

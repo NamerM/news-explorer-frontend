@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import '../NewsCard/NewsCard.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { data } from "../../utils/data";
+//import { data } from "../../utils/data";
 
 
 function SavedNewsCard ({ 

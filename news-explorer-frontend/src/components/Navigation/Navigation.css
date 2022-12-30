@@ -206,7 +206,7 @@ list-style: none;
     overflow: hidden;
     position: relative;
     text-overflow: ellipsis;
-    text-align: left;
+    /* text-align: left; */
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;

@@ -25,6 +25,9 @@ function NewsCard ({
     (isLoggedIn || !isLoggedIn) && setToolTipVisible(false);
   }
 
+  const BookmarkClick = () => {
+    isLoggedIn && bookmarkStatus()
+  }
 
   const toolTipText = isBookmarked ? "Remove bookmark" : "Add bookmark"
   const buttonClass = isBookmarked ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"
@@ -36,11 +39,8 @@ function NewsCard ({
   const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles/';
-  // const savedToolTipText = "Remove Bookmark"
-  // const toolTipStatus = isSavedArticles ? savedToolTipText : toolTipText
-  //console.log("keyword" , keyword);
-  // const toggleBookmark = isSavedArticles ? (() => onArticleClick(cards)) : (() => onRemoveArticleClick(cards))
-  //const timeStyle = new Date(date);
+ 
+
 
   const formatDate = (date) => {
     const newDate = new Date(date);
@@ -68,7 +68,7 @@ function NewsCard ({
           onMouseEnter={cursorOnBox}
           onMouseLeave={cursorOffBox}
           onClick={!isSavedArticles ? () => onArticleClick(cards) :  () => onRemoveArticleClick(cards) }
-          onMouseUp={bookmarkStatus}
+          onMouseUp={BookmarkClick}
           >
         </button>
         <img className="searchResults__newscard-item-image" src={image} alt={title} />

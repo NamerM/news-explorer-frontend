@@ -9,14 +9,13 @@ function SavedArticles({
   isSavedArticles, 
   onRemoveArticleClick,
   onArticleClick,
-  isLoggedIn
+  isLoggedIn,
   }) {  
   const currentUser = React.useContext(CurrentUserContext);
   console.log("savedArticle component" , savedArticle);
   const keyword = savedArticle.map((card) => card.keyword);
   const separateKeywords = [...new Set(keyword)];
   //console.log("separateKeywords =>", separateKeywords)
-
 
   return(
     <>

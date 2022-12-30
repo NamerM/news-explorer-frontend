@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './SearchForm.css';
 import {data} from '../../utils/data.js';
 
-function SearchForm({onSearchSubmit, setKeyword,  }) {
+function SearchForm({ setKeyword, searchItems  }) {
  const [searchInput, setSearchInput] = useState("");
 
   function handleSearchSubmit(e) {
     e.preventDefault(e);
     setKeyword(searchInput);
+    searchItems(searchInput)
   }
+
+
 
   function handleChange(e) {
     setSearchInput(e.target.value);
@@ -30,7 +33,7 @@ function SearchForm({onSearchSubmit, setKeyword,  }) {
             id="search-input" name="search-input"
             required
           />
-          <button type="submit" className="search-form__content-form_submit"  onClick={onSearchSubmit} >
+          <button type="submit" className="search-form__content-form_submit"  >
           Search
           </button>
         </label>

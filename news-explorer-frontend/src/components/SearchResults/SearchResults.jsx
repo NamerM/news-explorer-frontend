@@ -3,6 +3,7 @@ import { useLocation} from 'react-router-dom';
 import Preloader from '../Preloader/Preloader';
 import NotFound from '../NotFound/NotFound';
 import NewsCardList from '../NewsCardList/NewsCardList';
+import { useEffect } from 'react';
 
 
 function SearchResults({ 
@@ -14,11 +15,20 @@ function SearchResults({
   filteredResults, 
   savedArticle,
   onRemoveArticleClick,
+  keyword,
+  setKeyword,
 
   }) 
 { 
+  
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles';
+
+  useEffect(() => {
+    setKeyword(keyword)
+  }, [keyword])
+
+
 
   return (
     <> 
@@ -41,7 +51,8 @@ function SearchResults({
         </div>
       </section>) 
       : (    
-      ( filteredResults  && <NotFound /> || null ) 
+         keyword  &&  filteredResults &&  <NotFound/>
+         // ( filteredResults  && <NotFound /> || null ) 
       )
     } 
 

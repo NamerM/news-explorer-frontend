@@ -16,6 +16,7 @@ function Header({
   setKeyword, 
   filteredResults, 
   setFilteredResults , 
+  searchItems,
  }) {
 
   const location = useLocation();
@@ -48,6 +49,7 @@ function Header({
           filteredResults={filteredResults}
           setFilteredResults={setFilteredResults}
           setKeyword={setKeyword}
+          searchItems={searchItems}
         />
       </section>)
     }
