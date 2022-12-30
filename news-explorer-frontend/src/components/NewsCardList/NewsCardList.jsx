@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useLocation} from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
 
-function NewsCardList({   isLoggedIn, onArticleClick, filteredResults, savedArticle}) {
+function NewsCardList({   isLoggedIn, onArticleClick, onRemoveArticleClick, filteredResults, savedArticle}) {
   const [cardsPresent, setCardsPresent] = useState(3);
 
   const location = useLocation();
@@ -26,6 +26,7 @@ function NewsCardList({   isLoggedIn, onArticleClick, filteredResults, savedArti
                 savedArticle={savedArticle}
                 iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onArticleClick={onArticleClick}
+                onRemoveArticleClick={onRemoveArticleClick}
                 cards={Article}
                 image={Article.urlToImage}
                 date={Article.publishedAt}

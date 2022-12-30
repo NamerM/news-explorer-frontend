@@ -1,4 +1,5 @@
 # Practicum Final Project
+https://namernews.students.nomoredomainssbs.ru/
 
 # Tech Used #
 HTML5, CSS3, Node.js Runtime Environment, React.Js Frame Work, JSX, Api, MongoDb, Git, Nginx (together with Pm2 and Cerbot), Google Cloud Virtual Machine Instance  
@@ -14,4 +15,4 @@ Safe copying the project to VM throughout build over front end. Connecting newsA
 - Understanding structure of web building, laying foundations with HTML tags. Styling them with CSS, then adding responsive layout with the knowledge of CSS and having a brilliant News App responsing to tablet, mobile and desktop viewports.
 - The brilliance moment, and also the moment of realization that the project is really deep is the need of using flex display with column direction, making the column in reverse-column to match the Figma Design.
 - Following the Figma Design build the React App Implementation initiated.
-- 
+

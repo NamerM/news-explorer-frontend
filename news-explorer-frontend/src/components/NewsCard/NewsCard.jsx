@@ -7,7 +7,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 function NewsCard ({ 
   savedArticle,
   cards,
-  image, title, text, date, source, keyword, link,
+  image, title, text, date, source, keyword, link, name, url, id,
   isLoggedIn, 
   iconType,  
   onArticleClick, 
@@ -29,13 +29,19 @@ function NewsCard ({
     isLoggedIn && bookmarkStatus()
   }
 
+  // const articleStatus = () => {
+  //   !isSavedArticles && (onArticleClick(cards) || savedArticle && onRemoveArticleClick({title, date, text, source, link, id}))
+  //   console.log("cards--", cards, "savedArticle--", savedArticle)
+  // }
+
   const toolTipText = isBookmarked ? "Remove bookmark" : "Add bookmark"
   const buttonClass = isBookmarked ? "searchResults__newscard-item-bookmark-clicked" : "searchResults__newscard-item-bookmark"
   const bookmarkStatus = () => {
     (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(!true) || setIsBookmarked(!isBookmarked)
   }
 
-  const isSaved = cards && cards.articles && cards.articles.some(user => user === currentUser._id );
+  const isSaved = cards.url// cards.articles.some(user => user === currentUser._id );
+
   const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles/';
@@ -67,6 +73,7 @@ function NewsCard ({
         <button className={`searchResults__newscard-item-box ${buttonTypeClass}`} type="button" aria-label={!isSavedArticles ? "Save to bookmarks" : "Delete Article"}
           onMouseEnter={cursorOnBox}
           onMouseLeave={cursorOffBox}
+          //onClick={articleStatus}
           onClick={!isSavedArticles ? () => onArticleClick(cards) :  () => onRemoveArticleClick(cards) }
           onMouseUp={BookmarkClick}
           >

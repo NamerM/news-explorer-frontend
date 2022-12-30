@@ -51,7 +51,9 @@ function SearchResults({
         </div>
       </section>) 
       : (    
-         keyword  &&  filteredResults &&  <NotFound/>
+
+          keyword  &&  (filteredResults.length === 0 &&  <NotFound/> )
+          // keyword  &&  (filteredResults.length === 0 &&  <NotFound/> )
          // ( filteredResults  && <NotFound /> || null ) 
       )
     } 
