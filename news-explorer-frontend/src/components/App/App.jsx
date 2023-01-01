@@ -132,33 +132,36 @@ function App() {
     }, [isLoggedIn])
 
     
-    async function bookmarkCard({ _id , keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage, }) {
+    function bookmarkCard({ _id , keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage, }) {
       //console.log("currentUser._id", currentUser._id);
       api
         .saveArticle({ _id, keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage,  })
           .then((card) => {  
             const { data } = card;
-            console.log("cardid", card)
-            console.log("data id", data)
+            console.log("card >>>", card.data.title)
+            console.log("data >>>", data.title)
+            const count =  [savedArticle.length];
             
-            // if the data._id saved is in savedArticles it should not save to prevent multiple saves - 
-              if(data._id ) {
+            // if the data._id saved is in savedArticles it should not be saved to prevent multiple saves - 
+            if(data.title === savedArticle[count.length ] .title) {
               setSavedArticle([...savedArticle, data]);
-               console.log("card saved");
-                return;
-              } else if (!data._id) {
-                console.log("already saved")
-                setSavedArticle([]);
-                return;
+              console.log("savedarticle count >>", count)
+              console.log("savedarticle" , savedArticle)
+              console.log("saving... title", savedArticle[count.length].title)
+              return;
+            } else if(savedArticle[count.length+1].title === data.title)  { //if(savedArticle[count.length].title === data.title) 
+              console.log("removing title", data.title)
+              setSavedArticle([]);
+              return;
               }
           })
           .catch((err) => console.log("bookmark Error =>", err));
       }
 
-      useEffect(()=> {
-        console.log("data Id", data._id)
-      }, [data])
- 
+      // useEffect(() => {
+      //   console.log("data article", data)
+      // }, [data])
+
     // useEffect(() =>  {
     //   console.log("savedArticle =>" , savedArticle)
     // }, [savedArticle])

@@ -17,8 +17,7 @@ function NewsCard ({
   const [toolTipVisible, setToolTipVisible] = useState(false); //
   const [isBookmarked, setIsBookmarked] = useState(false); // toggle  true of false for bookmark icon/tooltip changes
   const [isClicked, setIsClicked] = useState(false); //toggle
-  const [isSaved, setIsSaved] = useState(false);
-
+ 
   const cursorOnBox = () => {
     (isLoggedIn || !isLoggedIn) && setToolTipVisible(true);
   }
@@ -27,7 +26,7 @@ function NewsCard ({
   }
 
   const BookmarkClick = () => {
-    isLoggedIn && bookmarkStatus() && setIsSaved(true)
+    isLoggedIn && bookmarkStatus()
   }
 
   // const articleStatus = () => {
@@ -46,7 +45,11 @@ function NewsCard ({
   const buttonTypeClass = cardType === 'saved' ? 'searchResults__newscard-item-delete' : buttonClass;
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles/';
- 
+  const isResultCards = location.pathname === '/';
+
+  // const bookMarkAction = () => {
+  //  isResultCards && isClicked  && setIsBookmarked(true)
+  // }
   // console.log("cards-->", cards);
 
   const formatDate = (date) => {
@@ -75,7 +78,7 @@ function NewsCard ({
           onMouseEnter={cursorOnBox}
           onMouseLeave={cursorOffBox}
           //onClick={() => onArticleClick(cards)}
-          onClick={ () => ((cardType === 'saved')  || isSaved ? onRemoveArticleClick : onArticleClick)(cards)}
+          onClick={ () => (cardType === 'saved' ? onRemoveArticleClick : onArticleClick)(cards)}
          // onClick={!isSavedArticles ? () => onArticleClick(cards) :  () => onRemoveArticleClick(cards) }
           onMouseUp={BookmarkClick}
           >
