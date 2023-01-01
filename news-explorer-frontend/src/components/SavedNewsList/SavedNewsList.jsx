@@ -24,16 +24,16 @@ function SavedNewsList({
         { 
           (   
             savedArticle?.map((card, cardId) => { 
-             
+
             return(
               <li key={cardId}>
-              <SavedNewsCard
+              <NewsCard
                 isLoggedIn={isLoggedIn}
                 savedArticle={savedArticle}
-                iconType={isSavedArticles ? 'bin' : 'bookmark'}
+                //iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onRemoveArticleClick={onRemoveArticleClick}
                 onArticleClick={onArticleClick}
-                cards={cards} // cards={card} 
+                cards={card}  
                 image={card.image}
                 date={card.date}
                 title={card.title}
@@ -42,6 +42,7 @@ function SavedNewsList({
                 keyword={card.source}
                 link={card.link}
                 id={card._id}
+                cardType={isSavedArticles ? 'saved' : 'new'}
               />
               </li>
               )
@@ -54,3 +55,22 @@ function SavedNewsList({
 }
 
 export default SavedNewsList;
+
+{/* <li key={cardId}>
+<SavedNewsCard
+  isLoggedIn={isLoggedIn}
+  savedArticle={savedArticle}
+  iconType={isSavedArticles ? 'bin' : 'bookmark'}
+  onRemoveArticleClick={onRemoveArticleClick}
+  onArticleClick={onArticleClick}
+  cards={cards} // cards={card} 
+  image={card.image}
+  date={card.date}
+  title={card.title}
+  text={card.text}
+  source={card.source}
+  keyword={card.source}
+  link={card.link}
+  id={card._id}
+/>
+</li> */}

@@ -38,20 +38,19 @@ function App() {
     //MainApi signup
     const onRegisterUser = ({ name, email, password }) => {
       api.signup({name, email, password})
-        // .then((res) => {
-        //   if(res._id) {
-        //     navigate('/signin')
-        //   }
-        // })
-        // .then(() => {
-        //   setIsSignInPopupOpen(false)
-        //   setIsRegisterPopupOpen(true)})
+        .then((res) => {
+          // if(res._id) {
+          //   navigate('/signin')
+          // }
+          console.log(res._id)
+        })
+        .then(() => {
+          setIsSignInPopupOpen(false)
+          setIsSignUpPopupOpen(false)
+          setIsRegisterPopupOpen(true)
+        })
         .catch((err) => {
           console.log("signup err =>", `Error: ${err.status}`);
-        })
-        .finally(() => {
-          closeAllPopups();
-          setIsRegisterPopupOpen(true);
         })
     }
 
@@ -133,18 +132,33 @@ function App() {
     }, [isLoggedIn])
 
     
-    function bookmarkCard({ _id , keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage, }) {
+    async function bookmarkCard({ _id , keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage, }) {
       //console.log("currentUser._id", currentUser._id);
       api
         .saveArticle({ _id, keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage,  })
           .then((card) => {  
             const { data } = card;
-            setSavedArticle([...savedArticle, data]); 
-            console.log("card-id", data._id);
+            console.log("cardid", card)
+            console.log("data id", data)
+            
+            // if the data._id saved is in savedArticles it should not save to prevent multiple saves - 
+              if(data._id ) {
+              setSavedArticle([...savedArticle, data]);
+               console.log("card saved");
+                return;
+              } else if (!data._id) {
+                console.log("already saved")
+                setSavedArticle([]);
+                return;
+              }
           })
           .catch((err) => console.log("bookmark Error =>", err));
-    }
+      }
 
+      useEffect(()=> {
+        console.log("data Id", data._id)
+      }, [data])
+ 
     // useEffect(() =>  {
     //   console.log("savedArticle =>" , savedArticle)
     // }, [savedArticle])
@@ -152,7 +166,7 @@ function App() {
      //remove bookmark
     function deleteCardFromSaved(card) {
       api
-        .deleteArticle(card.id)
+        .deleteArticle(card._id)
           .then((res) => {
             console.log("deleted card props.id ...>", res._id )
             const newSavedArticles = savedArticle.filter((card) => card._id !== res._id);

@@ -9,7 +9,7 @@ function NewsCard ({
   cards,
   image, title, text, date, source, keyword, link, name, url, id,
   isLoggedIn, 
-  iconType,  
+  cardType,
   onArticleClick, 
   onRemoveArticleClick
 }) {
@@ -17,6 +17,7 @@ function NewsCard ({
   const [toolTipVisible, setToolTipVisible] = useState(false); //
   const [isBookmarked, setIsBookmarked] = useState(false); // toggle  true of false for bookmark icon/tooltip changes
   const [isClicked, setIsClicked] = useState(false); //toggle
+  const [isSaved, setIsSaved] = useState(false);
 
   const cursorOnBox = () => {
     (isLoggedIn || !isLoggedIn) && setToolTipVisible(true);
@@ -26,7 +27,7 @@ function NewsCard ({
   }
 
   const BookmarkClick = () => {
-    isLoggedIn && bookmarkStatus()
+    isLoggedIn && bookmarkStatus() && setIsSaved(true)
   }
 
   // const articleStatus = () => {
@@ -40,13 +41,13 @@ function NewsCard ({
     (isClicked ? "searchResults__newscard-item-bookmark-clicked"  : "searchResults__newscard-item-bookmark") && setIsClicked(!true) || setIsBookmarked(!isBookmarked)
   }
 
-  const isSaved = cards.url// cards.articles.some(user => user === currentUser._id );
+  //const isSaved = cards.url// cards.articles.some(user => user === currentUser._id );
 
-  const buttonTypeClass = iconType === 'bin' ? 'searchResults__newscard-item-delete' : buttonClass;
+  const buttonTypeClass = cardType === 'saved' ? 'searchResults__newscard-item-delete' : buttonClass;
   const location = useLocation();
   const isSavedArticles = location.pathname === '/articles/';
  
-
+  // console.log("cards-->", cards);
 
   const formatDate = (date) => {
     const newDate = new Date(date);
@@ -70,11 +71,12 @@ function NewsCard ({
         </button>
        )}
 
-        <button className={`searchResults__newscard-item-box ${buttonTypeClass}`} type="button" aria-label={!isSavedArticles ? "Save to bookmarks" : "Delete Article"}
+        <button className={`searchResults__newscard-item-box ${buttonTypeClass}`} type="button"
           onMouseEnter={cursorOnBox}
           onMouseLeave={cursorOffBox}
-          //onClick={articleStatus}
-          onClick={!isSavedArticles ? () => onArticleClick(cards) :  () => onRemoveArticleClick(cards) }
+          //onClick={() => onArticleClick(cards)}
+          onClick={ () => ((cardType === 'saved')  || isSaved ? onRemoveArticleClick : onArticleClick)(cards)}
+         // onClick={!isSavedArticles ? () => onArticleClick(cards) :  () => onRemoveArticleClick(cards) }
           onMouseUp={BookmarkClick}
           >
         </button>

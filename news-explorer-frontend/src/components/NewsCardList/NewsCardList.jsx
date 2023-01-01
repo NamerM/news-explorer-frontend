@@ -18,13 +18,13 @@ function NewsCardList({   isLoggedIn, onArticleClick, onRemoveArticleClick, filt
         { 
           (   
             filteredResults.slice(0, cardsPresent).map((Article, cardId) => { 
-            // console.log("search result in function=>", filteredResults)
+           // console.log("search result in function=>", filteredResults)
             return(
               <li key={cardId}>
               <NewsCard
                 isLoggedIn={isLoggedIn}
                 savedArticle={savedArticle}
-                iconType={isSavedArticles ? 'bin' : 'bookmark'}
+                //iconType={isSavedArticles ? 'bin' : 'bookmark'}
                 onArticleClick={onArticleClick}
                 onRemoveArticleClick={onRemoveArticleClick}
                 cards={Article}
@@ -36,6 +36,7 @@ function NewsCardList({   isLoggedIn, onArticleClick, onRemoveArticleClick, filt
                 keyword={Article.source.name}
                 link={Article.url}
                 _id={Article._id}
+                cardType={isSavedArticles ? 'saved' : 'news'}
               />
               </li>
               )
@@ -50,11 +51,3 @@ function NewsCardList({   isLoggedIn, onArticleClick, onRemoveArticleClick, filt
 }
 
 export default NewsCardList;
-
-  // const [renderedCards, setRenderedCards] = useState([]);
-  // const [cards, setCards] = useState([]);
-  // const displayedCards = 3;
-
-  // const clickHandle = () => {
-  //   const addThreeMore = data.slice(0, renderedCards.length + displayedCards + 1 )   //cards.slice
-  //   setRenderedCards([...addThreeMore ])
