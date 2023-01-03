@@ -16,7 +16,8 @@ function Main({
   savedArticle,
   onRemoveArticleClick,
   keyword,
-  setKeyword
+  setKeyword,
+  cardSaved
 }) {
  const currentUser = React.useContext(CurrentUserContext);
  const location = useLocation();
@@ -37,6 +38,7 @@ function Main({
         }      
         {!isSavedArticles && 
           <SearchResults
+            cardSaved={cardSaved}
             keyword={keyword}
             setKeyword={setKeyword}
             cards={cards}

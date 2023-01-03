@@ -17,7 +17,6 @@ function SearchResults({
   onRemoveArticleClick,
   keyword,
   setKeyword,
-
   }) 
 { 
   
@@ -27,8 +26,6 @@ function SearchResults({
   useEffect(() => {
     setKeyword(keyword)
   }, [keyword])
-
-
 
   return (
     <> 

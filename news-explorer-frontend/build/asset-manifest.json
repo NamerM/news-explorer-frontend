@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d7c3245d.css",
-    "main.js": "/static/js/main.dedee1e5.js",
+    "main.css": "/static/css/main.1e03d7fe.css",
+    "main.js": "/static/js/main.16f18e48.js",
     "static/media/georgia-de-lotz.png": "/static/media/georgia-de-lotz.eac7a5b1bf47224f26ba.png",
     "static/media/author-image.jpeg": "/static/media/author-image.3f3a16c7daeeccc73210.jpeg",
     "static/media/georgia-de-lotz--tabletsize.png": "/static/media/georgia-de-lotz--tabletsize.6fdf9c81d26f2f5c049d.png",
@@ -37,11 +37,11 @@
     "static/media/menu-dark.svg": "/static/media/menu-dark.f69aaff115ee8eb4b42a.svg",
     "static/media/menu.svg": "/static/media/menu.e36517e53a511b70bfb8.svg",
     "static/media/bookmark-filled.svg": "/static/media/bookmark-filled.6e67e4c3b62a1a651d2c.svg",
-    "main.d7c3245d.css.map": "/static/css/main.d7c3245d.css.map",
-    "main.dedee1e5.js.map": "/static/js/main.dedee1e5.js.map"
+    "main.1e03d7fe.css.map": "/static/css/main.1e03d7fe.css.map",
+    "main.16f18e48.js.map": "/static/js/main.16f18e48.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7c3245d.css",
-    "static/js/main.dedee1e5.js"
+    "static/css/main.1e03d7fe.css",
+    "static/js/main.16f18e48.js"
   ]
 }

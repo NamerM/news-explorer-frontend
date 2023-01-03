@@ -34,6 +34,7 @@ function App() {
   const [isMobileMenuClicked, setIsMobileMenuClicked] = useState(false); 
   const [filteredResults, setFilteredResults] = useState([]);
   const [keyword, setKeyword] = useState('');
+  const [cardSaved, setCardsSaved] = useState(false);
 
     //MainApi signup
     const onRegisterUser = ({ name, email, password }) => {
@@ -131,36 +132,18 @@ function App() {
       } 
     }, [isLoggedIn])
 
-    
     function bookmarkCard({ _id , keyword, title, text, source, date, publishedAt, link, url, description, image, urlToImage, }) {
       //console.log("currentUser._id", currentUser._id);
       api
         .saveArticle({ _id, keyword: source.name , source: source.name, title, text: description, date: publishedAt, link: url, image: urlToImage,  })
           .then((card) => {  
             const { data } = card;
-            console.log("card >>>", card.data.title)
-            console.log("data >>>", data.title)
-            const count =  [savedArticle.length];
-            
-            // if the data._id saved is in savedArticles it should not be saved to prevent multiple saves - 
-            if(data.title === savedArticle[count.length ] .title) {
+            //console.log("data title >>>", data.title)
               setSavedArticle([...savedArticle, data]);
-              console.log("savedarticle count >>", count)
-              console.log("savedarticle" , savedArticle)
-              console.log("saving... title", savedArticle[count.length].title)
-              return;
-            } else if(savedArticle[count.length+1].title === data.title)  { //if(savedArticle[count.length].title === data.title) 
-              console.log("removing title", data.title)
-              setSavedArticle([]);
-              return;
-              }
+
           })
           .catch((err) => console.log("bookmark Error =>", err));
       }
-
-      // useEffect(() => {
-      //   console.log("data article", data)
-      // }, [data])
 
     // useEffect(() =>  {
     //   console.log("savedArticle =>" , savedArticle)
@@ -168,17 +151,30 @@ function App() {
 
      //remove bookmark
     function deleteCardFromSaved(card) {
+      let idToDelete;
+      savedArticle.map((item) => {
+        if (location.pathname === "/") {
+          if (item.link === card.url) {
+            idToDelete = item._id;
+          }
+        } else {
+          if (item.link === card.link) {
+            idToDelete = item._id;
+          }
+        }
+      });
+      console.log("idToDelete", idToDelete);
       api
-        .deleteArticle(card._id)
+        .deleteArticle(idToDelete)
           .then((res) => {
-            console.log("deleted card props.id ...>", res._id )
+            //console.log("deleted card props.id ...>", res._id )
             const newSavedArticles = savedArticle.filter((card) => card._id !== res._id);
-          setSavedArticle(newSavedArticles);
-          console.log("savedArticles==>", savedArticle);
+            setSavedArticle(newSavedArticles);
+            //  console.log("savedArticles==>", savedArticle);
         })
         .catch((err) => console.log("delete function error =>", err))
     }
-
+ 
     function searchItems(searchValue) {
       if(searchValue !== '') {  
         setIsLoading(true);
