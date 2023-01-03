@@ -44,7 +44,7 @@
   color: #1A1B22;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1000px) {
 
   .about__image {
     max-width: 232px;
@@ -65,11 +65,12 @@
   }
 }
 
-@media screen and (max-width: 460px) and (min-width: 318px) {
+@media screen and (max-width:766px) and (min-width: 318px) {
   .about {
     display: flex;
     flex-direction: column;
-    height: 852px;
+    height: 1000px;
+    align-items: center;
   }
   .about__image {
     width: 272px;

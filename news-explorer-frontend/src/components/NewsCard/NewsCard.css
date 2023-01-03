@@ -139,6 +139,11 @@
   font-size: 26px;
   line-height: 30px;
   color: #1a1b22;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   /* width: 352px; */
 }
 
@@ -172,6 +177,7 @@
   line-height: 20px;
   color: #b6bcbf;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 1260px) {
@@ -191,6 +197,9 @@
   }
   .searchResults__newscard-item {
     max-width: 360px;
+  }
+  .searchResults__newscard-item-tooltip {
+    width: 125px;
   }
 }
 
